@@ -9,6 +9,9 @@ EditorBuildSettings:
     path: Assets/Scenes/MainMenu.unity
     guid: 8b7957558bda88c42af17f642bad59b8
   - enabled: 1
+    path: Assets/Scenes/MazeRun.unity
+    guid: f18321696ae8b5849ae75143272f680d
+  - enabled: 1
     path: Assets/Scenes/Game.unity
     guid: 259fa46b83dd6bf489e02e6ec34107d4
   m_configObjects: {}

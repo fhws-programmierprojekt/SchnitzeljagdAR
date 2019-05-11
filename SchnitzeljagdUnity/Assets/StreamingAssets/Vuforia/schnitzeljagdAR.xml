@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <QCARConfig xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="qcar_config.xsd">
   <Tracking>
+    <ImageTarget name="Maze2" size="10.000000 9.985915" />
+    <ImageTarget name="Maze" size="10.000000 10.027855" />
     <ImageTarget name="QRJpg" size="5.000000 5.009390" />
   </Tracking>
 </QCARConfig>
