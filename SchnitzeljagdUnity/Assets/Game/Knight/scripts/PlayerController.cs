@@ -1,41 +1,92 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityStandardAssets.CrossPlatformInput;
+
 
 public class PlayerController : MonoBehaviour
 {
-    public Rigidbody rb;
-    public Animator anim;
-    
 
-    // Start is called before the first frame update
+
+    public float moveSpeed = 2;
+    public float rotationRate = 360;
+    public float gravity = 8;
+
+    Vector3 moveDir = Vector3.zero;
+    float rot = 0f;
+
+    Rigidbody rBody;
+    CharacterController controller;
+    Animator anim;
+    Joystick joystick;
+
+
+
+    // Start is called before the first frame update   
+
     void Start()
     {
-        anim = GetComponent<Animator>();
-        rb = GetComponent<Rigidbody>();
+        //Functios to check for componets
+        if (GetComponent<CharacterController>())
+        {
+            controller = GetComponent<CharacterController>();
+        }
+        else
+        {
+            Debug.LogError("The character needs a charactercontroller");
+        }
+        if (GetComponent<Animator>())
+        {
+            anim = GetComponent<Animator>();
+        }
+        else
+        {
+            Debug.LogError("The character needs a animator");
+        }
+        if (GetComponent<Rigidbody>())
+        {
+            rBody = GetComponent<Rigidbody>();
+        }
+        else
+        {
+            Debug.LogError("The character needs a rigidbody");
+        }
+        joystick = FindObjectOfType<Joystick>();
 
     }
 
-    // Update is called once per frame
     void Update()
     {
-        //Movement Functions
-        float x = CrossPlatformInputManager.GetAxis("Horizontal");
-        float y = CrossPlatformInputManager.GetAxis("Vertical");
+        //Movement Functios
+        float moveAxis = joystick.Vertical*0.8f;
+        float turnAxis = joystick.Horizontal*0.8f;
 
-        Vector3 movement = new Vector3(x, 0, y);
-
-        rb.velocity = movement * 1f;
-
-        if(x != 0 && y != 0)
+        if (controller.isGrounded)
         {
-            transform.eulerAngles = new Vector3(transform.eulerAngles.x, Mathf.Atan2(x, y) * Mathf.Rad2Deg, transform.eulerAngles.z);
+            if (moveAxis != 0)
+            {
+                anim.SetBool("isWalking", true);
+                moveDir = new Vector3(0, 0, moveAxis);
+                moveDir *= moveSpeed;
+                moveDir = transform.TransformDirection(moveDir);         
+            }
+            if (moveAxis == 0)
+            {
+                anim.SetBool("isWalking", false);
+                moveDir = new Vector3(0, 0, 0);             
+            } 
         }
-        if(x != 0 || y != 0)
+        rot += turnAxis * rotationRate * Time.deltaTime;
+        transform.eulerAngles = new Vector3(0, rot, 0);
+
+        if(moveAxis != 0)
         {
-            anim.Play("Walking");
+            moveDir.y -= gravity * Time.deltaTime;
+            controller.Move(moveDir * Time.deltaTime);
         }
+
+
+
+
 
         //Animation Functios
         if (Input.GetKeyDown("1"))
@@ -79,4 +130,5 @@ public class PlayerController : MonoBehaviour
             anim.Play("ChickenDance");
         }
     }
+
 }
