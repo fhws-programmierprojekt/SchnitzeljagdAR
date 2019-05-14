@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
 {
@@ -56,9 +56,16 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
-        //Movement Functios
-        float moveAxis = joystick.Vertical*0.8f;
-        float turnAxis = joystick.Horizontal*0.8f;
+        //Movement Functions
+        float moveAxis = 0f;
+        float turnAxis = 0f ;
+        if (SceneManager.GetActiveScene().buildIndex == 1)
+        {
+            moveAxis = joystick.Vertical * 0.8f;
+            turnAxis = joystick.Horizontal * 0.8f;
+
+        }
+        
 
         if (controller.isGrounded)
         {
