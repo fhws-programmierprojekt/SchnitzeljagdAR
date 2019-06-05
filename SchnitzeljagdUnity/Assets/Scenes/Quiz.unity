@@ -1809,27 +1809,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 481c0ff81162e0841bc282a7416ddc35, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  questions:
-  - info: ABC
-    answers:
-    - info: Right
-      isCorrect: 1
-    - info: Wrong
-      isCorrect: 0
-    - info: Wrong
-      isCorrect: 0
-    - info: Wrong
-      isCorrect: 0
-  - info: B
-    answers:
-    - info: 0
-      isCorrect: 1
-    - info: 1
-      isCorrect: 0
-    - info: 2
-      isCorrect: 0
-    - info: 3
-      isCorrect: 0
+  questions: []
 --- !u!4 &1770959482
 Transform:
   m_ObjectHideFlags: 0

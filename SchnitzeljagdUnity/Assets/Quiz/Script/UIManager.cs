@@ -6,6 +6,8 @@ using UnityEngine.UI;
 using TMPro;
 
 public class UIManager {
+
+    //attributes
     private GameObject question;
     private TextMeshProUGUI questionInfo;
 
@@ -13,7 +15,12 @@ public class UIManager {
     private Button[] answersButton;
     private TextMeshProUGUI[] answersInfo;
 
+    //constructor
+    public UIManager() {
+        ReferenceElements();
+    }
 
+    //methods
     public void ReferenceElements() {
         question = GameObject.Find("Question");
         questionInfo = GameObject.Find("UI/Content/Question/Info").GetComponent<TextMeshProUGUI>();
@@ -31,7 +38,6 @@ public class UIManager {
             string path = "Button" + i + "/Info";
             answersInfo[i] = GameObject.Find(path).GetComponent<TextMeshProUGUI>();
         }
-
         ButtonOnClick();
     }
     public void UpdateQuestionInfo(string questionInfo, string[] answersInfo) {
@@ -47,8 +53,9 @@ public class UIManager {
     }
     public void TaskOnClick(Button button) {
         GameManager gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
-        if(Array.IndexOf(answersButton, button) == Array.IndexOf(gameManager.QuestionCurrent.AnswersCurrent, gameManager.QuestionCurrent.AnswerCorrect())) {
-            gameManager.SetCurrentQuestion();
+        int indexOfButton = Array.IndexOf(answersButton, button);
+        if(indexOfButton == gameManager.Quiz.IndexOfAnswerCorrect()) {
+            gameManager.NewQuestion();
         }
     }
 }

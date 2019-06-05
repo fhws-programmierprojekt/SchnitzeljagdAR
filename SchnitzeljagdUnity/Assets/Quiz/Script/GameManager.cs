@@ -1,52 +1,64 @@
 ﻿using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using UnityEngine;
+
 
 public class GameManager : MonoBehaviour {
 
     //attributes
     private UIManager ui;
-
-    [SerializeField] private Question[] questions;  // Questions of a task
-    private List<Question> questionsOpen;           // Questions yet to be answered
-    private Question questionCurrent;               // Question currently to be answered
-    private readonly int answerQuantity = 4;
-    private int score;
+    [SerializeField] private Quiz quiz;
 
     //getter and setter
-    public Question[] Questions {
-        get { return questions; }
-        set { questions = value; }
-    }
-    public Question QuestionCurrent {
-        get { return questionCurrent; }
-        set { questionCurrent = value; }
+    public Quiz Quiz {
+        get { return quiz; }
+        set { quiz = value; }
     }
 
     // Start is called before the first frame update
     void Start() {
         ui = new UIManager();
-        ui.ReferenceElements();
-
-        if(questionsOpen == null || questionsOpen.Count == 0) {
-            questionsOpen = questions.ToList<Question>();
-        }
-        SetCurrentQuestion();
+        quiz = new Quiz();
+        quiz.StageCurrent = 0;
+        quiz.SetQuestionsOpen();
+        NewQuestion();
     }
 
-    // Sets a random current Question and deletes it from open Questions
-    public void SetCurrentQuestion() {
-        int index = Random.Range(0, questionsOpen.Count);
-        questionCurrent = questionsOpen[index];
-        questionCurrent.SetAnswersCurrent();
-        SetUIInfo();
-        //questionsOpen.RemoveAt(index);
-    }
-    private void SetUIInfo() {
-        string[] answersCurrentInfo = new string[answerQuantity];
-        for(int i = 0; i < questionCurrent.AnswersCurrent.Length; i++) {
-            answersCurrentInfo[i] = questionCurrent.AnswersCurrent[i].Info;
+    public void NewQuestion() {
+        quiz.SetQuestionCurrent();
+
+        string[] answersCurrentInfo = new string[4];
+        for(int i = 0; i < quiz.AnswersCurrent.Length; i++) {
+            answersCurrentInfo[i] = quiz.AnswersCurrent[i].Info;
         }
-        ui.UpdateQuestionInfo(questionCurrent.Info, answersCurrentInfo);
+        ui.UpdateQuestionInfo(quiz.QuestionCurrent.Info, answersCurrentInfo);
     }
+
+
+
+
+
+    //public void TestWriteQuiz() {
+    //    int indexStages = 12;
+    //    int indexQuestions = 4;
+    //    Quiz.Stage[] stages = new Quiz.Stage[indexStages];
+
+    //    for(int i = 0; i < stages.Length; i++) {
+    //        stages[i] = new Quiz.Stage(new Question[indexQuestions]);
+
+    //        for(int j = 0; j < indexQuestions; j++) {
+    //            string index = "[" + i + "." + j + "]";
+    //            stages[i].Questions[j] = new Question("Question" + index, new Question.Answer[] {
+    //            new Question.Answer("Right", true),
+    //            new Question.Answer("Wrong", false),
+    //            new Question.Answer("Wrong", false),
+    //            new Question.Answer("Wrong", false)
+    //            });
+    //        }
+    //    }
+
+    //    string json = MyJsonUtility.ToJson(stages, true);
+    //    File.WriteAllText(quizDataPath.Replace(".json", "") + "Test.json", json);
+    //}
 }
