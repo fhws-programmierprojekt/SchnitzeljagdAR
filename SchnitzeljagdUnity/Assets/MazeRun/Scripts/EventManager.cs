@@ -19,12 +19,15 @@ public class EventManager : MonoBehaviour
     public GameObject lancelotSprite;
     public TextMeshProUGUI speach1;
     public TextMeshProUGUI speach2;
-
+    
+    
     void Start()
     {
         //Sets the player screen to landscapemode
         Screen.orientation = ScreenOrientation.LandscapeLeft;
         speach2.enabled = false;
+
+        
 
         //Only allowes joystick in thirdperson.
         joystick.enabled = false;
@@ -38,7 +41,7 @@ public class EventManager : MonoBehaviour
         //Starts the game in AR mode.
         cams[0].enabled = true; 
         cams[1].enabled = false;
-
+        
     }
 
     void Update()
@@ -57,9 +60,16 @@ public class EventManager : MonoBehaviour
 
     public void GameStart()
     {
+        if(GateController.keyCount > 0)
+        {
+            GameEnd();
+        }
         lancelotSprite.SetActive(false);
         speach1.enabled = false;
-        
+    }
+    public void GameEnd()
+    {
+        SceneManager.LoadScene(1);
     }
 
     public void CamSwitch()
@@ -105,9 +115,8 @@ public class EventManager : MonoBehaviour
         StartCoroutine(Wait());
         lancelotSprite.SetActive(true);
         speach2.enabled = true;
-        
     }
-    
+  
     IEnumerator Wait()
     {
         yield return new WaitForSeconds(3);

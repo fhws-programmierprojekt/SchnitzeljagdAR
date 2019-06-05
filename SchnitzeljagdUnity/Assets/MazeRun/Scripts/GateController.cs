@@ -20,8 +20,6 @@ public class GateController : MonoBehaviour
             animLeft.SetBool("isOpeningLeft", true);
             animRight.SetBool("isOpeningRight", true);
             keyCount--;
-            
-
         }
     }
 }
