@@ -1806,7 +1806,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1770959480}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7693e399c83f7924dbcf71828f9677ec, type: 3}
+  m_Script: {fileID: 11500000, guid: 481c0ff81162e0841bc282a7416ddc35, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   quiz:
