@@ -5,8 +5,6 @@ using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
 {
-
-
     public float moveSpeed = 2;
     public float rotationRate = 360;
     public float gravity = 8;
@@ -18,8 +16,6 @@ public class PlayerController : MonoBehaviour
     CharacterController controller;
     Animator anim;
     Joystick joystick;
-
-
 
     // Start is called before the first frame update   
 
@@ -58,14 +54,10 @@ public class PlayerController : MonoBehaviour
     {
         //Movement Functions
         float moveAxis = 0f;
-        float turnAxis = 0f ;
-        if (SceneManager.GetActiveScene().buildIndex == 1)
-        {
-            moveAxis = joystick.Vertical * 0.8f;
-            turnAxis = joystick.Horizontal * 0.8f;
+        float turnAxis = 0f;
 
-        }
-        
+        moveAxis = joystick.Vertical * 0.8f;
+        turnAxis = joystick.Horizontal * 0.8f;
 
         if (controller.isGrounded)
         {
@@ -91,9 +83,7 @@ public class PlayerController : MonoBehaviour
             controller.Move(moveDir * Time.deltaTime);
         }
 
-
-
-
+        
 
         //Animation Functios
         if (Input.GetKeyDown("1"))
