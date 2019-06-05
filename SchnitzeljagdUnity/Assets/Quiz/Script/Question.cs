@@ -12,6 +12,7 @@ public class Question {
         Info = info;
         Answers = answers;
     }
+
     //getter and setter
     public string Info {
         get { return info; }

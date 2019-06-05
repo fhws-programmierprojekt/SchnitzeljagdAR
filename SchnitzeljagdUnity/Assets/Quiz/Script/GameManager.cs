@@ -39,6 +39,7 @@ public class GameManager : MonoBehaviour {
 
 
 
+
     //public void TestWriteQuiz() {
     //    int indexStages = 12;
     //    int indexQuestions = 4;

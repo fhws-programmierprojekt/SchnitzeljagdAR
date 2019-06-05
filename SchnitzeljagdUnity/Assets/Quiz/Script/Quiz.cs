@@ -8,8 +8,7 @@ using UnityEngine;
 public class Quiz {
 
     //attributes
-    [SerializeField]
-    private Stage[] stages;
+    [SerializeField] private Stage[] stages;
     private int stageCurrent;
     private List<Question> questionsOpen;
     private Question questionCurrent;
