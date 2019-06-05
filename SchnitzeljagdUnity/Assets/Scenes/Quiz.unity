@@ -1806,10 +1806,135 @@ MonoBehaviour:
   m_GameObject: {fileID: 1770959480}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 481c0ff81162e0841bc282a7416ddc35, type: 3}
+  m_Script: {fileID: 11500000, guid: 7693e399c83f7924dbcf71828f9677ec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  questions: []
+  quiz:
+    stages:
+    - questions:
+      - info: Question[0.0]
+        answers:
+        - info: Right
+          isCorrect: 1
+        - info: Wrong
+          isCorrect: 0
+        - info: Wrong
+          isCorrect: 0
+        - info: Wrong
+          isCorrect: 0
+      - info: Question[0.1]
+        answers:
+        - info: Right
+          isCorrect: 1
+        - info: Wrong
+          isCorrect: 0
+        - info: Wrong
+          isCorrect: 0
+        - info: Wrong
+          isCorrect: 0
+      - info: Question[0.2]
+        answers:
+        - info: Right
+          isCorrect: 1
+        - info: Wrong
+          isCorrect: 0
+        - info: Wrong
+          isCorrect: 0
+        - info: Wrong
+          isCorrect: 0
+    - questions:
+      - info: Question[1.0]
+        answers:
+        - info: Right
+          isCorrect: 1
+        - info: Wrong
+          isCorrect: 0
+        - info: Wrong
+          isCorrect: 0
+        - info: Wrong
+          isCorrect: 0
+      - info: Question[1.1]
+        answers:
+        - info: Right
+          isCorrect: 1
+        - info: Wrong
+          isCorrect: 0
+        - info: Wrong
+          isCorrect: 0
+        - info: Wrong
+          isCorrect: 0
+      - info: Question[1.2]
+        answers:
+        - info: Right
+          isCorrect: 1
+        - info: Wrong
+          isCorrect: 0
+        - info: Wrong
+          isCorrect: 0
+        - info: Wrong
+          isCorrect: 0
+    - questions:
+      - info: Question[2.0]
+        answers:
+        - info: Right
+          isCorrect: 1
+        - info: Wrong
+          isCorrect: 0
+        - info: Wrong
+          isCorrect: 0
+        - info: Wrong
+          isCorrect: 0
+      - info: Question[2.1]
+        answers:
+        - info: Right
+          isCorrect: 1
+        - info: Wrong
+          isCorrect: 0
+        - info: Wrong
+          isCorrect: 0
+        - info: Wrong
+          isCorrect: 0
+      - info: Question[2.2]
+        answers:
+        - info: Right
+          isCorrect: 1
+        - info: Wrong
+          isCorrect: 0
+        - info: Wrong
+          isCorrect: 0
+        - info: Wrong
+          isCorrect: 0
+    - questions:
+      - info: Question[3.0]
+        answers:
+        - info: Right
+          isCorrect: 1
+        - info: Wrong
+          isCorrect: 0
+        - info: Wrong
+          isCorrect: 0
+        - info: Wrong
+          isCorrect: 0
+      - info: Question[3.1]
+        answers:
+        - info: Right
+          isCorrect: 1
+        - info: Wrong
+          isCorrect: 0
+        - info: Wrong
+          isCorrect: 0
+        - info: Wrong
+          isCorrect: 0
+      - info: Question[3.2]
+        answers:
+        - info: Right
+          isCorrect: 1
+        - info: Wrong
+          isCorrect: 0
+        - info: Wrong
+          isCorrect: 0
+        - info: Wrong
+          isCorrect: 0
 --- !u!4 &1770959482
 Transform:
   m_ObjectHideFlags: 0
