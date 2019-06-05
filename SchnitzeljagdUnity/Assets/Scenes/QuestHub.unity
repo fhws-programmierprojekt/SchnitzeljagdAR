@@ -4466,7 +4466,7 @@ PrefabInstance:
     - target: {fileID: 5484330594354554109, guid: b37336d7e2bd7c44ab27c599ca37819e,
         type: 3}
       propertyPath: questList.Array.data[0].pointReward
-      value: 100
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5484330594354554109, guid: b37336d7e2bd7c44ab27c599ca37819e,
         type: 3}
@@ -4496,7 +4496,7 @@ PrefabInstance:
     - target: {fileID: 5484330594354554109, guid: b37336d7e2bd7c44ab27c599ca37819e,
         type: 3}
       propertyPath: questList.Array.data[1].pointReward
-      value: 100
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5484330594354554109, guid: b37336d7e2bd7c44ab27c599ca37819e,
         type: 3}
@@ -4536,7 +4536,7 @@ PrefabInstance:
     - target: {fileID: 5484330594354554109, guid: b37336d7e2bd7c44ab27c599ca37819e,
         type: 3}
       propertyPath: questList.Array.data[2].pointReward
-      value: 100
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5484330594354554109, guid: b37336d7e2bd7c44ab27c599ca37819e,
         type: 3}
@@ -4566,7 +4566,7 @@ PrefabInstance:
     - target: {fileID: 5484330594354554109, guid: b37336d7e2bd7c44ab27c599ca37819e,
         type: 3}
       propertyPath: questList.Array.data[3].pointReward
-      value: 100
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5484330594354554109, guid: b37336d7e2bd7c44ab27c599ca37819e,
         type: 3}
@@ -4596,7 +4596,7 @@ PrefabInstance:
     - target: {fileID: 5484330594354554109, guid: b37336d7e2bd7c44ab27c599ca37819e,
         type: 3}
       propertyPath: questList.Array.data[4].pointReward
-      value: 100
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5484330594354554109, guid: b37336d7e2bd7c44ab27c599ca37819e,
         type: 3}
@@ -4626,7 +4626,7 @@ PrefabInstance:
     - target: {fileID: 5484330594354554109, guid: b37336d7e2bd7c44ab27c599ca37819e,
         type: 3}
       propertyPath: questList.Array.data[5].pointReward
-      value: 100
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5484330594354554109, guid: b37336d7e2bd7c44ab27c599ca37819e,
         type: 3}
@@ -4656,7 +4656,7 @@ PrefabInstance:
     - target: {fileID: 5484330594354554109, guid: b37336d7e2bd7c44ab27c599ca37819e,
         type: 3}
       propertyPath: questList.Array.data[6].pointReward
-      value: 100
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5484330594354554109, guid: b37336d7e2bd7c44ab27c599ca37819e,
         type: 3}
@@ -4686,7 +4686,7 @@ PrefabInstance:
     - target: {fileID: 5484330594354554109, guid: b37336d7e2bd7c44ab27c599ca37819e,
         type: 3}
       propertyPath: questList.Array.data[7].pointReward
-      value: 100
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5484330594354554109, guid: b37336d7e2bd7c44ab27c599ca37819e,
         type: 3}
@@ -4716,7 +4716,7 @@ PrefabInstance:
     - target: {fileID: 5484330594354554109, guid: b37336d7e2bd7c44ab27c599ca37819e,
         type: 3}
       propertyPath: questList.Array.data[8].pointReward
-      value: 100
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5484330594354554109, guid: b37336d7e2bd7c44ab27c599ca37819e,
         type: 3}
@@ -4746,7 +4746,7 @@ PrefabInstance:
     - target: {fileID: 5484330594354554109, guid: b37336d7e2bd7c44ab27c599ca37819e,
         type: 3}
       propertyPath: questList.Array.data[9].pointReward
-      value: 100
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5484330594354554109, guid: b37336d7e2bd7c44ab27c599ca37819e,
         type: 3}
@@ -4776,7 +4776,7 @@ PrefabInstance:
     - target: {fileID: 5484330594354554109, guid: b37336d7e2bd7c44ab27c599ca37819e,
         type: 3}
       propertyPath: questList.Array.data[10].pointReward
-      value: 100
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5484330594354554109, guid: b37336d7e2bd7c44ab27c599ca37819e,
         type: 3}
@@ -4806,7 +4806,7 @@ PrefabInstance:
     - target: {fileID: 5484330594354554109, guid: b37336d7e2bd7c44ab27c599ca37819e,
         type: 3}
       propertyPath: questList.Array.data[11].pointReward
-      value: 100
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5484330594354554109, guid: b37336d7e2bd7c44ab27c599ca37819e,
         type: 3}

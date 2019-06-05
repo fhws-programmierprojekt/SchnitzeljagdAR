@@ -68,6 +68,18 @@ public class QuestHubController : MonoBehaviour
         }
     }
 
+    public void addPoints(int points)
+    {
+        int questID = SceneManager.GetActiveScene().buildIndex;
+        for(int i = 0; i < questList.Count; i++)
+        {
+           if(questList[i].id == questID)
+            {
+                questList[i].pointReward = questList[i].pointReward + points;
+            }
+        }
+    }
+
     //BOOLS
 
     public bool RequestAvailbleQuest(int questID)
@@ -121,8 +133,9 @@ public class QuestHubController : MonoBehaviour
         }
     }
 
-    public void loadQuestHub(int questID)
+    public void loadQuestHub()
     {
+        int questID = SceneManager.GetActiveScene().buildIndex;
         ScoreScript.scoreAmount = ScoreScript.scoreAmount + questHubController.QuestPoints(questID);
         questHubController.AvailbleQuest(questID +1);
         gameObject.SetActive(true);
