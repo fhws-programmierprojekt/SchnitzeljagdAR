@@ -5,14 +5,16 @@ using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
 {
-    public float moveSpeed = 2;
-    public float rotationRate = 360;
-    public float gravity = 8;
+    //Var for the movement 
 
-    Vector3 moveDir = Vector3.zero;
-    float rot = 0f;
+    public float moveSpeed = 2;         //movementspeed      
+    public float rotationRate = 360;    //rotationspeed
+    public float gravity = 8;           //gravity 
+    Vector3 moveDir = Vector3.zero;     //position
+    float rot = 0f;                     //rotation
 
-    Rigidbody rBody;
+    //Componets used for movement, animation, controlling.
+    Rigidbody rBody;    
     CharacterController controller;
     Animator anim;
     Joystick joystick;
@@ -53,7 +55,7 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         //Movement Functions for the MazeRun Mini Game
-        if(SceneManager.GetActiveScene().buildIndex == 4)
+        if(SceneManager.GetActiveScene().buildIndex == 3)
         {
             float moveAxis = 0f;
             float turnAxis = 0f;

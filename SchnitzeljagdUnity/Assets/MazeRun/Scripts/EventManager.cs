@@ -7,15 +7,16 @@ using UnityEngine.SceneManagement;
 
 public class EventManager : MonoBehaviour
 {
-    public Camera[] cams;
-    public Button camSwitchButton;
-    public Joystick joystick;
-    public GameObject joystickHandle;
-    Image[] joystickImage = new Image[2];
-    public Image keyImage;
-    public GameObject player;
-    Animator animPlayer;
-    Animator animCamera;
+    //Game vars 
+    public Camera[] cams;                       //array for the cameras in the scene
+    public Button camSwitchButton;              //Gameobject for the button to switch between views
+    public Joystick joystick;                   //Joystick objects
+    public GameObject joystickHandle;           // "
+    Image[] joystickImage = new Image[2];       // "     
+    public Image keyImage;                      //image for the key in the upper right coner
+    public GameObject player;                   //Player gameobjects
+    Animator animPlayer;                        // "
+    Animator animCamera;                        //Cameraobject
     
     
     void Start()
@@ -30,12 +31,14 @@ public class EventManager : MonoBehaviour
         joystickImage[0].enabled = false;
         joystickImage[1].enabled = false;
         
+        //Deactivets the key image at the beginn of the game
         keyImage.enabled = false;
 
         //Starts the game in AR mode.
         cams[0].enabled = true; 
         cams[1].enabled = false;
 
+        //Starts the dialogs
         DialogSystem.dialogSystem.startDialog(1);
         
     }
@@ -54,13 +57,17 @@ public class EventManager : MonoBehaviour
         }
     }
 
-    public void GameStart()
+    //ON CLICK EVENTS
+
+    void GameStart()
     {
+        //ends the first dialog
         DialogSystem.dialogSystem.endDialog(1);
     }
 
     public void GameEnd()
-    {
+    { 
+        //loads the questhub
         QuestHubController.questHubController.loadQuestHub();
     }
 
@@ -74,8 +81,11 @@ public class EventManager : MonoBehaviour
         cams[1].enabled = ! cams[1].enabled;
     }
 
+    //FUNCTIONS
+
     void JoystickSwitch()
     {
+        //only allows the joystick in the thridperson view
         joystick.enabled = !joystick.enabled; 
         joystickImage[0].enabled = !joystickImage[0].enabled;
         joystickImage[1].enabled = !joystickImage[1].enabled;
@@ -91,6 +101,8 @@ public class EventManager : MonoBehaviour
         camSwitchButtonText.text = " ";
 
     }
+
+    //EXIT EVENT
 
     void ExitEvent()
     {
@@ -111,6 +123,8 @@ public class EventManager : MonoBehaviour
         QuestHubController.questHubController.addPoints(100);
     }
   
+    //SLEEP
+
     IEnumerator Wait()
     {
         yield return new WaitForSeconds(3);

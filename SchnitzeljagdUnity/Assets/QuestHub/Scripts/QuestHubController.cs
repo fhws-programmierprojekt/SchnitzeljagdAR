@@ -15,7 +15,8 @@ public class QuestHubController : MonoBehaviour
 
     void Awake()
     {
-        if(questHubController == null)
+        //Checks for wrong clones
+        if (questHubController == null)
         {
             questHubController = this;
         }
@@ -24,11 +25,15 @@ public class QuestHubController : MonoBehaviour
             Destroy(gameObject);
         }
         DontDestroyOnLoad(gameObject);
+
+        //Allowes the first quest
+        questList[0].progress = Quests.QuestProgress.AVAILABLE;
     }
 
     void Update()
     {
-        for(int i = 0; i < questList.Count; i++)
+        //Sets the questprogress corresponding to the quest button;
+        for (int i = 0; i < questList.Count; i++)
         {
             if(questList[i].progress == Quests.QuestProgress.NOT_AVAILABE)
             {
@@ -36,32 +41,31 @@ public class QuestHubController : MonoBehaviour
             }
             else if(questList[i].progress == Quests.QuestProgress.AVAILABLE)
             {
+                
                 questList[i].button.interactable = true;
             }
-
         }
     }
 
-    //AVAILBLE QUEST
+    //QUESTING
+
 
     public void AvailbleQuest(int questID)
     {
-        for(int i = 0; i < questList.Count; i++)
+        for (int i = 0; i < questList.Count; i++)
         {
-            if(questList[i].id == questID)
+            if (questList[i].id == questID)
             {
                 questList[i].progress = Quests.QuestProgress.AVAILABLE;
             }
         }
     }
 
-    //COMPLETE QUEST
-
     public void CompleteQuest(int questID)
     {
         for(int i = 0; i < questList.Count; i++)
         {
-            if(questList[i].id == questID && questList[i].progress == Quests.QuestProgress.DONE)
+            if(questList[i].id == questID)
             {
                 questList[i].progress = Quests.QuestProgress.DONE;
             }
@@ -73,9 +77,20 @@ public class QuestHubController : MonoBehaviour
         int questID = currentQuest;
         for(int i = 0; i < questList.Count; i++)
         {
-           if(questList[i].id == questID)
+           if(questList[i].id == questID && questList[i].progress != Quests.QuestProgress.DONE)
             {
                 questList[i].pointReward = questList[i].pointReward + points;
+            }
+        }
+    }
+
+    public void imageTargetFound(int questID)
+    {
+        for(int i = 0; i < questList.Count; i++)
+        {
+            if (questList[i].id == questID)
+            {
+                questList[i].imageProgress = Quests.ImagetargetProgress.FOUND;
             }
         }
     }
@@ -94,11 +109,23 @@ public class QuestHubController : MonoBehaviour
         return false;
     }
 
-    public bool DoneCompletedQuest(int questID)
+    public bool RequestQuestDone(int questID)
     {
         for (int i = 0; i < questList.Count; i++)
         {
             if (questList[i].id == questID && questList[i].progress == Quests.QuestProgress.DONE)
+            {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public bool QuestTargetAllreadyFound()
+    {
+        for(int i = 0; i < questList.Count; i++)
+        {
+            if (questList[i].id == currentQuest && questList[i].imageProgress == Quests.ImagetargetProgress.FOUND)
             {
                 return true;
             }
@@ -125,22 +152,27 @@ public class QuestHubController : MonoBehaviour
     public void loadQuest(QuestObject questObject)
     {
         
-        if (RequestAvailbleQuest(questObject.ID))
-        {
-            
+        if (RequestAvailbleQuest(questObject.ID) || RequestQuestDone(questObject.ID))
+        {          
             gameObject.SetActive(false);
             SceneManager.LoadScene(questObject.ID);
             currentQuest = questObject.ID;
-            
         }
     }
 
     public void loadQuestHub()
     {
+        //Completing the last quest
+        if(RequestQuestDone(currentQuest) == false)
+        {
+            ScoreScript.scoreAmount = ScoreScript.scoreAmount + questHubController.QuestPoints(currentQuest);
+        }
+        questHubController.CompleteQuest(currentQuest);
+
+        //activating the next Quest
         currentQuest++;
-       
-        ScoreScript.scoreAmount = ScoreScript.scoreAmount + questHubController.QuestPoints(currentQuest -1);
         questHubController.AvailbleQuest(currentQuest);
         gameObject.SetActive(true);
+
     }
 }

@@ -5,8 +5,7 @@ using TMPro;
 
 public class ScoreScript : MonoBehaviour
 {
-    public ScoreScript scoreSetter;
-
+    //Vars used for the score text in the questhub
     public static int scoreAmount;
     private TextMeshProUGUI scoreText;
 
@@ -18,8 +17,10 @@ public class ScoreScript : MonoBehaviour
     }
 
     // Update is called once per frame
+
     void Update()
     {
+        //Sets score corresponding to the amount at the moment
         scoreText.text = "Punkte " + scoreAmount;
     }
 }

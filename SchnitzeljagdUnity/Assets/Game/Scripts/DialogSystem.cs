@@ -7,10 +7,11 @@ public class DialogSystem : MonoBehaviour
 {
     public static DialogSystem dialogSystem;
     
-    public Dialog[] dialogs;            //number of dialogs in a scene;
+    public Dialog[] dialogs;        //number of dialogs in a scene;
 
     void Awake()
     {
+        //Checks for wrong clones
         if(dialogSystem == null)
         {
             dialogSystem = this;
@@ -19,6 +20,7 @@ public class DialogSystem : MonoBehaviour
         {
             Destroy(gameObject);
         }
+        //Sets every dialog and the beginn of the scene to false
         for(int i = 0; i < dialogs.Length; i++)
         {
             dialogs[i].dialogObject.SetActive(false);
