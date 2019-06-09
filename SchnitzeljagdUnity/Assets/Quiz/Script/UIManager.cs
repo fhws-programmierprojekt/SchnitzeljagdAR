@@ -15,6 +15,10 @@ public class UIManager {
     private Button[] answersButton;
     private TextMeshProUGUI[] answersInfo;
 
+    private readonly string fontAssetPath = "Fonts & Materials/Rotis-SemiSans-Std-ExtraBold_38715 SDF";
+    private readonly TMP_FontAsset fontAsset = Resources.Load("Fonts & Materials/Rotis-SemiSans-Std-ExtraBold_38715 SDF", typeof(TMP_FontAsset)) as TMP_FontAsset;
+
+
     //constructor
     public UIManager() {
         ReferenceElements();
@@ -24,19 +28,22 @@ public class UIManager {
     public void ReferenceElements() {
         question = GameObject.Find("Question");
         questionInfo = GameObject.Find("UI/Content/Question/Info").GetComponent<TextMeshProUGUI>();
+        questionInfo.font = fontAsset;
 
         answer = GameObject.Find("Answer");
 
-        answersButton = new Button[4];
+        int buttonQuantity = 4;
+        answersButton = new Button[buttonQuantity];
         for(int i = 0; i < answersButton.Length; i++) {
             string path = "Button" + i;
             answersButton[i] = GameObject.Find(path).GetComponent<Button>();
         }
-
-        answersInfo = new TextMeshProUGUI[4];
+        
+        answersInfo = new TextMeshProUGUI[buttonQuantity];
         for(int i = 0; i < answersInfo.Length; i++) {
             string path = "Button" + i + "/Info";
             answersInfo[i] = GameObject.Find(path).GetComponent<TextMeshProUGUI>();
+            questionInfo.font = fontAsset;
         }
         ButtonOnClick();
     }
@@ -55,7 +62,14 @@ public class UIManager {
         GameManager gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
         int indexOfButton = Array.IndexOf(answersButton, button);
         if(indexOfButton == gameManager.Quiz.IndexOfAnswerCorrect()) {
-            gameManager.NewQuestion();
+            gameManager.Next();
+        }
+    }
+    private class MyTextMeshProGUI : TextMeshProUGUI{
+
+        public MyTextMeshProGUI(string fontAsset) {
+            this.font = Resources.Load(fontAsset, typeof(TMP_FontAsset)) as TMP_FontAsset;
+            this.fontSize = 12;
         }
     }
 }

@@ -23,9 +23,11 @@ public class Question {
         set { answers = value; }
     }
 
+
     //nested class
     [System.Serializable]
     public class Answer {
+
         //attributes
         [SerializeField] private string info;
         [SerializeField] private bool isCorrect = false;

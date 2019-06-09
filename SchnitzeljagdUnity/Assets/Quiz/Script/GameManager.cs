@@ -21,11 +21,11 @@ public class GameManager : MonoBehaviour {
         ui = new UIManager();
         quiz = new Quiz();
         quiz.StageCurrent = 0;
-        quiz.SetQuestionsOpen();
-        NewQuestion();
+        quiz.SetQuestionsOpen(0);
+        Next();
     }
 
-    public void NewQuestion() {
+    public void Next() {
         quiz.SetQuestionCurrent();
 
         string[] answersCurrentInfo = new string[4];
@@ -35,8 +35,9 @@ public class GameManager : MonoBehaviour {
         ui.UpdateQuestionInfo(quiz.QuestionCurrent.Info, answersCurrentInfo);
     }
 
+    public void Complete() {
 
-
+    }
 
 
 

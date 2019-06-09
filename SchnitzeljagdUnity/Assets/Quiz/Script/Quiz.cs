@@ -7,28 +7,38 @@ using UnityEngine;
 [System.Serializable]
 public class Quiz {
 
-    //attributes
+    #region attributes
     [SerializeField] private Stage[] stages;
-    private int stageCurrent;
     private List<Question> questionsOpen;
     private Question questionCurrent;
     private Question.Answer[] answersCurrent;
 
-    private static string quizDataPath = Path.Combine(Application.streamingAssetsPath, "Quiz\\QuizData.json");
+    private int stageCurrent;
+    private int questionQuantity;
+    private int questionAttempts;
 
-    //constructor
+    private readonly string quizDataPath = Path.Combine(Application.streamingAssetsPath, "Quiz\\QuizData.json");
+    #endregion
+
+    #region constructors
     public Quiz() {
         ReadQuiz();
     }
+    public Quiz(int stageCurrent) {
+        ReadQuiz();
+        StageCurrent = stageCurrent;
+    }
+    public Quiz(int stageCurrent, int questionQuantity) {
+        ReadQuiz();
+        StageCurrent = stageCurrent;
+        QuestionQuantity = questionQuantity;
+    }
+    #endregion
 
-    //getter and setter
+    #region getter and setter
     public Stage[] Stages {
         get { return stages; }
         set { stages = value; }
-    }
-    public int StageCurrent {
-        get { return stageCurrent; }
-        set { stageCurrent = value; }
     }
     public List<Question> QuestionsOpen {
         get { return questionsOpen;  }
@@ -42,8 +52,17 @@ public class Quiz {
         get { return answersCurrent; }
         set { answersCurrent = value; }
     }
+    public int StageCurrent {
+        get { return stageCurrent; }
+        set { stageCurrent = value; }
+    }
+    public int QuestionQuantity {
+        get { return questionQuantity; }
+        set { questionQuantity = value; }
+    }
+    #endregion
 
-    //methods
+    #region methods
     public void ReadQuiz() {
         try {
             string json = File.ReadAllText(quizDataPath);
@@ -53,17 +72,21 @@ public class Quiz {
         }
     }
 
-    public void SetQuestionsOpen() {
-        if(QuestionsOpen == null || QuestionsOpen.Count == 0) {
-            QuestionsOpen = stages[stageCurrent].Questions.ToList<Question>();
-        }
+    //public void SetQuestionsOpen() {
+    //    if(QuestionsOpen == null || QuestionsOpen.Count == 0) {
+    //        QuestionsOpen = Stages[stageCurrent].Questions.ToList<Question>();
+    //    }
+    //}
+    public void SetQuestionsOpen(int stageCurrent) {
+        QuestionsOpen = Stages[stageCurrent].Questions.ToList<Question>();
     }
+
     public void SetQuestionCurrent() {
         int index = Random.Range(0, QuestionsOpen.Count);
         QuestionCurrent = QuestionsOpen[index];
         SetAnswersCurrent();
         QuestionsOpen.RemoveAt(index);
-        SetQuestionsOpen();
+        //SetQuestionsOpen();
     }
     public void SetAnswersCurrent() {
         AnswersCurrent = new Question.Answer[4];
@@ -114,11 +137,16 @@ public class Quiz {
         int indexOfAnswerCorrect = System.Array.IndexOf(AnswersCurrent, answerCorrect);
         return indexOfAnswerCorrect;
     }
+    #endregion
 
+    //nested class
     [System.Serializable]
     public class Stage {
+
+        //attributes
         [SerializeField] private Question[] questions;
 
+        //constructor
         public Stage(Question[] questions) {
             Questions = questions;
         }
