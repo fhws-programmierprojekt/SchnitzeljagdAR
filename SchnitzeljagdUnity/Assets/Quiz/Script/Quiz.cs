@@ -12,10 +12,10 @@ public class Quiz {
     private List<Question> questionsOpen;
     private Question questionCurrent;
     private Question.Answer[] answersCurrent;
-
+    
     private int stageCurrent;
     private int questionQuantity;
-    private int questionAttempts;
+    private int attempt;
 
     private readonly string quizDataPath = Path.Combine(Application.streamingAssetsPath, "Quiz\\QuizData.json");
     #endregion
@@ -60,6 +60,10 @@ public class Quiz {
         get { return questionQuantity; }
         set { questionQuantity = value; }
     }
+    public int Attempt {
+        get { return attempt; }
+        set { attempt = value; }
+    }
     #endregion
 
     #region methods
@@ -80,11 +84,11 @@ public class Quiz {
     public void SetQuestionsOpen(int stageCurrent) {
         QuestionsOpen = Stages[stageCurrent].Questions.ToList<Question>();
     }
-
     public void SetQuestionCurrent() {
         int index = Random.Range(0, QuestionsOpen.Count);
         QuestionCurrent = QuestionsOpen[index];
         SetAnswersCurrent();
+        attempt = 4;
         QuestionsOpen.RemoveAt(index);
         //SetQuestionsOpen();
     }
@@ -125,7 +129,6 @@ public class Quiz {
         }
         return array;
     }
-
     public int IndexOfAnswerCorrect() {
         Question.Answer answerCorrect = null;
         foreach(Question.Answer answer in AnswersCurrent) {
@@ -133,7 +136,6 @@ public class Quiz {
                 answerCorrect = answer;
             }
         }
-
         int indexOfAnswerCorrect = System.Array.IndexOf(AnswersCurrent, answerCorrect);
         return indexOfAnswerCorrect;
     }

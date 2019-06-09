@@ -2,6 +2,7 @@
 using System.IO;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 
 public class GameManager : MonoBehaviour {
@@ -20,8 +21,8 @@ public class GameManager : MonoBehaviour {
     void Start() {
         ui = new UIManager();
         quiz = new Quiz();
-        quiz.StageCurrent = 0;
-        quiz.SetQuestionsOpen(0);
+        quiz.SetQuestionsOpen(QuestHubController.questHubController.currentQuest - 1);
+        //quiz.SetQuestionsOpen(0);
         Next();
     }
 
@@ -35,8 +36,29 @@ public class GameManager : MonoBehaviour {
         ui.UpdateQuestionInfo(quiz.QuestionCurrent.Info, answersCurrentInfo);
     }
 
-    public void Complete() {
+    public void CheckButtonToAnswer(int indexOfButton) {
+        int indexOfAnswerCorrect = quiz.IndexOfAnswerCorrect();
+        if(indexOfButton == indexOfAnswerCorrect) {
+            AddPoints();
+            if(quiz.QuestionsOpen.Count >= 1) {
+                Next();
+            } else {
+                EndGame();
+            }
 
+        } else {
+            if(quiz.Attempt >= 4) {
+                quiz.Attempt--;
+            }
+        }
+    }
+    public void AddPoints() {
+        int point = (int) Mathf.Pow(2, quiz.Attempt);
+        QuestHubController.questHubController.addPoints(point);
+    }
+
+    public void EndGame() {
+        SceneManager.LoadScene(QuestHubController.questHubController.currentQuest);
     }
 
 
