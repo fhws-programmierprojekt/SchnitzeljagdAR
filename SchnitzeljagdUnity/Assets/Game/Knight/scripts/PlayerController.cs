@@ -17,7 +17,7 @@ public class PlayerController : MonoBehaviour
     Animator anim;
     Joystick joystick;
 
-    // Start is called before the first frame update   
+    //Start is called before the first frame update   
 
     void Start()
     {
@@ -52,80 +52,56 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
-        //Movement Functions
-        float moveAxis = 0f;
-        float turnAxis = 0f;
-
-        moveAxis = joystick.Vertical * 0.8f;
-        turnAxis = joystick.Horizontal * 0.8f;
-
-        if (controller.isGrounded)
+        //Movement Functions for the MazeRun Mini Game
+        if(SceneManager.GetActiveScene().buildIndex == 4)
         {
+            float moveAxis = 0f;
+            float turnAxis = 0f;
+
             if (moveAxis != 0)
             {
-                anim.SetBool("isWalking", true);
-                moveDir = new Vector3(0, 0, moveAxis);
-                moveDir *= moveSpeed;
-                moveDir = transform.TransformDirection(moveDir);         
+                moveAxis = joystick.Vertical * 0.8f;
+                turnAxis = joystick.Horizontal * 0.8f;
             }
-            if (moveAxis == 0)
+
+
+            if (controller.isGrounded)
             {
-                anim.SetBool("isWalking", false);
-                moveDir = new Vector3(0, 0, 0);             
-            } 
-        }
-        rot += turnAxis * rotationRate * Time.deltaTime;
-        transform.eulerAngles = new Vector3(0, rot, 0);
+                if (moveAxis != 0)
+                {
+                    anim.SetBool("isWalking", true);
+                    moveDir = new Vector3(0, 0, moveAxis);
+                    moveDir *= moveSpeed;
+                    moveDir = transform.TransformDirection(moveDir);
+                }
+                if (moveAxis == 0)
+                {
+                    anim.SetBool("isWalking", false);
+                    moveDir = new Vector3(0, 0, 0);
+                }
+            }
+            rot += turnAxis * rotationRate * Time.deltaTime;
+            transform.eulerAngles = new Vector3(0, rot, 0);
 
-        if(moveAxis != 0)
-        {
-            moveDir.y -= gravity * Time.deltaTime;
-            controller.Move(moveDir * Time.deltaTime);
-        }
-
-        
-
-        //Animation Functios
-        if (Input.GetKeyDown("1"))
-        {
-            anim.Play("StandingGreeting");
-        }
-        if (Input.GetKeyDown("2"))
-        {
-            anim.Play("Talking");
-        }
-        if (Input.GetKeyDown("3"))
-        {
-            anim.Play("Talking02");
-        }
-        if (Input.GetKeyDown("4"))
-        {
-            anim.Play("Talking03");
-        }
-        if (Input.GetKeyDown("5"))
-        {
-            anim.Play("Talking04");
-        }
-        if (Input.GetKeyDown("6"))
-        {
-            anim.Play("Talking05");
-        }
-        if (Input.GetKeyDown("7"))
-        {
-            anim.Play("Pointing");
-        }
-        if (Input.GetKeyDown("8"))
-        {
-            anim.Play("Defeated");
-        }
-        if (Input.GetKeyDown("9"))
-        {
-            anim.Play("LookingAround");
-        }
-        if (Input.GetKeyDown("0"))
-        {
-            anim.Play("ChickenDance");
+            if (moveAxis != 0)
+            {
+                moveDir.y -= gravity * Time.deltaTime;
+                controller.Move(moveDir * Time.deltaTime);
+            }
         }
     }
+    
+    //ANIMATION FUNCTION
 
+    public void playAnimation(string animationName)
+    {
+        //Animation list: StandingGreeting, Talking, Talking02, Talking03, Talking04, Talking05, Pointing, Defeated, LookingAround, ChickenDance.
+        anim.Play(animationName);
+    }
+    //CHARACTER FUNCTIONS
+
+    public void setRolandActivDisactiv(bool status)
+    {
+        this.gameObject.SetActive(status);
+    }
 }

@@ -9,7 +9,7 @@ public class QuestHubController : MonoBehaviour
     public static QuestHubController questHubController;
 
     public List<Quests> questList = new List<Quests>();         //Quest list with all quests
-    public List<Quests> currentQuestList = new List<Quests>();  //Current Quest List
+    public int currentQuest;                                    //Current Quest List
     public GameObject questHub;                                 //Questhub as a Object to make it invisible if neded
  
 
@@ -63,14 +63,14 @@ public class QuestHubController : MonoBehaviour
         {
             if(questList[i].id == questID && questList[i].progress == Quests.QuestProgress.DONE)
             {
-                currentQuestList[i].progress = Quests.QuestProgress.DONE;
+                questList[i].progress = Quests.QuestProgress.DONE;
             }
         }
     }
 
     public void addPoints(int points)
     {
-        int questID = SceneManager.GetActiveScene().buildIndex;
+        int questID = currentQuest;
         for(int i = 0; i < questList.Count; i++)
         {
            if(questList[i].id == questID)
@@ -127,17 +127,20 @@ public class QuestHubController : MonoBehaviour
         
         if (RequestAvailbleQuest(questObject.ID))
         {
+            
             gameObject.SetActive(false);
             SceneManager.LoadScene(questObject.ID);
+            currentQuest = questObject.ID;
             
         }
     }
 
     public void loadQuestHub()
     {
-        int questID = SceneManager.GetActiveScene().buildIndex;
-        ScoreScript.scoreAmount = ScoreScript.scoreAmount + questHubController.QuestPoints(questID);
-        questHubController.AvailbleQuest(questID +1);
+        currentQuest++;
+       
+        ScoreScript.scoreAmount = ScoreScript.scoreAmount + questHubController.QuestPoints(currentQuest -1);
+        questHubController.AvailbleQuest(currentQuest);
         gameObject.SetActive(true);
     }
 }

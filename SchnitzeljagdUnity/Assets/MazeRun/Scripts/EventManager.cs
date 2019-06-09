@@ -16,19 +16,13 @@ public class EventManager : MonoBehaviour
     public GameObject player;
     Animator animPlayer;
     Animator animCamera;
-    public GameObject lancelotSprite;
-    public TextMeshProUGUI speach1;
-    public TextMeshProUGUI speach2;
     
     
     void Start()
     {
         //Sets the player screen to landscapemode
         Screen.orientation = ScreenOrientation.LandscapeLeft;
-        speach2.enabled = false;
-
-        
-
+       
         //Only allowes joystick in thirdperson.
         joystick.enabled = false;
         joystickImage[0] = joystick.GetComponent<Image>();
@@ -41,6 +35,8 @@ public class EventManager : MonoBehaviour
         //Starts the game in AR mode.
         cams[0].enabled = true; 
         cams[1].enabled = false;
+
+        DialogSystem.dialogSystem.startDialog(1);
         
     }
 
@@ -60,16 +56,12 @@ public class EventManager : MonoBehaviour
 
     public void GameStart()
     {
-        if(GateController.keyCount > 0)
-        {
-            GameEnd();
-        }
-        lancelotSprite.SetActive(false);
-        speach1.enabled = false;
+        DialogSystem.dialogSystem.endDialog(1);
     }
+
     public void GameEnd()
     {
-        SceneManager.LoadScene(1);
+        QuestHubController.questHubController.loadQuestHub();
     }
 
     public void CamSwitch()
@@ -95,6 +87,8 @@ public class EventManager : MonoBehaviour
         Image camSwitchButtonImage = camSwitchButton.GetComponent<Image>();
         camSwitchButton.interactable = false;
         camSwitchButtonImage.enabled = false;
+        TextMeshProUGUI camSwitchButtonText = camSwitchButton.GetComponentInChildren<TextMeshProUGUI>();
+        camSwitchButtonText.text = " ";
 
     }
 
@@ -113,8 +107,8 @@ public class EventManager : MonoBehaviour
         animCamera.SetBool("isExit", true);
         GateController.exitCount--;
         StartCoroutine(Wait());
-        lancelotSprite.SetActive(true);
-        speach2.enabled = true;
+        DialogSystem.dialogSystem.startDialog(2);
+        QuestHubController.questHubController.addPoints(100);
     }
   
     IEnumerator Wait()
