@@ -54,17 +54,15 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
-        //Movement Functions for the MazeRun Mini Game
-        if(SceneManager.GetActiveScene().buildIndex == 3)
+
+        //Movement Functions only for the mazerun minigame
+        if (SceneManager.GetActiveScene().buildIndex == 14)
         {
             float moveAxis = 0f;
             float turnAxis = 0f;
 
-            if (moveAxis != 0)
-            {
-                moveAxis = joystick.Vertical * 0.8f;
-                turnAxis = joystick.Horizontal * 0.8f;
-            }
+            moveAxis = joystick.Vertical * 0.8f;
+            turnAxis = joystick.Horizontal * 0.8f;
 
 
             if (controller.isGrounded)
