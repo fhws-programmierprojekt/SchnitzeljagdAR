@@ -758,7 +758,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 373009432}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 5484330594354554109}
+        m_MethodName: loadQuest
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &373009432
@@ -1735,7 +1746,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 944972031}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 5484330594354554109}
+        m_MethodName: loadQuest
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &944972031
@@ -2436,7 +2458,6 @@ GameObject:
   - component: {fileID: 1468530896}
   - component: {fileID: 1468530895}
   - component: {fileID: 1468530894}
-  - component: {fileID: 1468530897}
   m_Layer: 5
   m_Name: Quest1Button
   m_TagString: Untagged
@@ -2509,10 +2530,10 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 5484330594354554109}
         m_MethodName: loadQuest
-        m_Mode: 2
+        m_Mode: 1
         m_Arguments:
-          m_ObjectArgument: {fileID: 1468530897}
-          m_ObjectArgumentAssemblyTypeName: QuestObject, Assembly-CSharp
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -2557,19 +2578,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1468530892}
   m_CullTransparentMesh: 0
---- !u!114 &1468530897
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1468530892}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3c70023d8c428e84f80301e89ae8e865, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ID: 1
 --- !u!1 &1501980198
 GameObject:
   m_ObjectHideFlags: 0
@@ -3031,7 +3039,6 @@ GameObject:
   - component: {fileID: 1657440982}
   - component: {fileID: 1657440981}
   - component: {fileID: 1657440980}
-  - component: {fileID: 1657440983}
   m_Layer: 5
   m_Name: Quest2Button
   m_TagString: Untagged
@@ -3104,10 +3111,10 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 5484330594354554109}
         m_MethodName: loadQuest
-        m_Mode: 2
+        m_Mode: 1
         m_Arguments:
-          m_ObjectArgument: {fileID: 1657440983}
-          m_ObjectArgumentAssemblyTypeName: QuestObject, Assembly-CSharp
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -3152,19 +3159,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1657440978}
   m_CullTransparentMesh: 0
---- !u!114 &1657440983
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1657440978}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3c70023d8c428e84f80301e89ae8e865, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ID: 2
 --- !u!1 &1741681947
 GameObject:
   m_ObjectHideFlags: 0
@@ -4187,7 +4181,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2107645306}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 5484330594354554109}
+        m_MethodName: loadQuest
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &2107645306
@@ -4308,7 +4313,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2140910278}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 5484330594354554109}
+        m_MethodName: loadQuest
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &2140910278
@@ -4325,7 +4341,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 0, b: 0, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -4936,6 +4952,121 @@ PrefabInstance:
         type: 3}
       propertyPath: questList.Array.data[1].imageProgress
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5484330594354554109, guid: b37336d7e2bd7c44ab27c599ca37819e,
+        type: 3}
+      propertyPath: questList.Array.data[1].firstDialogID
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5484330594354554109, guid: b37336d7e2bd7c44ab27c599ca37819e,
+        type: 3}
+      propertyPath: questList.Array.data[0].firstDialogID
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5484330594354554109, guid: b37336d7e2bd7c44ab27c599ca37819e,
+        type: 3}
+      propertyPath: questList.Array.data[0].dialogAfterQuizID
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5484330594354554109, guid: b37336d7e2bd7c44ab27c599ca37819e,
+        type: 3}
+      propertyPath: questList.Array.data[0].dialogAfterMinigameID
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5484330594354554109, guid: b37336d7e2bd7c44ab27c599ca37819e,
+        type: 3}
+      propertyPath: questList.Array.data[1].dialogAfterQuizID
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 5484330594354554109, guid: b37336d7e2bd7c44ab27c599ca37819e,
+        type: 3}
+      propertyPath: questList.Array.data[1].dialogAfterMinigameID
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5484330594354554109, guid: b37336d7e2bd7c44ab27c599ca37819e,
+        type: 3}
+      propertyPath: questList.Array.data[2].firstDialogID
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5484330594354554109, guid: b37336d7e2bd7c44ab27c599ca37819e,
+        type: 3}
+      propertyPath: questList.Array.data[2].dialogAfterQuizID
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 5484330594354554109, guid: b37336d7e2bd7c44ab27c599ca37819e,
+        type: 3}
+      propertyPath: questList.Array.data[2].dialogAfterMinigameID
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 5484330594354554109, guid: b37336d7e2bd7c44ab27c599ca37819e,
+        type: 3}
+      propertyPath: questList.Array.data[3].firstDialogID
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5484330594354554109, guid: b37336d7e2bd7c44ab27c599ca37819e,
+        type: 3}
+      propertyPath: questList.Array.data[3].dialogAfterQuizID
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5484330594354554109, guid: b37336d7e2bd7c44ab27c599ca37819e,
+        type: 3}
+      propertyPath: questList.Array.data[3].dialogAfterMinigameID
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5484330594354554109, guid: b37336d7e2bd7c44ab27c599ca37819e,
+        type: 3}
+      propertyPath: questList.Array.data[4].firstDialogID
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5484330594354554109, guid: b37336d7e2bd7c44ab27c599ca37819e,
+        type: 3}
+      propertyPath: questList.Array.data[4].dialogAfterQuizID
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5484330594354554109, guid: b37336d7e2bd7c44ab27c599ca37819e,
+        type: 3}
+      propertyPath: questList.Array.data[4].dialogAfterMinigameID
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 5484330594354554109, guid: b37336d7e2bd7c44ab27c599ca37819e,
+        type: 3}
+      propertyPath: questList.Array.data[4].progress
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5484330594354554109, guid: b37336d7e2bd7c44ab27c599ca37819e,
+        type: 3}
+      propertyPath: currentQuest
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5484330594354554109, guid: b37336d7e2bd7c44ab27c599ca37819e,
+        type: 3}
+      propertyPath: questList.Array.data[4].imageProgress
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5484330594354554109, guid: b37336d7e2bd7c44ab27c599ca37819e,
+        type: 3}
+      propertyPath: questList.Array.data[3].progress
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5484330594354554109, guid: b37336d7e2bd7c44ab27c599ca37819e,
+        type: 3}
+      propertyPath: questList.Array.data[2].progress
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5484330594354554109, guid: b37336d7e2bd7c44ab27c599ca37819e,
+        type: 3}
+      propertyPath: questList.Array.data[5].firstDialogID
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5484330594354554109, guid: b37336d7e2bd7c44ab27c599ca37819e,
+        type: 3}
+      propertyPath: questList.Array.data[5].dialogAfterQuizID
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 5484330594354554109, guid: b37336d7e2bd7c44ab27c599ca37819e,
+        type: 3}
+      propertyPath: questList.Array.data[5].dialogAfterMinigameID
+      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b37336d7e2bd7c44ab27c599ca37819e, type: 3}

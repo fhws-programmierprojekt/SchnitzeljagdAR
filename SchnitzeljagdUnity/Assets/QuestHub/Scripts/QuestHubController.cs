@@ -27,6 +27,7 @@ public class QuestHubController : MonoBehaviour
         DontDestroyOnLoad(gameObject);
 
         //Allowes the first quest
+        currentQuest = 1;
         questList[0].progress = Quests.QuestProgress.AVAILABLE;
     }
 
@@ -48,7 +49,6 @@ public class QuestHubController : MonoBehaviour
     }
 
     //QUESTING
-
 
     public void AvailbleQuest(int questID)
     {
@@ -95,6 +95,17 @@ public class QuestHubController : MonoBehaviour
         }
     }
 
+    public void minigameDone(int questID)
+    {
+        for (int i = 0; i < questList.Count; i++)
+        {
+            if (questList[i].id == questID)
+            {
+                questList[i].minigameProgress = Quests.MinigameProgress.DONE;
+            }
+        }
+    }
+
     //BOOLS
 
     public bool RequestAvailbleQuest(int questID)
@@ -133,6 +144,18 @@ public class QuestHubController : MonoBehaviour
         return false;
     }
 
+    public bool QuestMinigameAllreadyDone()
+    {
+        for (int i = 0; i < questList.Count; i++)
+        {
+            if (questList[i].id == currentQuest && questList[i].minigameProgress == Quests.MinigameProgress.DONE)
+            {
+                return true;
+            }
+        }
+        return false;
+    }
+
     //INT
 
     public int QuestPoints(int questID)
@@ -149,14 +172,12 @@ public class QuestHubController : MonoBehaviour
 
     //LOAD
 
-    public void loadQuest(QuestObject questObject)
+    public void loadQuest()
     {
-        
-        if (RequestAvailbleQuest(questObject.ID) || RequestQuestDone(questObject.ID))
+        if (RequestAvailbleQuest(currentQuest) || RequestQuestDone(currentQuest))
         {          
             gameObject.SetActive(false);
-            SceneManager.LoadScene(questObject.ID);
-            currentQuest = questObject.ID;
+            SceneManager.LoadScene(currentQuest);
         }
     }
 

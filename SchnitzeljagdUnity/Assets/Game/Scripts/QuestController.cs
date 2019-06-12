@@ -10,25 +10,46 @@ public class QuestController : MonoBehaviour
     //Starting events for each quest
     void Start()
     {
+        int currentScene = SceneManager.GetActiveScene().buildIndex;
         int questID = QuestHubController.questHubController.currentQuest;
+        int questListLenght = QuestHubController.questHubController.questList.Count;
 
-        //Quest01
-        if(questID == 1)
+        //check if it is a quest
+        if (currentScene == questID)
         {
-            DialogSystem.dialogSystem.startDialog(1);
-            searchingImageStatus(false);
-        }
-        //Quest02
-        else if(questID == 2 && QuestHubController.questHubController.QuestTargetAllreadyFound() == false)
-        {
-            DialogSystem.dialogSystem.startDialog(1);
-        }
-        else if(questID == 2 && QuestHubController.questHubController.QuestTargetAllreadyFound())
-        {
-            DialogSystem.dialogSystem.startDialog(4);
+            //Quest01
+            if (questID == 1)
+            {
+                DialogSystem.dialogSystem.startDialog(1);
+                searchingImageStatus(false);
+            }
+            //Quest02-12
+            else
+            {
+                for (int i = 2; i < questListLenght; i++)
+                {
+                    if (questID == i)
+                    {
+                        if (QuestHubController.questHubController.QuestTargetAllreadyFound() == false)
+                        {
+                            DialogSystem.dialogSystem.startDialog(QuestHubController.questHubController.questList[i - 1].firstDialogID);
+                        }
+                        else if (QuestHubController.questHubController.QuestTargetAllreadyFound() && QuestHubController.questHubController.QuestMinigameAllreadyDone() == false)
+                        {
+                            DialogSystem.dialogSystem.startDialog(QuestHubController.questHubController.questList[i - 1].dialogAfterQuizID);
+                            QuestHubController.questHubController.questList[1].imageProgress = Quests.ImagetargetProgress.NOT_FOUND;
+                        }
+                        else if (QuestHubController.questHubController.QuestTargetAllreadyFound() && QuestHubController.questHubController.QuestMinigameAllreadyDone())
+                        {
+                            DialogSystem.dialogSystem.startDialog(QuestHubController.questHubController.questList[i - 1].dialogAfterMinigameID);
+                            QuestHubController.questHubController.questList[1].imageProgress = Quests.ImagetargetProgress.NOT_FOUND;
+                        }
+                    }
+                }
+            }
         }
     }
-    
+
     //LOAD
 
     public void loadQuestHub()
@@ -38,7 +59,33 @@ public class QuestController : MonoBehaviour
 
     public void loadQuiz()
     {
-        SceneManager.LoadScene(4);
+        SceneManager.LoadScene(19);
+    }
+
+    public void loadChestGame()
+    {
+        SceneManager.LoadScene(13);
+    }
+
+    public void loadMazeRun()
+    {
+        SceneManager.LoadScene(14);
+    }
+
+    public void loadCurrentquest()
+    {
+        SceneManager.LoadScene(QuestHubController.questHubController.currentQuest);
+    }
+
+    public void loadLastFight()
+    {
+        SceneManager.LoadScene(18);
+
+    }
+
+    public void loadEatingGame()
+    {
+        SceneManager.LoadScene(15);
     }
 
     //ADD
@@ -58,6 +105,11 @@ public class QuestController : MonoBehaviour
     public void imageTargertFound()
     {
         QuestHubController.questHubController.imageTargetFound(QuestHubController.questHubController.currentQuest);
+    }
+
+    public void mimigameDone()
+    {
+        QuestHubController.questHubController.minigameDone(QuestHubController.questHubController.currentQuest);
     }
   
 }
