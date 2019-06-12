@@ -7,24 +7,28 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour {
 
-    //attributes
-    private UIManager ui;
-    [SerializeField] private Quiz quiz;
+    #region Attributes
 
-    //getter and setter
+    [SerializeField] private Quiz quiz;
     public Quiz Quiz {
         get { return quiz; }
         set { quiz = value; }
     }
 
+    private UIManager UIManager { get; set; }
+
+    #endregion
+
     // Start is called before the first frame update
     void Start() {
-        ui = new UIManager();
-        quiz = new Quiz();
+        UIManager = new UIManager();
+        quiz = Quiz.ReadQuizData();
         quiz.SetQuestionsOpen(QuestHubController.questHubController.currentQuest - 1);
         //quiz.SetQuestionsOpen(0);
         Next();
     }
+
+
 
     public void Next() {
         quiz.SetQuestionCurrent();
@@ -33,7 +37,7 @@ public class GameManager : MonoBehaviour {
         for(int i = 0; i < quiz.AnswersCurrent.Length; i++) {
             answersCurrentInfo[i] = quiz.AnswersCurrent[i].Info;
         }
-        ui.UpdateQuestionInfo(quiz.QuestionCurrent.Info, answersCurrentInfo);
+        UIManager.UpdateQuestionInfo(quiz.QuestionCurrent.Info, answersCurrentInfo);
     }
 
     public void CheckButtonToAnswer(int indexOfButton) {
@@ -60,8 +64,4 @@ public class GameManager : MonoBehaviour {
     public void EndGame() {
         SceneManager.LoadScene(QuestHubController.questHubController.currentQuest);
     }
-
-
-
-
 }

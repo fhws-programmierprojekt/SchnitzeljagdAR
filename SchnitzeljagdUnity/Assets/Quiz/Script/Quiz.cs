@@ -7,74 +7,48 @@ using UnityEngine;
 [System.Serializable]
 public class Quiz {
 
-    #region attributes
+    #region Attributes
+
+    public static string quizDataPath { get; }  = Path.Combine(Application.streamingAssetsPath, "Quiz/QuizData.json");
+
     [SerializeField] private Stage[] stages;
-    private List<Question> questionsOpen;
-    private Question questionCurrent;
-    private Question.Answer[] answersCurrent;
-    
-    private int stageCurrent;
-    private int questionQuantity;
-    private int attempt;
-
-    private readonly string quizDataPath = Path.Combine(Application.streamingAssetsPath, "Quiz\\QuizData.json");
-    #endregion
-
-    #region constructors
-    public Quiz() {
-        ReadQuiz();
-    }
-    public Quiz(int stageCurrent) {
-        ReadQuiz();
-        StageCurrent = stageCurrent;
-    }
-    public Quiz(int stageCurrent, int questionQuantity) {
-        ReadQuiz();
-        StageCurrent = stageCurrent;
-        QuestionQuantity = questionQuantity;
-    }
-    #endregion
-
-    #region getter and setter
     public Stage[] Stages {
         get { return stages; }
         set { stages = value; }
     }
-    public List<Question> QuestionsOpen {
-        get { return questionsOpen;  }
-        set { questionsOpen = value; }
+
+    //AutoImplementedProperties
+    public List<Question> QuestionsOpen { get; set; }
+    public Question QuestionCurrent { get; set; }
+    public Question.Answer[] AnswersCurrent { get; set; }
+    public int StageCurrent { get; set; }
+    public int Attempt { get; set; }
+
+    #endregion
+
+    #region constructors
+    public Quiz() {
+        //ReadQuiz();
     }
-    public Question QuestionCurrent {
-        get { return questionCurrent; }
-        set { questionCurrent = value; }
-    }
-    public Question.Answer[] AnswersCurrent {
-        get { return answersCurrent; }
-        set { answersCurrent = value; }
-    }
-    public int StageCurrent {
-        get { return stageCurrent; }
-        set { stageCurrent = value; }
-    }
-    public int QuestionQuantity {
-        get { return questionQuantity; }
-        set { questionQuantity = value; }
-    }
-    public int Attempt {
-        get { return attempt; }
-        set { attempt = value; }
+    public Quiz(int stageCurrent) {
+        //ReadQuiz();
+        StageCurrent = stageCurrent;
     }
     #endregion
 
-    #region methods
-    public void ReadQuiz() {
+    #region Methods
+
+    public static Quiz ReadQuizData() {
+        Quiz quiz = new Quiz();
         try {
-            string json = File.ReadAllText(quizDataPath);
-            stages = MyJsonUtility.FromJson<Stage>(json);
-        }catch(FileNotFoundException) {
+            string quizDataAsJson = File.ReadAllText(quizDataPath);
+            quiz = JsonUtility.FromJson<Quiz>(quizDataAsJson);
+        } catch(FileNotFoundException) {
             Debug.Log("Error: QuizData not found at: \n" + quizDataPath);
         }
+        return quiz;
     }
+
 
     //public void SetQuestionsOpen() {
     //    if(QuestionsOpen == null || QuestionsOpen.Count == 0) {
@@ -88,7 +62,7 @@ public class Quiz {
         int index = Random.Range(0, QuestionsOpen.Count);
         QuestionCurrent = QuestionsOpen[index];
         SetAnswersCurrent();
-        attempt = 4;
+        Attempt = 4;
         QuestionsOpen.RemoveAt(index);
         //SetQuestionsOpen();
     }
