@@ -890,7 +890,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 397197169}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 5484330594354554109}
+        m_MethodName: loadQuest
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &397197169
@@ -1169,7 +1180,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 684384340}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 5484330594354554109}
+        m_MethodName: loadQuest
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &684384340
@@ -1296,7 +1318,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 733070743}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 5484330594354554109}
+        m_MethodName: loadQuest
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &733070743
@@ -2127,7 +2160,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1230053354}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 5484330594354554109}
+        m_MethodName: loadQuest
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &1230053354
@@ -2406,7 +2450,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1429388851}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 5484330594354554109}
+        m_MethodName: loadQuest
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &1429388851
@@ -3519,7 +3574,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1800104259}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 5484330594354554109}
+        m_MethodName: loadQuest
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &1800104259
@@ -5067,6 +5133,91 @@ PrefabInstance:
         type: 3}
       propertyPath: questList.Array.data[5].dialogAfterMinigameID
       value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 5484330594354554109, guid: b37336d7e2bd7c44ab27c599ca37819e,
+        type: 3}
+      propertyPath: questList.Array.data[5].progress
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5484330594354554109, guid: b37336d7e2bd7c44ab27c599ca37819e,
+        type: 3}
+      propertyPath: questList.Array.data[6].firstDialogID
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5484330594354554109, guid: b37336d7e2bd7c44ab27c599ca37819e,
+        type: 3}
+      propertyPath: questList.Array.data[6].dialogAfterQuizID
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5484330594354554109, guid: b37336d7e2bd7c44ab27c599ca37819e,
+        type: 3}
+      propertyPath: questList.Array.data[6].dialogAfterMinigameID
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5484330594354554109, guid: b37336d7e2bd7c44ab27c599ca37819e,
+        type: 3}
+      propertyPath: questList.Array.data[6].progress
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5484330594354554109, guid: b37336d7e2bd7c44ab27c599ca37819e,
+        type: 3}
+      propertyPath: questList.Array.data[7].firstDialogID
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5484330594354554109, guid: b37336d7e2bd7c44ab27c599ca37819e,
+        type: 3}
+      propertyPath: questList.Array.data[7].dialogAfterQuizID
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 5484330594354554109, guid: b37336d7e2bd7c44ab27c599ca37819e,
+        type: 3}
+      propertyPath: questList.Array.data[7].dialogAfterMinigameID
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 5484330594354554109, guid: b37336d7e2bd7c44ab27c599ca37819e,
+        type: 3}
+      propertyPath: questList.Array.data[7].progress
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5484330594354554109, guid: b37336d7e2bd7c44ab27c599ca37819e,
+        type: 3}
+      propertyPath: questList.Array.data[8].firstDialogID
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5484330594354554109, guid: b37336d7e2bd7c44ab27c599ca37819e,
+        type: 3}
+      propertyPath: questList.Array.data[8].progress
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5484330594354554109, guid: b37336d7e2bd7c44ab27c599ca37819e,
+        type: 3}
+      propertyPath: questList.Array.data[8].dialogAfterQuizID
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 5484330594354554109, guid: b37336d7e2bd7c44ab27c599ca37819e,
+        type: 3}
+      propertyPath: questList.Array.data[8].dialogAfterMinigameID
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 5484330594354554109, guid: b37336d7e2bd7c44ab27c599ca37819e,
+        type: 3}
+      propertyPath: questList.Array.data[9].firstDialogID
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5484330594354554109, guid: b37336d7e2bd7c44ab27c599ca37819e,
+        type: 3}
+      propertyPath: questList.Array.data[9].dialogAfterMinigameID
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 5484330594354554109, guid: b37336d7e2bd7c44ab27c599ca37819e,
+        type: 3}
+      propertyPath: questList.Array.data[9].dialogAfterQuizID
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 5484330594354554109, guid: b37336d7e2bd7c44ab27c599ca37819e,
+        type: 3}
+      propertyPath: questList.Array.data[9].progress
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b37336d7e2bd7c44ab27c599ca37819e, type: 3}

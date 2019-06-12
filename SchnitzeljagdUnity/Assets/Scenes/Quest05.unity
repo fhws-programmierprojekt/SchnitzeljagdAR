@@ -503,7 +503,7 @@ PrefabInstance:
     - target: {fileID: 588544590367216562, guid: e06f72de58c9bf7469dd54f0ace39f44,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_MethodName
-      value: mimigameDone
+      value: minigameDone
       objectReference: {fileID: 0}
     - target: {fileID: 588544590367216562, guid: e06f72de58c9bf7469dd54f0ace39f44,
         type: 3}
@@ -1752,12 +1752,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: SearchingImagePrefab
       objectReference: {fileID: 0}
-    - target: {fileID: 4922818683340795419, guid: 40245bf9a6aa1464b8a171bcddd5b070,
-        type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 21300000, guid: e9e175a855cc21b41bbf713dd626fc34,
-        type: 3}
     - target: {fileID: 4201841810063376041, guid: 40245bf9a6aa1464b8a171bcddd5b070,
         type: 3}
       propertyPath: m_textInfo.characterCount
@@ -1908,6 +1902,12 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: -144
       objectReference: {fileID: 0}
+    - target: {fileID: 4922818683340795419, guid: 40245bf9a6aa1464b8a171bcddd5b070,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: e9e175a855cc21b41bbf713dd626fc34,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 40245bf9a6aa1464b8a171bcddd5b070, type: 3}
 --- !u!1 &1357039111 stripped

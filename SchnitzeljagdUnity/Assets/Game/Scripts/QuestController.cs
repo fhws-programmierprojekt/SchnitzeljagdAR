@@ -10,6 +10,9 @@ public class QuestController : MonoBehaviour
     //Starting events for each quest
     void Start()
     {
+        //Only Portrait modus.
+        Screen.orientation = ScreenOrientation.Portrait;
+
         int currentScene = SceneManager.GetActiveScene().buildIndex;
         int questID = QuestHubController.questHubController.currentQuest;
         int questListLenght = QuestHubController.questHubController.questList.Count;
@@ -51,6 +54,11 @@ public class QuestController : MonoBehaviour
     }
 
     //LOAD
+
+    public void loadTraning()
+    {
+        SceneManager.LoadScene(16);
+    }
 
     public void loadQuestHub()
     {
@@ -107,7 +115,7 @@ public class QuestController : MonoBehaviour
         QuestHubController.questHubController.imageTargetFound(QuestHubController.questHubController.currentQuest);
     }
 
-    public void mimigameDone()
+    public void minigameDone()
     {
         QuestHubController.questHubController.minigameDone(QuestHubController.questHubController.currentQuest);
     }
