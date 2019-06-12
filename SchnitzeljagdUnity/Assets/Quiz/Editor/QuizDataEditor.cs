@@ -21,7 +21,7 @@ public class QuizDataEditor : EditorWindow {
     }
 
     private void OnEnable() {
-        quizDataPath = Path.Combine(Application.dataPath, "Quiz/Data/QuizData.json");
+        quizDataPath = Quiz.quizDataPath;
 
         ReadQuizData(quizDataPath);
         RefreshObject();
@@ -29,7 +29,7 @@ public class QuizDataEditor : EditorWindow {
 
     private void OnGUI() {
 
-        #region Header Section
+        #region Header
         Rect headerRect = new Rect(8, 8, this.position.width - 16, 40);
         GUI.Box(headerRect, GUIContent.none);
 
@@ -41,7 +41,7 @@ public class QuizDataEditor : EditorWindow {
         GUI.Label(headerRect, "Quiz Data Editor", headerStyle);
         #endregion
 
-        #region Body Section
+        #region Body
         Rect bodyRect = new Rect(8, (headerRect.y + headerRect.height) + 8, this.position.width - 16, this.position.height - (headerRect.y + headerRect.height) - 80);
         GUI.Box(bodyRect, GUIContent.none);
 
@@ -62,10 +62,12 @@ public class QuizDataEditor : EditorWindow {
 
         #region Navigation
         Rect buttonRect = new Rect(bodyRect.x + bodyRect.width - 85, bodyRect.y + bodyRect.height + 16, 80, 30);
+
         bool pressedSave = GUI.Button(buttonRect, "Save", EditorStyles.miniButtonRight);
         if(pressedSave) {
             WriteQuizData(quizDataPath);
         }
+
         buttonRect.x -= buttonRect.width;
         bool pressedLoad = GUI.Button(buttonRect, "Load", EditorStyles.miniButtonLeft);
         if(pressedLoad) {
@@ -73,12 +75,12 @@ public class QuizDataEditor : EditorWindow {
 
             RefreshObject();
         }
+
         buttonRect.x = bodyRect.x;
         bool pressedNew = GUI.Button(buttonRect, "New", EditorStyles.miniButton);
         if(pressedNew) {
             quiz = new Quiz();
             quiz.Stages = new Quiz.Stage[0];
-            quizDataPath = Path.Combine(Application.dataPath, "Quiz/Data/QuizData.json");
 
             RefreshObject();
         }
@@ -107,13 +109,14 @@ public class QuizDataEditor : EditorWindow {
     private void WriteQuizData(string path) {
         if(File.Exists(path)) {
             string date = System.DateTime.Now.ToString("yyyyMMdd_HHmmss");
-            string quizDataPathBackup = quizDataPath.Replace("QuizData", "QuizDataBackup" + date);
-            File.Copy(quizDataPath, quizDataPathBackup);
+            string pathBackup = path.Replace("QuizData", "QuizDataBackup" + date);
+            File.Copy(path, pathBackup);
         }
 
         string quizDataAsJson = JsonUtility.ToJson(quiz, true);
         File.WriteAllText(path, quizDataAsJson);
     }
+
     public void TestWriteQuiz() {
         int indexStages = 12;
         int indexQuestions = 4;
