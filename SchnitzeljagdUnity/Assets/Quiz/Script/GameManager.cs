@@ -63,26 +63,5 @@ public class GameManager : MonoBehaviour {
 
 
 
-    //public void TestWriteQuiz() {
-    //    int indexStages = 12;
-    //    int indexQuestions = 4;
-    //    Quiz.Stage[] stages = new Quiz.Stage[indexStages];
 
-    //    for(int i = 0; i < stages.Length; i++) {
-    //        stages[i] = new Quiz.Stage(new Question[indexQuestions]);
-
-    //        for(int j = 0; j < indexQuestions; j++) {
-    //            string index = "[" + i + "." + j + "]";
-    //            stages[i].Questions[j] = new Question("Question" + index, new Question.Answer[] {
-    //            new Question.Answer("Right", true),
-    //            new Question.Answer("Wrong", false),
-    //            new Question.Answer("Wrong", false),
-    //            new Question.Answer("Wrong", false)
-    //            });
-    //        }
-    //    }
-
-    //    string json = MyJsonUtility.ToJson(stages, true);
-    //    File.WriteAllText(quizDataPath.Replace(".json", "") + "Test.json", json);
-    //}
 }

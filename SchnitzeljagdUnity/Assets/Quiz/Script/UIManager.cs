@@ -55,8 +55,10 @@ public class UIManager {
         }
     }
     public void TaskOnClick(Button button) {
-        GameManager gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
         int indexOfButton = Array.IndexOf(answersButton, button);
+
+        GameManager gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
+
         gameManager.CheckButtonToAnswer(indexOfButton);
     }
 }
