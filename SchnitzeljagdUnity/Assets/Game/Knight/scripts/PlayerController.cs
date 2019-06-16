@@ -59,12 +59,11 @@ public class PlayerController : MonoBehaviour
         //Movement Functions
         float moveAxis = 0f;
         float turnAxis = 0f ;
-        if (SceneManager.GetActiveScene().buildIndex == 1)
-        {
-            moveAxis = joystick.Vertical * 0.8f;
-            turnAxis = joystick.Horizontal * 0.8f;
+        
+        moveAxis = joystick.Vertical * 0.8f;
+        turnAxis = joystick.Horizontal * 0.8f;
 
-        }
+        
         
 
         if (controller.isGrounded)
