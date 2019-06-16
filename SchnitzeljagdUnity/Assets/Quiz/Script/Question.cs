@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using UnityEngine;
 
 [System.Serializable]
 public class Question {
@@ -7,7 +8,7 @@ public class Question {
     [SerializeField] private string info;
     [SerializeField] private Answer[] answers;
 
-    //constructor
+    //constructors
     public Question(string info, Answer[] answers) {
         Info = info;
         Answers = answers;
@@ -23,6 +24,18 @@ public class Question {
         set { answers = value; }
     }
 
+    //methods
+    public Answer[] AnswersAreCorrect(bool isCorrect) {
+        List<Answer> answersAreCorrect = new List<Answer>();
+
+        foreach(Answer answer in Answers) {
+            if(answer.IsCorrect == isCorrect) {
+                answersAreCorrect.Add(answer);
+            }
+        }
+
+        return answersAreCorrect.ToArray();
+    }
 
     //nested class
     [System.Serializable]
@@ -32,7 +45,7 @@ public class Question {
         [SerializeField] private string info;
         [SerializeField] private bool isCorrect = false;
 
-        //constructor
+        //constructors
         public Answer(string info, bool isCorrect) {
             Info = info;
             IsCorrect = isCorrect;

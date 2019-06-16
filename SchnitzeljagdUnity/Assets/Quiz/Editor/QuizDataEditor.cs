@@ -6,7 +6,7 @@ using UnityEngine;
 
 public class QuizDataEditor : EditorWindow {
 
-    public Quiz quiz;
+    public QuizData quiz;
     private string quizDataPath;
 
     private Vector2 scrollPosition = Vector2.zero;
@@ -21,7 +21,7 @@ public class QuizDataEditor : EditorWindow {
     }
 
     private void OnEnable() {
-        quizDataPath = Quiz.quizDataPath;
+        quizDataPath = QuizData.Path;
 
         ReadQuizData(quizDataPath);
         RefreshObject();
@@ -79,8 +79,8 @@ public class QuizDataEditor : EditorWindow {
         buttonRect.x = bodyRect.x;
         bool pressedNew = GUI.Button(buttonRect, "New", EditorStyles.miniButton);
         if(pressedNew) {
-            quiz = new Quiz();
-            quiz.Stages = new Quiz.Stage[0];
+            quiz = new QuizData();
+            quiz.Stages = new QuizData.Stage[0];
 
             RefreshObject();
         }
@@ -98,32 +98,37 @@ public class QuizDataEditor : EditorWindow {
 
     private void ReadQuizData(string path) {
         if(File.Exists(path)) {
-            string quizDataAsJson = File.ReadAllText(path);
-            quiz = JsonUtility.FromJson<Quiz>(quizDataAsJson);
+            quiz = QuizData.ReadQuizData(path);
         } else {
-            quiz = new Quiz();
-            quiz.Stages = new Quiz.Stage[0];
+            quiz = new QuizData();
+            quiz.Stages = new QuizData.Stage[0];
         }
     }
 
     private void WriteQuizData(string path) {
-        if(File.Exists(path)) {
-            string date = System.DateTime.Now.ToString("yyyyMMdd_HHmmss");
-            string pathBackup = path.Replace("QuizData", "QuizDataBackup" + date);
-            File.Copy(path, pathBackup);
-        }
+        if(QuizData.QuizDataChecker(quiz)) {
+            if(File.Exists(path)) {
+                string date = System.DateTime.Now.ToString("yyyyMMdd_HHmmss");
+                string pathBackup = path.Replace("QuizData", "QuizDataBackup" + date);
+                File.Copy(path, pathBackup);
+            }
 
-        string quizDataAsJson = JsonUtility.ToJson(quiz, true);
-        File.WriteAllText(path, quizDataAsJson);
+            string quizDataAsJson = JsonUtility.ToJson(quiz, true);
+            File.WriteAllText(path, quizDataAsJson);
+
+            Debug.Log("QuizData is Correct and was saved!");
+        } else {
+            Debug.Log("QuizData is Incorrect and was not saved!");
+        }
     }
 
     public void TestWriteQuiz() {
         int indexStages = 12;
         int indexQuestions = 4;
-        Quiz.Stage[] stages = new Quiz.Stage[indexStages];
+        QuizData.Stage[] stages = new QuizData.Stage[indexStages];
 
         for(int i = 0; i < stages.Length; i++) {
-            stages[i] = new Quiz.Stage(new Question[indexQuestions]);
+            stages[i] = new QuizData.Stage(new Question[indexQuestions]);
 
             for(int j = 0; j < indexQuestions; j++) {
                 string index = "[" + i + "." + j + "]";

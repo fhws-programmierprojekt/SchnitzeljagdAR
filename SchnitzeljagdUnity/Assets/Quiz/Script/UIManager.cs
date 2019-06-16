@@ -17,7 +17,7 @@ public class UIManager {
     private readonly TMP_FontAsset fontAsset = Resources.Load("Fonts & Materials/Rotis-SemiSans-Std-ExtraBold_38715 SDF", typeof(TMP_FontAsset)) as TMP_FontAsset;
 
 
-    //constructor
+    //constructors
     public UIManager() {
         ReferenceElements();
     }
@@ -43,7 +43,7 @@ public class UIManager {
         }
         ButtonOnClick();
     }
-    public void UpdateQuestionInfo(string questionInfo, string[] answersInfo) {
+    public void UpdateInfo(string questionInfo, string[] answersInfo) {
         this.questionInfo.text = questionInfo;
         for(int i = 0; i < this.answersInfo.Length; i++) {
             this.answersInfo[i].text = answersInfo[i];
@@ -58,7 +58,6 @@ public class UIManager {
         int indexOfButton = Array.IndexOf(answersButton, button);
 
         GameManager gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
-
-        gameManager.CheckButtonToAnswer(indexOfButton);
+        gameManager.CompareIndex(indexOfButton);
     }
 }

@@ -9,59 +9,124 @@ public class GameManager : MonoBehaviour {
 
     #region Attributes
 
-    [SerializeField] private Quiz quiz;
-    public Quiz Quiz {
+    [SerializeField] private QuizData quiz;
+
+    //AutoImplementedProperties
+    public Question[] CurrentStage { get; set; }
+    public Question CurrentQuestion { get; set; }
+    public Question.Answer[] CurrentAnswers { get; set; }
+    public int Attempts { get; set; }
+
+    private UIManager UIManager { get; set; }
+
+    #endregion
+
+    //getter and setter
+    public QuizData Quiz {
         get { return quiz; }
         set { quiz = value; }
     }
 
-    private UIManager UIManager { get; set; }
+    //methods
+    #region SetInfo
+
+    private void SetCurrentStage(int index) {
+        CurrentStage = Quiz.Stages[index].Questions;
+    }
+    private void SetCurrentQuestion(int index) {
+        CurrentQuestion = CurrentStage[index];
+        SetCurrentAnswers();
+        DisplayCurrentInfo();
+        Attempts = 4;
+        CurrentStage = CurrentStage.RemoveAt(index);
+    }
+    private void SetCurrentAnswers() {
+        CurrentAnswers = new Question.Answer[4];
+        Question.Answer[] answersTrue = CurrentQuestion.AnswersAreCorrect(true);
+        Question.Answer[] answersFalse = CurrentQuestion.AnswersAreCorrect(false);
+
+        CurrentAnswers[0] = answersTrue.RandomElement();
+        for(int i = 1; i < CurrentAnswers.Length;) {
+            Question.Answer answerRandom = answersFalse.RandomElement();
+            if(!CurrentAnswers.Contains(answerRandom)) {
+                CurrentAnswers[i] = answerRandom;
+                i++;
+            }
+        }
+        CurrentAnswers = CurrentAnswers.Shuffle();
+    }
+    private void DisplayCurrentInfo() {
+        string[] currentAnswersInfo = new string[CurrentAnswers.Length];
+        for(int i = 0; i < CurrentAnswers.Length; i++) {
+            currentAnswersInfo[i] = CurrentAnswers[i].Info;
+        }
+        UIManager.UpdateInfo(CurrentQuestion.Info, currentAnswersInfo);
+    }
+
+    #endregion
+
+    #region CompareInfo
+
+    public void CompareIndex(int indexOfButton) {
+        int indexOfCorrectAnswer = IndexOfCorrectAnswer();
+        if(indexOfButton == indexOfCorrectAnswer) {
+            AddPoints();
+            if(CurrentStage.Length > 0) {
+                NextQuestion();
+            } else {
+                EndGame();
+            }
+        } else {
+            if(Attempts > 1) {
+                Attempts--;
+            }
+        }
+    }
+    private int IndexOfCorrectAnswer() {
+        Question.Answer correctAnswer = null;
+        foreach(Question.Answer answer in CurrentAnswers) {
+            if(answer.IsCorrect) {
+                correctAnswer = answer;
+            }
+        }
+        int indexOfCorrectAnswer = System.Array.IndexOf(CurrentAnswers, correctAnswer);
+        return indexOfCorrectAnswer;
+    }
 
     #endregion
 
     // Start is called before the first frame update
     void Start() {
         UIManager = new UIManager();
-        quiz = Quiz.ReadQuizData();
-        quiz.SetQuestionsOpen(QuestHubController.questHubController.currentQuest - 1);
-        //quiz.SetQuestionsOpen(0);
-        Next();
-    }
+        quiz = QuizData.ReadQuizData(QuizData.Path);
 
-
-
-    public void Next() {
-        quiz.SetQuestionCurrent();
-
-        string[] answersCurrentInfo = new string[4];
-        for(int i = 0; i < quiz.AnswersCurrent.Length; i++) {
-            answersCurrentInfo[i] = quiz.AnswersCurrent[i].Info;
+        if(QuestHubController.questHubController != null) {
+            SetCurrentStage(QuestHubController.questHubController.currentQuest - 1);
         }
-        UIManager.UpdateQuestionInfo(quiz.QuestionCurrent.Info, answersCurrentInfo);
-    }
-
-    public void CheckButtonToAnswer(int indexOfButton) {
-        int indexOfAnswerCorrect = quiz.IndexOfAnswerCorrect();
-        if(indexOfButton == indexOfAnswerCorrect) {
-            AddPoints();
-            if(quiz.QuestionsOpen.Count >= 1) {
-                Next();
-            } else {
-                EndGame();
-            }
-
-        } else {
-            if(quiz.Attempt >= 4) {
-                quiz.Attempt--;
-            }
+        else {
+            SetCurrentStage(0);
         }
+        NextQuestion();
     }
+    public void NextQuestion() {
+        int index = Random.Range(0, CurrentStage.Length);
+        SetCurrentQuestion(index);
+    }
+
     public void AddPoints() {
-        int point = (int) Mathf.Pow(2, quiz.Attempt);
-        QuestHubController.questHubController.addPoints(point);
+        if(QuestHubController.questHubController != null) {
+            int point = Attempts * 25;
+            QuestHubController.questHubController.addPoints(point);
+        }
     }
 
     public void EndGame() {
-        SceneManager.LoadScene(QuestHubController.questHubController.currentQuest);
+        if(QuestHubController.questHubController != null) {
+            SceneManager.LoadScene(QuestHubController.questHubController.currentQuest);
+        }
+        else {
+            CurrentStage = Quiz.Stages[1].Questions;
+            NextQuestion();
+        }
     }
 }
