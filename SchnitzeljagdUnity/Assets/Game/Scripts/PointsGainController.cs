@@ -12,15 +12,11 @@ public class PointsGainController : MonoBehaviour
         scoreText = GetComponent<TextMeshProUGUI>();
         scoreText.text = "+ " + QuestHubController.questHubController.QuestPoints(QuestHubController.questHubController.currentQuest ) +" Punkte";
     }
-    public void playPointAnimation()
+    public void playPointAnimation(int points)
     {
-        scoreText.text = "+ " + QuestHubController.questHubController.QuestPoints(QuestHubController.questHubController.currentQuest) + " Punkte";
+        scoreText.text = "+ " + points + " Punkte";
         Animator anim = gameObject.GetComponent<Animator>();
         anim.Play("PointsGainAnimation");
    
-    }
-    IEnumerator Wait()
-    {
-        yield return new WaitForSeconds(1);
     }
 }

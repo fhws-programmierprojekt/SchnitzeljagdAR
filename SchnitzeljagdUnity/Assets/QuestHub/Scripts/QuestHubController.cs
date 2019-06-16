@@ -24,7 +24,7 @@ public class QuestHubController : MonoBehaviour
         DontDestroyOnLoad(gameObject);
 
         //Allowes the first quest at the beginning of the game
-        currentQuest = 11;
+        currentQuest = 1;
         questList[0].progress = Quests.QuestProgress.AVAILABLE;
     }
 
