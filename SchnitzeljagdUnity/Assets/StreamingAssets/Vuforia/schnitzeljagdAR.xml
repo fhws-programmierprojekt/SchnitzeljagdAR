@@ -1,7 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <QCARConfig xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="qcar_config.xsd">
   <Tracking>
-    <ImageTarget name="Maze2" size="10.000000 9.985915" />
+    <ImageTarget name="RothenburgerStadtwach" size="10.000000 8.480565" />
+    <ImageTarget name="RothenburgerTurm" size="10.000000 12.956794" />
+    <ImageTarget name="KecksModele" size="10.000000 16.388657" />
+    <ImageTarget name="Schiff" size="5.000000 5.498774" />
+    <ImageTarget name="DieFigurenDerOrgelempore" size="10.000000 13.451119" />
+    <ImageTarget name="JeromeBonapart" size="10.000000 15.578662" />
+    <ImageTarget name="MarieAntoinette" size="10.000000 7.174363" />
+    <ImageTarget name="SteinzeitMensch" size="10.000000 7.450856" />
+    <ImageTarget name="HerstellungFayence" size="10.000000 8.560000" />
+    <ImageTarget name="RaederbogenVonRothenbrug" size="10.000000 14.500648" />
+    <ImageTarget name="Kaufladeneinrichtung" size="10.000000 7.547739" />
+    <ImageTarget name="RitterKampfaufPferd" size="10.000000 6.669750" />
+    <ImageTarget name="FechtenmitDegen" size="10.000000 9.988480" />
+    <ImageTarget name="DerSporer" size="10.000000 13.052905" />
+    <ImageTarget name="JuedischeSiedlungsgeschichte" size="10.000000 12.168674" />
+    <ImageTarget name="Wyrzbvrg" size="5.000000 3.268417" />
+    <ImageTarget name="Messerschmied" size="10.000000 9.202626" />
+    <ImageTarget name="Schwertuebung" size="10.000000 11.870079" />
+    <ImageTarget name="Enthauptung" size="10.000000 8.566754" />
+    <ImageTarget name="Keuschheitsguertel" size="10.000000 13.953488" />
+    <ImageTarget name="Schluesselmacher" size="10.000000 10.572337" />
     <ImageTarget name="QRJpg" size="5.000000 5.009390" />
   </Tracking>
 </QCARConfig>

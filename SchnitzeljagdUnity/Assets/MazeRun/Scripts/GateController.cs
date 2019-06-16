@@ -4,11 +4,14 @@ using UnityEngine;
 
 public class GateController : MonoBehaviour
 {
-    public static int keyCount = 0;
-    public static int exitCount = 0;
+    public static int keyCount = 0;     //Var to check if player has the key
+    public static int exitCount = 0;    //Var to check if player has allready enterd the exit event
+
+    //Method to opend the gates and allowing the player to exit
 
     private void OnTriggerEnter(Collider collider)
     {
+
         if(collider.gameObject.name == "Lancelot" && keyCount > 0)
         {
 
@@ -20,8 +23,6 @@ public class GateController : MonoBehaviour
             animLeft.SetBool("isOpeningLeft", true);
             animRight.SetBool("isOpeningRight", true);
             keyCount--;
-            
-
         }
     }
 }

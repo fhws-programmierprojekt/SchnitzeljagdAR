@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class RandomKeySpawner : MonoBehaviour
 {
-    public GameObject[]keySpawner;
+    public GameObject[]keySpawner;      //Array with every key object in the game
     
 
     // Start is called before the first frame update
@@ -12,6 +12,8 @@ public class RandomKeySpawner : MonoBehaviour
     {
         SpawnRandomKey(Random.Range(0, 3));
     }
+
+    //Method to randomly select which key is activ 
 
     void SpawnRandomKey(int index)
     {

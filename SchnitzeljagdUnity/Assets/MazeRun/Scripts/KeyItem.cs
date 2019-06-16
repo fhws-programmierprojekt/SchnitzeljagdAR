@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class KeyItem : MonoBehaviour
 {
+    //Destroys the key gameobject and lets the door know that the player picked it up
     void OnTriggerEnter(Collider collider)
     {
         if(collider.gameObject.name == "Lancelot")
