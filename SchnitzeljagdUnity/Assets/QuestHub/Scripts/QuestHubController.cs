@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using UnityEngine.UI;
 
 public class QuestHubController : MonoBehaviour
 {
@@ -10,8 +9,6 @@ public class QuestHubController : MonoBehaviour
 
     public List<Quests> questList = new List<Quests>();         //Quest list with all quests
     public int currentQuest;                                    //Current Quest List
-    public GameObject questHub;                                 //Questhub as a Object to make it invisible if neded
- 
 
     void Awake()
     {
@@ -26,8 +23,8 @@ public class QuestHubController : MonoBehaviour
         }
         DontDestroyOnLoad(gameObject);
 
-        //Allowes the first quest
-        currentQuest = 1;
+        //Allowes the first quest at the beginning of the game
+        currentQuest = 11;
         questList[0].progress = Quests.QuestProgress.AVAILABLE;
     }
 
@@ -42,7 +39,6 @@ public class QuestHubController : MonoBehaviour
             }
             else if(questList[i].progress == Quests.QuestProgress.AVAILABLE)
             {
-                
                 questList[i].button.interactable = true;
             }
         }

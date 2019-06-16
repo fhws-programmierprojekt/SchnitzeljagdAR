@@ -57,7 +57,7 @@ EditorBuildSettings:
     path: Assets/Scenes/TraningGamePlaceholder.unity
     guid: 9bfc4e2ebcab49b4caac7efb7ad34b5b
   - enabled: 1
-    path: "Assets/Scenes/Galgenm\xE4nchenPlaceholder.unity"
+    path: Assets/Scenes/PuzzelGame.unity
     guid: 17929ac862245414599adcdb4c0547ff
   - enabled: 1
     path: Assets/Scenes/LastFight.unity

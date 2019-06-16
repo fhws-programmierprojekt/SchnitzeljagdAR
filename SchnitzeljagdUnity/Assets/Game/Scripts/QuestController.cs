@@ -54,6 +54,10 @@ public class QuestController : MonoBehaviour
     }
 
     //LOAD
+    public void loadPuzzelGame()
+    {
+        SceneManager.LoadScene(17);
+    }
 
     public void loadTraning()
     {
