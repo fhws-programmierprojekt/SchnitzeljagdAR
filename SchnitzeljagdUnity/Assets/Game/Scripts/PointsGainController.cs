@@ -10,7 +10,7 @@ public class PointsGainController : MonoBehaviour
     void Start()
     {
         scoreText = GetComponent<TextMeshProUGUI>();
-        scoreText.text = "+ " + QuestHubController.questHubController.QuestPoints(QuestHubController.questHubController.currentQuest ) +" Punkte";
+        //scoreText.text = "+ " + QuestHubController.questHubController.QuestPoints(QuestHubController.questHubController.currentQuest ) +" Punkte";
     }
     public void playPointAnimation(int points)
     {
