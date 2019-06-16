@@ -112,7 +112,6 @@ public class GameManager : MonoBehaviour {
         int index = Random.Range(0, CurrentStage.Length);
         SetCurrentQuestion(index);
     }
-
     public void AddPoints() {
         int points = Attempts * 25;
         if(QuestHubController.questHubController != null) {          
@@ -121,7 +120,6 @@ public class GameManager : MonoBehaviour {
         PointsGainController pointController = GameObject.Find("PointController").GetComponent<PointsGainController>();
         pointController.playPointAnimation(points);
     }
-
     public void EndGame() {
         if(QuestHubController.questHubController != null) {
             SceneManager.LoadScene(QuestHubController.questHubController.currentQuest);
