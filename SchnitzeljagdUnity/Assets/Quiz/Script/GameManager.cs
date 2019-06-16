@@ -113,7 +113,7 @@ public class GameManager : MonoBehaviour {
         SetCurrentQuestion(index);
     }
     public void AddPoints() {
-        int points = Attempts * 25;
+        int points = Attempts * 5;
         if(QuestHubController.questHubController != null) {          
             QuestHubController.questHubController.addPoints(points);
         }
