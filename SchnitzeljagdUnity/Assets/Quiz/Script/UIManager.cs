@@ -14,8 +14,8 @@ public class UIManager {
     private Button[] answersButton;
     private TextMeshProUGUI[] answersInfo;
 
-    private readonly TMP_FontAsset fontAsset = Resources.Load("Fonts & Materials/Rotis-SemiSans-Std-ExtraBold_38715 SDF", typeof(TMP_FontAsset)) as TMP_FontAsset;
-
+    private readonly Sprite imageSprite = Resources.Load<Sprite>("Images/UIFantasyWoodenSmall");
+    private readonly TMP_FontAsset fontAsset = Resources.Load<TMP_FontAsset>("Fonts & Materials/Rotis-SemiSans-Std-ExtraBold_38715 SDF");
 
     //constructors
     public UIManager() {
@@ -25,6 +25,8 @@ public class UIManager {
     //methods
     public void ReferenceElements() {
         question = GameObject.Find("Question");
+        question.GetComponent<Image>().sprite = imageSprite;
+
         questionInfo = GameObject.Find("Question/Info").GetComponent<TextMeshProUGUI>();
         questionInfo.font = fontAsset;
 
@@ -33,6 +35,7 @@ public class UIManager {
         for(int i = 0; i < answersButton.Length; i++) {
             string path = "Button" + i;
             answersButton[i] = GameObject.Find(path).GetComponent<Button>();
+            answersButton[i].GetComponent<Image>().sprite = imageSprite;
         }
         
         answersInfo = new TextMeshProUGUI[buttonQuantity];
