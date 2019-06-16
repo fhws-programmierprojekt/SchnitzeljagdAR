@@ -114,9 +114,11 @@ public class GameManager : MonoBehaviour {
     }
 
     public void AddPoints() {
-        if(QuestHubController.questHubController != null) {
-            int point = Attempts * 25;
-            QuestHubController.questHubController.addPoints(point);
+        int points = Attempts * 25;
+        if(QuestHubController.questHubController != null) {          
+            QuestHubController.questHubController.addPoints(points);
+            PointsGainController pointController = GameObject.Find("PointController").GetComponent<PointsGainController>();
+            pointController.playPointAnimation(points);
         }
     }
 
