@@ -125,8 +125,7 @@ public class GameManager : MonoBehaviour {
     public void EndGame() {
         if(QuestHubController.questHubController != null) {
             SceneManager.LoadScene(QuestHubController.questHubController.currentQuest);
-        }
-        else {
+        } else {
             CurrentStage = Quiz.Stages[1].Questions;
             NextQuestion();
         }
