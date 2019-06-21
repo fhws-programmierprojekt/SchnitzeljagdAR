@@ -1355,7 +1355,7 @@ GameObject:
   - component: {fileID: 1381946905}
   - component: {fileID: 1381946904}
   m_Layer: 5
-  m_Name: UI
+  m_Name: QuizUI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1985,7 +1985,7 @@ GameObject:
   - component: {fileID: 1770959482}
   - component: {fileID: 1770959481}
   m_Layer: 0
-  m_Name: GameManager
+  m_Name: QuizManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
