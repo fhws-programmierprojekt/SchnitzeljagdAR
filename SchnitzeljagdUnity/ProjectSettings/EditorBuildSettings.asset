@@ -45,8 +45,8 @@ EditorBuildSettings:
     path: Assets/Scenes/Quest12.unity
     guid: a42f9bd14bf3ad742a3131ea9b853d62
   - enabled: 1
-    path: Assets/Scenes/ChestGamePlaceholder.unity
-    guid: c284b48a056f4774f94cef79a33758e0
+    path: Assets/Scenes/ChestGame.unity
+    guid: 20907eacd174c474588875895e5bfa06
   - enabled: 1
     path: Assets/Scenes/MazeRun.unity
     guid: f18321696ae8b5849ae75143272f680d
