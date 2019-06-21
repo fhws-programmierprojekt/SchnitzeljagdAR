@@ -1,11 +1,9 @@
-﻿using System.Collections.Generic;
-using System.IO;
-using System.Linq;
+﻿using System.Linq;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 
-public class GameManager : MonoBehaviour {
+public class QuizManager : MonoBehaviour {
 
     #region Attributes
 
@@ -17,7 +15,7 @@ public class GameManager : MonoBehaviour {
     public Question.Answer[] CurrentAnswers { get; set; }
     public int Attempts { get; set; }
 
-    private UIManager UIManager { get; set; }
+    private QuizUIManager QuizUIManager { get; set; }
 
     #endregion
 
@@ -60,7 +58,7 @@ public class GameManager : MonoBehaviour {
         for(int i = 0; i < CurrentAnswers.Length; i++) {
             currentAnswersInfo[i] = CurrentAnswers[i].Info;
         }
-        UIManager.UpdateInfo(CurrentQuestion.Info, currentAnswersInfo);
+        QuizUIManager.UpdateInfo(CurrentQuestion.Info, currentAnswersInfo);
     }
 
     #endregion
@@ -97,7 +95,7 @@ public class GameManager : MonoBehaviour {
 
     // Start is called before the first frame update
     void Start() {
-        UIManager = new UIManager();
+        QuizUIManager = new QuizUIManager();
         quiz = QuizData.ReadQuizData(QuizData.Path);
 
         if(QuestHubController.questHubController != null) {

@@ -1,11 +1,9 @@
 ﻿using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
-public class UIManager {
+public class QuizUIManager {
 
     //attributes
     private GameObject question;
@@ -14,16 +12,16 @@ public class UIManager {
     private Button[] answersButton;
     private TextMeshProUGUI[] answersInfo;
 
-    private readonly Sprite imageSprite = Resources.Load<Sprite>("Images/UIFantasyWoodenSmall");
+    private readonly Sprite imageSprite = Resources.Load<Sprite>("Fantasy Wooden GUI  Free/UI board Small  Set");
     private readonly TMP_FontAsset fontAsset = Resources.Load<TMP_FontAsset>("Fonts & Materials/Rotis-SemiSans-Std-ExtraBold_38715 SDF");
 
     //constructors
-    public UIManager() {
+    public QuizUIManager() {
         ReferenceElements();
     }
 
     //methods
-    public void ReferenceElements() {
+    private void ReferenceElements() {
         question = GameObject.Find("Question");
         question.GetComponent<Image>().sprite = imageSprite;
 
@@ -52,15 +50,15 @@ public class UIManager {
             this.answersInfo[i].text = answersInfo[i];
         }
     }
-    public void ButtonOnClick() {
+    private void ButtonOnClick() {
         foreach(Button button in answersButton) {
             button.onClick.AddListener(() => TaskOnClick(button));
         }
     }
-    public void TaskOnClick(Button button) {
+    private void TaskOnClick(Button button) {
         int indexOfButton = Array.IndexOf(answersButton, button);
 
-        GameManager gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
+        QuizManager gameManager = GameObject.Find("QuizManager").GetComponent<QuizManager>();
         gameManager.CompareIndex(indexOfButton);
     }
 }
