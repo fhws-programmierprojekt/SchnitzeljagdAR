@@ -17,8 +17,7 @@ public class EventManager : MonoBehaviour
     public GameObject player;                   //Player gameobjects
     Animator animPlayer;                        // "
     Animator animCamera;                        //Cameraobject
-    
-    
+
     void Start()
     {
         //Sets the player screen to landscapemode
@@ -54,7 +53,7 @@ public class EventManager : MonoBehaviour
         if (GateController.exitCount > 0)
         {
             ExitEvent();
-        }
+        } 
     }
 
     //ON CLICK EVENTS

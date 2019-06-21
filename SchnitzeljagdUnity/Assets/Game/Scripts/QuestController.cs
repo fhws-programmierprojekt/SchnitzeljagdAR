@@ -5,7 +5,9 @@ using UnityEngine.SceneManagement;
 
 public class QuestController : MonoBehaviour
 {
-    public GameObject searchingImage;   //Gameobject for the starting text
+    public GameObject searchingImage;   //Gameobject for the image target 
+    public Canvas canvas;               //Object of the canvas in every scene
+    
 
     //Starting events for each quest
     void Start()
@@ -50,6 +52,21 @@ public class QuestController : MonoBehaviour
                     }
                 }
             }
+        }
+    }
+
+    void Update()
+    {
+        //The imagetarget helping text will pop up when the canvas in the imagetarget gameobject gets inactiv,
+        //and will disapear when the canvas gets activ again. Scene 9 and 10 are speacial scene where we have 2 canvas,
+        //so they are not incluaded in this function
+        if(canvas.enabled == false && SceneManager.GetActiveScene().buildIndex != 9 && SceneManager.GetActiveScene().buildIndex != 10)
+        {
+            searchingImageStatus(true);
+        }
+        if(canvas.enabled == true && SceneManager.GetActiveScene().buildIndex != 9 && SceneManager.GetActiveScene().buildIndex != 10)
+        {
+            searchingImageStatus(false);
         }
     }
 
