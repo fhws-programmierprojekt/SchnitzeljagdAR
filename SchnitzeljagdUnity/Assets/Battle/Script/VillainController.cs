@@ -33,10 +33,10 @@ public class VillainController : MonoBehaviour {
         float distance = Vector3.Distance(transform.position, opponent.transform.position);
 
         if(distance > 3 && !animator.GetBool("isAttackSpin")) {
+            animator.SetBool("isSwordWalking", true);
             Vector3 movementVector = (opponent.transform.position - transform.position).normalized;
             movementVector = movementVector * Time.deltaTime * movementSpeed;
             body.MovePosition(transform.position + movementVector);
-            animator.SetBool("isSwordWalking", true);
         } else {
             animator.SetBool("isSwordWalking", false);
         }

@@ -7,18 +7,19 @@ public class CombatManager : MonoBehaviour {
     //Attributes 
     public GameObject opponent;
     private CombatManager opponentCombatManager;
+
     private Animator animator;
+    private AnimationClip[] animationClips;
 
     public GameObject healthbar;
     private RectTransform healthbarRectTransform;
     public float health;
     private float currentHealth;
 
-
+    public float attackRange;
     public float attackCooldown;
     private float currentAttackCooldown;
 
-    public float attackSpinRange;
 
     //Getter and Setter
     public float Health {
@@ -30,6 +31,7 @@ public class CombatManager : MonoBehaviour {
     void Start() {
         opponentCombatManager = opponent.GetComponent<CombatManager>();
         animator = GetComponent<Animator>();
+        animationClips = animator.runtimeAnimatorController.animationClips;
         healthbarRectTransform = healthbar.GetComponent<RectTransform>();
     }
 
@@ -42,7 +44,7 @@ public class CombatManager : MonoBehaviour {
     public void AttackCheck() {
         if(currentAttackCooldown > 0) {
             currentAttackCooldown -= Time.deltaTime;
-        } else if(Vector3.Distance(transform.position, opponent.transform.position) < attackSpinRange) {
+        } else if(Vector3.Distance(transform.position, opponent.transform.position) < attackRange/2) {
             AttackSpin(10);
         }
     }
@@ -51,32 +53,46 @@ public class CombatManager : MonoBehaviour {
     }
     public void AttackSpin(int damage) {
         currentAttackCooldown = attackCooldown;
-        StartCoroutine(AttackAnimation("AttackSpin", 1, damage));
+        StartCoroutine(AttackAnimation("AttackSpin", damage));
     }
 
-    IEnumerator AttackAnimation(string attackName, float attackDuration, float damage) {
+    IEnumerator AttackAnimation(string attackName, float damage) {
+
+        float attackTime = GetAnimationTime(attackName) - 0.40f;
+
         string isAttackParameter = "is" + attackName;
         animator.SetBool(isAttackParameter, true);
-        //animator.Play(attackName);
-        GameObject.Find("AttackSpin").GetComponent<SpriteRenderer>().enabled = true;
-        yield return new WaitForSeconds(attackDuration);
+        GameObject.Find(attackName).GetComponent<SpriteRenderer>().enabled = true;
 
+        yield return new WaitForSeconds(attackTime / 2);
         float distance = Vector3.Distance(transform.position, opponent.transform.position);
-        if(distance < attackSpinRange) {
+        if(distance < attackRange) {
             opponentCombatManager.Health = opponentCombatManager.Health - damage;
         }
+
+        yield return new WaitForSeconds(attackTime / 2);
         animator.SetBool(isAttackParameter, false);
-        GameObject.Find("AttackSpin").GetComponent<SpriteRenderer>().enabled = false;
+        GameObject.Find(attackName).GetComponent<SpriteRenderer>().enabled = false;
     }
+
+    private float GetAnimationTime(string animationName) {
+        float animationTime = -1;
+        foreach(AnimationClip clip in animationClips) {
+            if(clip.name == animationName) {
+                animationTime = clip.length;
+                break;
+            }
+        }
+        if (animationTime < 0) {
+            Debug.Log("No Animation found with the name: " + animationName);
+        }
+        return animationTime;
+    }
+
 
 
     private void OnDrawGizmos() {
         Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(transform.position, attackSpinRange);
-    }
-
-    private void AddAttackSpinVisual() {
-        gameObject.AddComponent<SpriteRenderer>();
-        SpriteRenderer attackSpinVisual = GetComponent<SpriteRenderer>();
+        Gizmos.DrawWireSphere(transform.position, attackRange);
     }
 }
