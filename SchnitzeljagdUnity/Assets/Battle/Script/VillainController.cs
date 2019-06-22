@@ -6,14 +6,19 @@ public class VillainController : MonoBehaviour {
 
     //Attributes
     public GameObject opponent;
+
+    protected Vector3 spawnPosition;
     protected Rigidbody body;
+    protected Animator animator;
 
     public float movementSpeed;
     public float rotationSpeed;
 
     // Start is called before the first frame update
     void Start() {
+        spawnPosition = transform.position;
         body = GetComponent<Rigidbody>();
+        animator = GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -27,10 +32,13 @@ public class VillainController : MonoBehaviour {
         //Calculate the distance between this and opponent
         float distance = Vector3.Distance(transform.position, opponent.transform.position);
 
-        if(distance > 1.2f) {
+        if(distance > 3 && !animator.GetBool("isAttackSpin")) {
             Vector3 movementVector = (opponent.transform.position - transform.position).normalized;
             movementVector = movementVector * Time.deltaTime * movementSpeed;
             body.MovePosition(transform.position + movementVector);
+            animator.SetBool("isSwordWalking", true);
+        } else {
+            animator.SetBool("isSwordWalking", false);
         }
     }
     protected void Rotation(GameObject target) {
@@ -42,9 +50,9 @@ public class VillainController : MonoBehaviour {
         body.MoveRotation(rotationQuaternion);
     }
 
-    //public void Fallen(GameObject origin, float height) {
-    //    if(origin.transform.position.y < height) {
-    //        origin.transform.position = SpawnPosition;
-    //    }
-    //}
+    private void OnCollisionEnter(Collision collision) {
+        if(collision.transform.gameObject.name == "DeathFloor") {
+            transform.position = spawnPosition;
+        }
+    }
 }

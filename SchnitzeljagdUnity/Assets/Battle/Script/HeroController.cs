@@ -38,7 +38,7 @@ public class HeroController : VillainController {
     }
 
     public void Evade() {
-        //transform.position += GetDirectonVector() * evadeDistance;
-        body.AddForce(GetDirectonVector() * evadeDistance, ForceMode.Impulse);
+        transform.position += GetDirectonVector() * evadeDistance;
+        //body.AddForce(GetDirectonVector() * evadeDistance, ForceMode.Impulse);
     }
 }
