@@ -1553,8 +1553,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1656723036}
   m_LocalRotation: {x: 0.7071068, y: -0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: 0.1, z: 0}
-  m_LocalScale: {x: 0.8, y: 0.8, z: 0.8}
+  m_LocalPosition: {x: 0, y: 0.09999871, z: 0}
+  m_LocalScale: {x: 1.1, y: 1.1, z: 1.1}
   m_Children: []
   m_Father: {fileID: 7608069474482701001}
   m_RootOrder: 8
@@ -4258,8 +4258,8 @@ MonoBehaviour:
   opponent: {fileID: 6903476411564962010}
   healthbar: {fileID: 1994100501}
   health: 100
+  attackRange: 4
   attackCooldown: 4
-  attackSpinRange: 0
 --- !u!1 &5986978725263136060
 GameObject:
   m_ObjectHideFlags: 0
@@ -6328,8 +6328,8 @@ MonoBehaviour:
   opponent: {fileID: 5986978725263136056}
   healthbar: {fileID: 1168621198}
   health: 100
+  attackRange: 6
   attackCooldown: 3
-  attackSpinRange: 4
 --- !u!1 &6977161436038446221
 GameObject:
   m_ObjectHideFlags: 0

@@ -32,9 +32,15 @@ public class HeroController : VillainController {
     }
 
     protected override void Movement() {
+        Vector3 directionVector = GetDirectonVector();
 
-        Vector3 movementVector = GetDirectonVector() * Time.deltaTime * movementSpeed;
-        body.MovePosition(transform.position + movementVector);
+        if(directionVector.x != 0 || directionVector.z != 0 ) {
+            animator.SetBool("isSwordWalking", true);
+            Vector3 movementVector = GetDirectonVector() * Time.deltaTime * movementSpeed;
+            body.MovePosition(transform.position + movementVector);
+        } else {
+            animator.SetBool("isSwordWalking", false);
+        }
     }
 
     public void Evade() {
