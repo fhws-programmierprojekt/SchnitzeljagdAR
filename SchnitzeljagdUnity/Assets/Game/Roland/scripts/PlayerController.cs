@@ -23,7 +23,7 @@ public class PlayerController : MonoBehaviour
 
     void Start()
     {
-        //Functios to check for componets
+        //Functios to check for componets 
         if (GetComponent<CharacterController>())
         {
             controller = GetComponent<CharacterController>();

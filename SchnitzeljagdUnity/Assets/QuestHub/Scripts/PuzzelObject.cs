@@ -27,7 +27,7 @@ public class PuzzelObject : MonoBehaviour
                 Touch touch = Input.GetTouch(0);
                 Vector3 tch = new Vector3(touch.position.x, touch.position.y, 10);
                 Vector2 touchPos = Camera.main.ScreenToWorldPoint(tch);
-            Debug.Log(touchPos);
+
                 switch (touch.phase)
                 {
                     //Just touched the screen
