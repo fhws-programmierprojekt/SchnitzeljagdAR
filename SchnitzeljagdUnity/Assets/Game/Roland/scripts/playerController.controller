@@ -605,12 +605,6 @@ AnimatorController:
     m_DefaultInt: 0
     m_DefaultBool: 1
     m_Controller: {fileID: 0}
-  - m_Name: isSwordWalking
-    m_Type: 4
-    m_DefaultFloat: 0
-    m_DefaultInt: 0
-    m_DefaultBool: 0
-    m_Controller: {fileID: 0}
   - m_Name: isMeeleAttacking
     m_Type: 4
     m_DefaultFloat: 0
@@ -642,6 +636,12 @@ AnimatorController:
     m_DefaultBool: 0
     m_Controller: {fileID: 0}
   - m_Name: isThrusting
+    m_Type: 4
+    m_DefaultFloat: 0
+    m_DefaultInt: 0
+    m_DefaultBool: 0
+    m_Controller: {fileID: 0}
+  - m_Name: isSwordWalking
     m_Type: 4
     m_DefaultFloat: 0
     m_DefaultInt: 0
@@ -1103,10 +1103,10 @@ AnimatorStateMachine:
     m_Position: {x: 380, y: 200, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -6474462151728791405}
-    m_Position: {x: 380, y: 300, z: 0}
+    m_Position: {x: 400, y: 300, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -378392342286344631}
-    m_Position: {x: 250, y: 460, z: 0}
+    m_Position: {x: 300, y: 500, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -2303900193663436960}
     m_Position: {x: 700, y: 330, z: 0}
@@ -1127,13 +1127,13 @@ AnimatorStateMachine:
     m_Position: {x: 700, y: 450, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -4492641365976945993}
-    m_Position: {x: 370, y: 500, z: 0}
+    m_Position: {x: 300, y: 560, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -6381535861703477307}
-    m_Position: {x: 150, y: 420, z: 0}
+    m_Position: {x: 500, y: 500, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -2394070158658141437}
-    m_Position: {x: 490, y: 460, z: 0}
+    m_Position: {x: 500, y: 560, z: 0}
   m_ChildStateMachines: []
   m_AnyStateTransitions: []
   m_EntryTransitions: []

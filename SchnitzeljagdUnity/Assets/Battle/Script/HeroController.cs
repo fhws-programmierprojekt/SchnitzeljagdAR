@@ -13,6 +13,7 @@ public class HeroController : VillainController {
     // Update is called once per frame
     void Update() {
         Movement();
+
         Rotation(opponent);
 
         if(Input.GetKeyDown(KeyCode.Space)) {
@@ -25,8 +26,8 @@ public class HeroController : VillainController {
         float horizontal = joystick.Horizontal;
         float vertical = joystick.Vertical;
 
-        horizontal = Input.GetAxis("Horizontal");
-        vertical = Input.GetAxis("Vertical");
+        //horizontal = Input.GetAxis("Horizontal");
+        //vertical = Input.GetAxis("Vertical");
 
         return new Vector3(horizontal, 0, vertical).normalized;
     }
@@ -35,12 +36,34 @@ public class HeroController : VillainController {
         Vector3 directionVector = GetDirectonVector();
 
         if(directionVector.x != 0 || directionVector.z != 0 ) {
-            animator.SetBool("isSwordWalking", true);
+            AnimationMovementDirection(directionVector);
             Vector3 movementVector = GetDirectonVector() * Time.deltaTime * movementSpeed;
             body.MovePosition(transform.position + movementVector);
         } else {
-            animator.SetBool("isSwordWalking", false);
+            SetIsWalkingFalse();
         }
+
+    }
+    private void AnimationMovementDirection(Vector3 directionVector) {
+        float angle = Vector3.SignedAngle(directionVector, transform.forward, Vector3.up);
+
+        SetIsWalkingFalse();
+        if(angle > 135 || angle < -135) {
+            animator.SetBool("isSwordWalkingBack", true);
+        } else if(angle >= 45 && angle <= 135) {
+            animator.SetBool("isSwordWalkingLeft", true);
+        } else if(angle > -45 && angle < 45) {
+            animator.SetBool("isSwordWalking", true);
+        }
+        else {
+            animator.SetBool("isSwordWalkingRight", true);
+        }
+    }
+    private void SetIsWalkingFalse() {
+        animator.SetBool("isSwordWalking", false);
+        animator.SetBool("isSwordWalkingBack", false);
+        animator.SetBool("isSwordWalkingLeft", false);
+        animator.SetBool("isSwordWalkingRight", false);
     }
 
     public void Evade() {
