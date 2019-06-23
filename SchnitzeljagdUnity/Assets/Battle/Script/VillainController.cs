@@ -52,7 +52,10 @@ public class VillainController : MonoBehaviour {
 
     private void OnCollisionEnter(Collision collision) {
         if(collision.transform.gameObject.name == "DeathFloor") {
-            transform.position = spawnPosition;
+            Invoke("Respawn", 5);
         }
+    }
+    private void Respawn() {
+        transform.position = spawnPosition;
     }
 }

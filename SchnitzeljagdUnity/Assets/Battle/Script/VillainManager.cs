@@ -2,19 +2,19 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CombatManager : MonoBehaviour {
+public class VillainManager : MonoBehaviour {
 
     //Attributes 
     public GameObject opponent;
-    private CombatManager opponentCombatManager;
+    protected VillainManager opponentVillainManager;
 
-    private Animator animator;
-    private AnimationClip[] animationClips;
+    protected Animator animator;
+    protected AnimationClip[] animationClips;
 
-    public GameObject healthbar;
-    private RectTransform healthbarRectTransform;
+    public GameObject healthBar;
+    protected RectTransform healthBarRectTransform;
     public float health;
-    private float currentHealth;
+    protected float currentHealth;
 
     public float attackRange;
     public float attackCooldown;
@@ -22,22 +22,23 @@ public class CombatManager : MonoBehaviour {
 
 
     //Getter and Setter
-    public float Health {
-        get { return health; }
-        set { health = value; }
+    public float CurrentHealth {
+        get { return currentHealth; }
+        set { currentHealth = (value < 0) ? 0 : ((value > 100) ? 100 : value); }
     }
 
     // Start is called before the first frame update
     void Start() {
-        opponentCombatManager = opponent.GetComponent<CombatManager>();
+        opponentVillainManager = opponent.GetComponent<VillainManager>();
         animator = GetComponent<Animator>();
         animationClips = animator.runtimeAnimatorController.animationClips;
-        healthbarRectTransform = healthbar.GetComponent<RectTransform>();
+        healthBarRectTransform = healthBar.GetComponent<RectTransform>();
+        currentHealth = health;
     }
 
     // Update is called once per frame
     void Update() {
-        healthbarRectTransform.sizeDelta = new Vector2(Health * 10, 20);
+        healthBarRectTransform.sizeDelta = new Vector2(100 / health * currentHealth * 10, 20);
         AttackCheck();
     }
 
@@ -67,7 +68,7 @@ public class CombatManager : MonoBehaviour {
         yield return new WaitForSeconds(attackTime / 2);
         float distance = Vector3.Distance(transform.position, opponent.transform.position);
         if(distance < attackRange) {
-            opponentCombatManager.Health = opponentCombatManager.Health - damage;
+            opponentVillainManager.CurrentHealth = opponentVillainManager.CurrentHealth - damage;
         }
 
         yield return new WaitForSeconds(attackTime / 2);

@@ -12,6 +12,7 @@ public class HeroController : VillainController {
 
     // Update is called once per frame
     void Update() {
+        animator.SetBool("isPulling", true);
         Movement();
 
         Rotation(opponent);
@@ -42,8 +43,8 @@ public class HeroController : VillainController {
         } else {
             SetIsWalkingFalse();
         }
-
     }
+
     private void AnimationMovementDirection(Vector3 directionVector) {
         float angle = Vector3.SignedAngle(directionVector, transform.forward, Vector3.up);
 
@@ -67,7 +68,9 @@ public class HeroController : VillainController {
     }
 
     public void Evade() {
-        transform.position += GetDirectonVector() * evadeDistance;
+        body.velocity = GetDirectonVector() * 24;
+
+        //transform.position += GetDirectonVector() * evadeDistance;
         //body.AddForce(GetDirectonVector() * evadeDistance, ForceMode.Impulse);
     }
 }
