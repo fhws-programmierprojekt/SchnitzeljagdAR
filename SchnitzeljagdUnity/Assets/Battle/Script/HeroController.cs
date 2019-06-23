@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(HeroManager))]
 public class HeroController : VillainController {
 
     public Joystick joystick;
@@ -22,7 +23,7 @@ public class HeroController : VillainController {
         }
     }
 
-    private Vector3 GetDirectonVector() {
+    private Vector3 GetJoystickInputVector() {
         //Take Input from Joystick
         float horizontal = joystick.Horizontal;
         float vertical = joystick.Vertical;
@@ -34,11 +35,11 @@ public class HeroController : VillainController {
     }
 
     protected override void Movement() {
-        Vector3 directionVector = GetDirectonVector();
+        Vector3 directionVector = GetJoystickInputVector();
 
         if(directionVector.x != 0 || directionVector.z != 0 ) {
             AnimationMovementDirection(directionVector);
-            Vector3 movementVector = GetDirectonVector() * Time.deltaTime * movementSpeed;
+            Vector3 movementVector = GetJoystickInputVector() * Time.deltaTime * movementSpeed;
             body.MovePosition(transform.position + movementVector);
         } else {
             SetIsWalkingFalse();
@@ -68,7 +69,7 @@ public class HeroController : VillainController {
     }
 
     public void Evade() {
-        body.velocity = GetDirectonVector() * 24;
+        body.velocity = GetJoystickInputVector() * 24;
 
         //transform.position += GetDirectonVector() * evadeDistance;
         //body.AddForce(GetDirectonVector() * evadeDistance, ForceMode.Impulse);

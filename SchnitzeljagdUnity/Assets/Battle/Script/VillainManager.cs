@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(VillainController))]
 public class VillainManager : MonoBehaviour {
 
     //Attributes 
@@ -47,10 +48,13 @@ public class VillainManager : MonoBehaviour {
             currentAttackCooldown -= Time.deltaTime;
         } else if(Vector3.Distance(transform.position, opponent.transform.position) < attackRange/2) {
             AttackSpin(10);
+        } else {
+            AttackDash();
         }
     }
     public void AttackDash() {
-
+        currentAttackCooldown = attackCooldown;
+        GetComponent<Rigidbody>().velocity = GetComponent<Rigidbody>().transform.forward * 24;
     }
     public void AttackSpin(int damage) {
         currentAttackCooldown = attackCooldown;

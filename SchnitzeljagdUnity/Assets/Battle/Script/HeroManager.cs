@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(HeroController))]
 public class HeroManager : VillainManager {
 
     //Attributes

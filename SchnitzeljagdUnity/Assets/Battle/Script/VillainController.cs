@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(VillainManager))]
 public class VillainController : MonoBehaviour {
 
     //Attributes
