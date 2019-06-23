@@ -89,38 +89,49 @@ public class PlayerController : MonoBehaviour
                 controller.Move(moveDir * Time.deltaTime);
             }
         }
-        if (SceneManager.GetActiveScene().buildIndex == 18)
+        if (SceneManager.GetActiveScene().buildIndex == 15)
         {
-            float moveAxis = 0f;
-            float turnAxis = 0f;
-
-            moveAxis = joystick.Vertical * 0.4f;
-            turnAxis = joystick.Horizontal * 0.4f;
-
+            float y = joystick.Vertical * 0.4f;
+            float x = joystick.Horizontal * 0.4f;
 
             if (controller.isGrounded)
             {
-                if (moveAxis != 0)
+                if (x != 0 && y != 0)
                 {
-                    anim.SetBool("isSwordWalking", true);
-                    moveDir = new Vector3(0, 0, moveAxis);
+                    anim.SetBool("isWalking", true);
+                    moveDir = new Vector3(x, 0, y);
                     moveDir *= moveSpeed;
                     moveDir = transform.TransformDirection(moveDir);
                 }
-                if (moveAxis == 0)
+                if (x == 0 || y == 0)
                 {
-                    anim.SetBool("isSwordWalking", false);
+                    anim.SetBool("isWalking", false);
                     moveDir = new Vector3(0, 0, 0);
                 }
             }
-            rot += turnAxis * rotationRate * Time.deltaTime;
-            transform.eulerAngles = new Vector3(0, rot, 0);
 
-            if (moveAxis != 0)
+            if (x != 0 || y != 0)
             {
                 moveDir.y -= gravity * Time.deltaTime;
                 controller.Move(moveDir * Time.deltaTime);
             }
+           /* float x = joystick.Horizontal;
+            float y = joystick.Vertical;
+
+            Vector3 movement = new Vector3(x, 0, y);
+            rBody.velocity = movement * 4f;
+            if(x != 0 && y != 0)
+            {
+                transform.eulerAngles = new Vector3(transform.eulerAngles.x, Mathf.Atan2(x, y) * Mathf.Rad2Deg, transform.eulerAngles.z);
+            }
+            if( x != 0 || y != 0)
+            {
+                anim.SetBool("isWalking", true);
+            }
+            else
+            {
+                anim.SetBool("isWalking", false);
+            }*/
         }
     }
     
