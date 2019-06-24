@@ -6,6 +6,8 @@ using TMPro;
 public class PointsGainController : MonoBehaviour {
     private TextMeshProUGUI scoreText;
 
+    static PointsGainController pointsGainController;
+
     void Start() {
         scoreText = GetComponent<TextMeshProUGUI>();
     }
