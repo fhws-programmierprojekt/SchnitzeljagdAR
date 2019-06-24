@@ -5,26 +5,51 @@ using UnityEngine;
 [RequireComponent(typeof(HeroController))]
 public class HeroManager : VillainManager {
 
-    //Attributes
-    public GameObject staminaBar;
-    protected RectTransform staminaBarRectTransform;
-    public float stamina;
-    protected float currentStamina;
+    #region Singleton
+    protected static new HeroManager instance;
+    public static new HeroManager GetInstance() {
+        return instance;
+    }
+    #endregion
 
+    #region Attributes
+    [SerializeField] protected float stamina;
+    protected float currentStamina;
+    #endregion
+
+    #region Getter and Setter
+    public float Stamina {
+        get { return stamina; }
+        set { stamina = (value < 0) ? 0 : value; }
+    }
+    public float CurrentStamina {
+        get { return currentStamina; }
+        set { currentStamina = (value < 0) ? 0 : ((value > Stamina) ? Stamina : value); }
+    }
+    #endregion
+
+    #region Unity Methods
     // Start is called before the first frame update
     void Start() {
-        opponentVillainManager = opponent.GetComponent<VillainManager>();
-        animator = GetComponent<Animator>();
-        animationClips = animator.runtimeAnimatorController.animationClips;
-        healthBarRectTransform = healthBar.GetComponent<RectTransform>();
-        staminaBarRectTransform = staminaBar.GetComponent<RectTransform>();
+        instance = this;
+        Opponent = BattleArenaManager.GetInstance().Villain;
+        OpponentManager = Opponent.GetComponent<VillainManager>();
+        Animator = GetComponent<Animator>();
+        AnimationClips = Animator.runtimeAnimatorController.animationClips;
         currentHealth = health;
         currentStamina = stamina;
     }
 
     // Update is called once per frame
     void Update() {
-        healthBarRectTransform.sizeDelta = new Vector2(100 / health * currentHealth * 10, 20);
-        staminaBarRectTransform.sizeDelta = new Vector2(100 / stamina * currentStamina * 10, 20);
+        UpdateStats();
     }
+    #endregion
+
+    #region Methods
+    protected override void UpdateStats() {
+        BattleUIManager.GetInstance().HeroHealth.sizeDelta = new Vector2(100 / health * CurrentHealth * 10, 20);
+        BattleUIManager.GetInstance().HeroStamina.sizeDelta = new Vector2(100 / stamina * CurrentStamina * 10, 20);
+    }
+    #endregion
 }

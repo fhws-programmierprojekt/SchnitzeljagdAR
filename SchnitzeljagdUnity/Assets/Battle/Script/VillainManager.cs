@@ -5,48 +5,67 @@ using UnityEngine;
 [RequireComponent(typeof(VillainController))]
 public class VillainManager : MonoBehaviour {
 
-    //Attributes 
-    public GameObject opponent;
-    protected VillainManager opponentVillainManager;
+    #region Singleton
+    protected static VillainManager instance;
+    public static VillainManager GetInstance() {
+        return instance;
+    }
+    #endregion
 
-    protected Animator animator;
-    protected AnimationClip[] animationClips;
+    #region Attributes
 
-    public GameObject healthBar;
-    protected RectTransform healthBarRectTransform;
-    public float health;
-    protected float currentHealth;
 
     public float attackRange;
-    public float attackCooldown;
+    [SerializeField] public float attackCooldown;
     private float currentAttackCooldown;
 
+    [SerializeField] protected float health;
+    protected float currentHealth;
 
-    //Getter and Setter
+    public GameObject Opponent { get; set; }
+    public VillainManager OpponentManager { get; set; }
+    public Animator Animator { get; set; }
+    public AnimationClip[] AnimationClips { get; set; }
+    #endregion
+
+    #region Getter and Setter
+    public float Health {
+        get { return health; }
+        set { health = (value < 10) ? 10 : value; }
+    }
     public float CurrentHealth {
         get { return currentHealth; }
-        set { currentHealth = (value < 0) ? 0 : ((value > 100) ? 100 : value); }
+        set { currentHealth = (value < 0) ? 0 : ((value > Health) ? Health : value); }
     }
+    #endregion
 
+    #region Unity Methods
     // Start is called before the first frame update
     void Start() {
-        opponentVillainManager = opponent.GetComponent<VillainManager>();
-        animator = GetComponent<Animator>();
-        animationClips = animator.runtimeAnimatorController.animationClips;
-        healthBarRectTransform = healthBar.GetComponent<RectTransform>();
+        instance = this;
+        Opponent = BattleArenaManager.GetInstance().Hero;
+        OpponentManager = Opponent.GetComponent<VillainManager>();
+        Animator = GetComponent<Animator>();
+        AnimationClips = Animator.runtimeAnimatorController.animationClips;
         currentHealth = health;
     }
 
     // Update is called once per frame
     void Update() {
-        healthBarRectTransform.sizeDelta = new Vector2(100 / health * currentHealth * 10, 20);
+        UpdateStats();
         AttackCheck();
+    }
+    #endregion
+
+    #region Methods
+    protected virtual void UpdateStats() {
+        BattleUIManager.GetInstance().Villainhealth.sizeDelta = new Vector2(100 / Health * CurrentHealth * 10, 20);
     }
 
     public void AttackCheck() {
         if(currentAttackCooldown > 0) {
             currentAttackCooldown -= Time.deltaTime;
-        } else if(Vector3.Distance(transform.position, opponent.transform.position) < attackRange/2) {
+        } else if(Vector3.Distance(transform.position, Opponent.transform.position) < attackRange/2) {
             AttackSpin(10);
         } else {
             AttackDash();
@@ -66,23 +85,23 @@ public class VillainManager : MonoBehaviour {
         float attackTime = GetAnimationTime(attackName) - 0.40f;
 
         string isAttackParameter = "is" + attackName;
-        animator.SetBool(isAttackParameter, true);
+        Animator.SetBool(isAttackParameter, true);
         GameObject.Find(attackName).GetComponent<SpriteRenderer>().enabled = true;
 
         yield return new WaitForSeconds(attackTime / 2);
-        float distance = Vector3.Distance(transform.position, opponent.transform.position);
+        float distance = Vector3.Distance(transform.position, Opponent.transform.position);
         if(distance < attackRange) {
-            opponentVillainManager.CurrentHealth = opponentVillainManager.CurrentHealth - damage;
+            OpponentManager.CurrentHealth = OpponentManager.CurrentHealth - damage;
         }
 
         yield return new WaitForSeconds(attackTime / 2);
-        animator.SetBool(isAttackParameter, false);
+        Animator.SetBool(isAttackParameter, false);
         GameObject.Find(attackName).GetComponent<SpriteRenderer>().enabled = false;
     }
 
     private float GetAnimationTime(string animationName) {
         float animationTime = -1;
-        foreach(AnimationClip clip in animationClips) {
+        foreach(AnimationClip clip in AnimationClips) {
             if(clip.name == animationName) {
                 animationTime = clip.length;
                 break;
@@ -100,4 +119,5 @@ public class VillainManager : MonoBehaviour {
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(transform.position, attackRange);
     }
+    #endregion
 }
