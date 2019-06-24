@@ -13,7 +13,7 @@ public class ScoreFunction : MonoBehaviour
     {
         points = GameObject.Find("Points").GetComponent<PointsGainController>();
         scoreText = GameObject.Find("Score").GetComponent<TextMeshProUGUI>();
-        scoreText.text = "0";
+        scoreText.text = "Punkte 0/250";
     }
 
     private void OnTriggerEnter(Collider other)
@@ -26,7 +26,7 @@ public class ScoreFunction : MonoBehaviour
         {
             points.playPointAnimation(25);
             score = score + 25;
-            scoreText.text = score.ToString(); 
+            scoreText.text = "Punkte: " + score.ToString() + "/250"; 
             Destroy(other.gameObject);
         }
     }
