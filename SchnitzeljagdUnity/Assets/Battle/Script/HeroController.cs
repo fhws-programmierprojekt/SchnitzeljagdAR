@@ -39,18 +39,19 @@ public class HeroController : VillainController {
 
     #region Methods
     protected override void Movement() {
+
+        // Get DirectionVector from Joystick Input
         Vector3 directionVector = BattleUIManager.Instance.GetInputVector();
 
-        if(directionVector.x != 0 || directionVector.z != 0 ) {
-            AnimationMovementDirection(directionVector);
+        if(BattleUIManager.Instance.isInput()) {
+            MovementAnimation(directionVector);
             Vector3 movementVector = directionVector * Time.deltaTime * movementSpeed;
             Rigidbody.MovePosition(transform.position + movementVector);
         } else {
             SetIsWalkingFalse();
         }
     }
-
-    private void AnimationMovementDirection(Vector3 directionVector) {
+    protected void MovementAnimation(Vector3 directionVector) {
 
         SetIsWalkingFalse();
         if(MyGeometry.IsWithinAngle(directionVector, transform.forward, -45, 45)) {
@@ -63,7 +64,7 @@ public class HeroController : VillainController {
             Animator.SetBool("isSwordWalkingRight", true);
         }
     }
-    private void SetIsWalkingFalse() {
+    protected override void SetIsWalkingFalse() {
         Animator.SetBool("isSwordWalking", false);
         Animator.SetBool("isSwordWalkingBack", false);
         Animator.SetBool("isSwordWalkingLeft", false);
@@ -71,20 +72,15 @@ public class HeroController : VillainController {
     }
 
     public void Evade() {
-        Rigidbody.velocity = BattleUIManager.Instance.GetInputVector() * 24;
-
+        float staminaCost = 10;
+        if(HeroManager.Instance.CurrentStamina > staminaCost) {
+            HeroManager.Instance.CurrentStamina -= staminaCost;
+            Vector3 directionVector = BattleUIManager.Instance.GetInputVector();
+            Rigidbody.velocity = directionVector * 24;
+            Animator.Play("Roll");
+        }
         //transform.position += GetDirectonVector() * evadeDistance;
         //body.AddForce(GetDirectonVector() * evadeDistance, ForceMode.Impulse);
-    }
-
-    private void OnCollisionEnter(Collision collision) {
-        if(collision.transform.gameObject.name == "DeathFloor") {
-            HeroManager.Instance.CurrentHealth = 0;
-            StartCoroutine(BattleUIManager.Instance.DisplayBattleInfo("V E R L O R E N", 2));
-            HeroManager.Instance.CurrentHealth = HeroManager.Instance.Health;
-            transform.position = SpawnPosition;
-            Opponent.transform.position = VillainController.Instance.SpawnPosition;
-        }
     }
     #endregion
 }

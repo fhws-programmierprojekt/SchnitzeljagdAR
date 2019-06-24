@@ -13,7 +13,8 @@ public class BattleUIManager : MonoBehaviour {
     #region Attributs
     [SerializeField] protected Joystick joystick;
     [SerializeField] protected Button button;
-    [SerializeField] protected TextMeshProUGUI buttonInfo;
+    [SerializeField] protected Image buttonImage;
+    [SerializeField] protected Sprite[] buttonImageSprites;
     [SerializeField] protected TextMeshProUGUI battleInfo;
     [SerializeField] protected RectTransform heroHealth;
     [SerializeField] protected RectTransform heroStamina;
@@ -31,9 +32,13 @@ public class BattleUIManager : MonoBehaviour {
         get { return button; }
         set { button = value; }
     }
-    public TextMeshProUGUI ButtonInfo {
-        get { return buttonInfo; }
-        set { buttonInfo = value; }
+    public Image ButtonImage {
+        get { return buttonImage; }
+        set { buttonImage = value; }
+    }
+    public Sprite[] ButtonImageSprites {
+        get { return buttonImageSprites; }
+        set { buttonImageSprites = value; }
     }
     public TextMeshProUGUI BattleInfo {
         get { return battleInfo; }
@@ -91,9 +96,9 @@ public class BattleUIManager : MonoBehaviour {
 
         bool isForward = MyGeometry.IsWithinAngle(forwardVector, inputVector, -45, 45);
         if(isForward) {
-            ButtonInfo.text = "Attack";
+            ButtonImage.sprite = ButtonImageSprites[0];
         } else {
-            ButtonInfo.text = "Evade";
+            ButtonImage.sprite = ButtonImageSprites[1];
         }
     }
     public IEnumerator FreezeGame(float freezeTime) {

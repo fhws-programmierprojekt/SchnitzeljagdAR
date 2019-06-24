@@ -12,6 +12,8 @@ public class HeroManager : VillainManager {
     #region Attributes
     [SerializeField] protected float stamina;
     protected float currentStamina;
+
+    public int Deaths { get; set; } = 0;
     #endregion
 
     #region Getter and Setter
@@ -38,11 +40,23 @@ public class HeroManager : VillainManager {
         AnimationClips = Animator.runtimeAnimatorController.animationClips;
         currentHealth = health;
         currentStamina = stamina;
+        InvokeRepeating("ReplenishStamina", 0, 1);
     }
-
     // Update is called once per frame
     void Update() {
         UpdateStats();
+    }
+    private void OnCollisionEnter(Collision collision) {
+        if(collision.transform.gameObject.name == "DeathFloor") {
+            Deaths += 1;
+            CurrentHealth = 0;
+            StartCoroutine(BattleUIManager.Instance.DisplayBattleInfo("V E R L O R E N", 2));
+            CurrentHealth = Health;
+            CurrentStamina = Stamina;
+            VillainManager.Instance.CurrentHealth = VillainManager.Instance.Health;
+            transform.position = HeroController.Instance.SpawnPosition;
+            Opponent.transform.position = VillainController.Instance.SpawnPosition;
+        }
     }
     #endregion
 
@@ -50,6 +64,9 @@ public class HeroManager : VillainManager {
     protected override void UpdateStats() {
         BattleUIManager.Instance.HeroHealth.sizeDelta = new Vector2(100 / health * CurrentHealth * 10, 20);
         BattleUIManager.Instance.HeroStamina.sizeDelta = new Vector2(100 / stamina * CurrentStamina * 10, 20);
+    }
+    protected void ReplenishStamina() {
+        CurrentStamina += 4;
     }
     #endregion
 }

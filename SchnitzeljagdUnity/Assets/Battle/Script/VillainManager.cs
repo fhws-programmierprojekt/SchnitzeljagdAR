@@ -10,15 +10,12 @@ public class VillainManager : MonoBehaviour {
     #endregion
 
     #region Attributes
-
-
-    public float attackRange;
-    [SerializeField] public float attackCooldown;
-    private float currentAttackCooldown;
-
+    [SerializeField] protected float attackRange;
     [SerializeField] protected float health;
     protected float currentHealth;
 
+    private float AttackCooldown { get; set; } = 3;
+    private float CurrentAttackCooldown { get; set; }
     public GameObject Opponent { get; set; }
     public VillainManager OpponentManager { get; set; }
     public Animator Animator { get; set; }
@@ -26,6 +23,10 @@ public class VillainManager : MonoBehaviour {
     #endregion
 
     #region Getter and Setter
+    public float AttackRange {
+        get { return attackRange; }
+        set { attackRange = value; }
+    }
     public float Health {
         get { return health; }
         set { health = (value < 10) ? 10 : value; }
@@ -55,6 +56,10 @@ public class VillainManager : MonoBehaviour {
         UpdateStats();
         AttackCheck();
     }
+    private void OnDrawGizmos() {
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(transform.position, AttackRange);
+    }
     #endregion
 
     #region Methods
@@ -63,20 +68,20 @@ public class VillainManager : MonoBehaviour {
     }
 
     public void AttackCheck() {
-        if(currentAttackCooldown > 0) {
-            currentAttackCooldown -= Time.deltaTime;
-        } else if(Vector3.Distance(transform.position, Opponent.transform.position) < attackRange/2) {
+        if(CurrentAttackCooldown > 0) {
+            CurrentAttackCooldown -= Time.deltaTime;
+        } else if(Vector3.Distance(transform.position, Opponent.transform.position) < AttackRange/2) {
             AttackSpin(10);
         } else {
             AttackDash();
         }
     }
     public void AttackDash() {
-        currentAttackCooldown = attackCooldown;
+        CurrentAttackCooldown = AttackCooldown;
         GetComponent<Rigidbody>().velocity = GetComponent<Rigidbody>().transform.forward * 24;
     }
     public void AttackSpin(int damage) {
-        currentAttackCooldown = attackCooldown;
+        CurrentAttackCooldown = AttackCooldown;
         StartCoroutine(AttackAnimation("AttackSpin", damage));
     }
 
@@ -90,7 +95,7 @@ public class VillainManager : MonoBehaviour {
 
         yield return new WaitForSeconds(attackTime / 2);
         float distance = Vector3.Distance(transform.position, Opponent.transform.position);
-        if(distance < attackRange) {
+        if(distance < AttackRange) {
             OpponentManager.CurrentHealth = OpponentManager.CurrentHealth - damage;
         }
 
@@ -115,9 +120,6 @@ public class VillainManager : MonoBehaviour {
 
 
 
-    private void OnDrawGizmos() {
-        Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(transform.position, attackRange);
-    }
+
     #endregion
 }
