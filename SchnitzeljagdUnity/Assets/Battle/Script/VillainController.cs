@@ -48,11 +48,11 @@ public class VillainController : MonoBehaviour {
 
     #region Methods
     protected virtual void Movement() {
-
         // Calculate the distance between this and opponent
         float distance = Vector3.Distance(transform.position, Opponent.transform.position);
+        float minDistance = VillainManager.Instance.AttackRange * 0.4f;
 
-        if(distance > 3 && !Animator.GetBool("isAttackSpin") && !Animator.GetBool("isAttackThrust")) {
+        if(distance > minDistance && !Animator.GetBool("isAttackSpin") && !Animator.GetBool("isAttackThrust")) {
             MovementAnimation();
             Vector3 directionVector = MyGeometry.GetDirectionVector(transform.position, Opponent.transform.position);
             Vector3 movementVector = directionVector * Time.deltaTime * movementSpeed;

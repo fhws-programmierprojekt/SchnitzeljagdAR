@@ -55,13 +55,14 @@ public class BattleUIManager : MonoBehaviour {
     }
     // Start is called before the first frame update
     void Start() {
-        Physics.gravity = new Vector3(0, -98.1f, 0);
+        Physics.gravity = new Vector3(0, -9.81f, 0);
+        ImageTargetFound();
         StartCoroutine(DisplayCountdown());
     }
 
     // Update is called once per frame
     void Update() {
-
+        ImageTargetFound();
     }
     #endregion
 
@@ -74,12 +75,27 @@ public class BattleUIManager : MonoBehaviour {
         //horizontal = Input.GetAxis("Horizontal");
         //vertical = Input.GetAxis("Vertical");
 
-        return new Vector3(horizontal, 0, vertical).normalized;
+        Vector3 inputVector = new Vector3(horizontal, 0, vertical);
+
+        Vector3 cameraForward = Camera.main.transform.forward;
+        cameraForward.y = 0f;
+        Quaternion cameraQuaternion = Quaternion.LookRotation(cameraForward);
+        inputVector = cameraQuaternion * inputVector;
+
+        return inputVector.normalized;
     }
     public bool IsInput() {
         Vector3 inputVector = GetInputVector();
         return (inputVector.x != 0 || inputVector.z != 0) ? true : false;
     }
+    public void ImageTargetFound() {
+        if(BattleArenaManager.Instance.BattleArena.gameObject.GetComponent<MeshRenderer>().enabled == true) {
+            Time.timeScale = 1;
+        } else {
+            Time.timeScale = 0;
+        }
+    }
+
     public IEnumerator FreezeGame(float freezeTime) {
         Time.timeScale = 0;
         float startTime = Time.realtimeSinceStartup;

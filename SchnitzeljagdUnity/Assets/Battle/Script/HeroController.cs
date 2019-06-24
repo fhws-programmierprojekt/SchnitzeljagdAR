@@ -72,11 +72,11 @@ public class HeroController : VillainController {
     }
 
     public void Evade() {
-        float staminaCost = 16;
+        float staminaCost = 8;
         if(HeroManager.Instance.CurrentStamina > staminaCost) {
             HeroManager.Instance.CurrentStamina -= staminaCost;
             Vector3 directionVector = BattleUIManager.Instance.GetInputVector();
-            Rigidbody.velocity = directionVector * 16;
+            Rigidbody.velocity = directionVector * 1.5f;
             Animator.Play("Roll");
         }
     }

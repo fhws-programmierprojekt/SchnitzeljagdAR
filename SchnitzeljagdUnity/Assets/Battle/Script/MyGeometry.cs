@@ -45,5 +45,9 @@ public static class MyGeometry {
         return rotationQuaternion;
     }
 
+    //public static Vector3 InputRelativeToCamera() {
+    //    //
+    //}
+
     #endregion
 }

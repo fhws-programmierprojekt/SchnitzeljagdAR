@@ -54,7 +54,7 @@ public class HeroManager : VillainManager {
     }
     private void OnTriggerEnter(Collider other) {
         if(other.transform.gameObject.name == "AttackThrust") {
-            CurrentHealth -= 25;
+            CurrentHealth -= 20;
         }
     }
     #endregion
@@ -68,15 +68,15 @@ public class HeroManager : VillainManager {
         CurrentStamina += 4;
     }
     public override void AttackCheck() {
-        float staminaCost = 20;
+        float staminaCost = 16;
         float distance = Vector3.Distance(transform.position, Opponent.transform.position);
         if(CurrentStamina > staminaCost && distance < AttackRange && !Animator.GetBool("isAttackMeele") && !Animator.GetBool("isAttackThrust")) {
             CurrentStamina -= staminaCost;
-            StartCoroutine(Attack("AttackMeele", 800));
+            StartCoroutine(Attack("AttackMeele", 6));
         } else if(CurrentStamina > staminaCost && !Animator.GetBool("isAttackMeele") && !Animator.GetBool("isAttackThrust")) {
             CurrentStamina -= staminaCost;
-            StartCoroutine(Attack("AttackThrust", 10));
-            GetComponent<Rigidbody>().velocity = GetComponent<Rigidbody>().transform.forward * 18;
+            StartCoroutine(Attack("AttackThrust", 8));
+            GetComponent<Rigidbody>().velocity = GetComponent<Rigidbody>().transform.forward * 2;
         }
     }
 
