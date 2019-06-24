@@ -138,6 +138,7 @@ public class VillainManager : MonoBehaviour {
             VillainController.Instance.MovementSpeed = 0;
             VillainController.Instance.RotationSpeed = 0;
             Animator.SetBool("isDying", true);
+            AddPoints();
             StartCoroutine(BattleUIManager.Instance.DisplayBattleInfo("G E W O N N E N", 4));
             SceneManager.LoadScene(QuestHubController.questHubController.currentQuest);
         }
