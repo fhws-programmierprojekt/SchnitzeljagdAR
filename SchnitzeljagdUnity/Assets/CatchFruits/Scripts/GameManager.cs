@@ -9,11 +9,9 @@ public class GameManager : MonoBehaviour
     {
         //Sets the player screen to landscapemode
         Screen.orientation = ScreenOrientation.LandscapeLeft;
+
+        DialogSystem.dialogSystem.startDialog(1);
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    
 }
