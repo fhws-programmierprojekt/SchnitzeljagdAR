@@ -6,10 +6,7 @@ using UnityEngine;
 public class VillainController : MonoBehaviour {
 
     #region Singleton
-    protected static VillainController instance;
-    public static VillainController GetInstance() {
-        return instance;
-    }
+    public static VillainController Instance { get; private set; }
     #endregion
 
     #region Attributes
@@ -27,10 +24,13 @@ public class VillainController : MonoBehaviour {
     #endregion
 
     #region Unity Methods
+    // Awake is called when the script instance is being loaded
+    private void Awake() {
+        Instance = this;
+    }
     // Start is called before the first frame update
     void Start() {
-        instance = this;
-        Opponent = BattleArenaManager.GetInstance().Hero;
+        Opponent = BattleArenaManager.Instance.Hero;
         SpawnPosition = transform.position;
         Animator = GetComponent<Animator>();
         Rigidbody = GetComponent<Rigidbody>();

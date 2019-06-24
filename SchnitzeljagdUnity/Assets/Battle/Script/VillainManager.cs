@@ -6,10 +6,7 @@ using UnityEngine;
 public class VillainManager : MonoBehaviour {
 
     #region Singleton
-    protected static VillainManager instance;
-    public static VillainManager GetInstance() {
-        return instance;
-    }
+    public static VillainManager Instance { get; private set; }
     #endregion
 
     #region Attributes
@@ -40,10 +37,13 @@ public class VillainManager : MonoBehaviour {
     #endregion
 
     #region Unity Methods
+    // Awake is called when the script instance is being loaded
+    private void Awake() {
+        Instance = this;
+    }
     // Start is called before the first frame update
     void Start() {
-        instance = this;
-        Opponent = BattleArenaManager.GetInstance().Hero;
+        Opponent = BattleArenaManager.Instance.Hero;
         OpponentManager = Opponent.GetComponent<VillainManager>();
         Animator = GetComponent<Animator>();
         AnimationClips = Animator.runtimeAnimatorController.animationClips;
@@ -59,7 +59,7 @@ public class VillainManager : MonoBehaviour {
 
     #region Methods
     protected virtual void UpdateStats() {
-        BattleUIManager.GetInstance().Villainhealth.sizeDelta = new Vector2(100 / Health * CurrentHealth * 10, 20);
+        BattleUIManager.Instance.Villainhealth.sizeDelta = new Vector2(100 / Health * CurrentHealth * 10, 20);
     }
 
     public void AttackCheck() {

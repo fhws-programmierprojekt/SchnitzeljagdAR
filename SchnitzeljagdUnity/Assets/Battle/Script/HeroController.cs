@@ -6,10 +6,7 @@ using UnityEngine;
 public class HeroController : VillainController {
 
     #region Singleton
-    protected static new HeroController instance;
-    public static new HeroController GetInstance() {
-        return instance;
-    }
+    public static new HeroController Instance { get; private set; }
     #endregion
 
     #region Attributes
@@ -17,10 +14,13 @@ public class HeroController : VillainController {
     #endregion
 
     #region Unity Methods
+    // Awake is called when the script instance is being loaded
+    private void Awake() {
+        Instance = this;
+    }
     // Start is called before the first frame update
     void Start() {
-        instance = this;
-        Opponent = BattleArenaManager.GetInstance().Villain;
+        Opponent = BattleArenaManager.Instance.Villain;
         SpawnPosition = transform.position;
         Animator = GetComponent<Animator>();
         Rigidbody = GetComponent<Rigidbody>();
@@ -39,7 +39,7 @@ public class HeroController : VillainController {
 
     #region Methods
     protected override void Movement() {
-        Vector3 directionVector = BattleUIManager.GetInstance().GetInputVector();
+        Vector3 directionVector = BattleUIManager.Instance.GetInputVector();
 
         if(directionVector.x != 0 || directionVector.z != 0 ) {
             AnimationMovementDirection(directionVector);
@@ -71,7 +71,7 @@ public class HeroController : VillainController {
     }
 
     public void Evade() {
-        Rigidbody.velocity = BattleUIManager.GetInstance().GetInputVector() * 24;
+        Rigidbody.velocity = BattleUIManager.Instance.GetInputVector() * 24;
 
         //transform.position += GetDirectonVector() * evadeDistance;
         //body.AddForce(GetDirectonVector() * evadeDistance, ForceMode.Impulse);
@@ -79,12 +79,12 @@ public class HeroController : VillainController {
 
     private void OnCollisionEnter(Collision collision) {
         if(collision.transform.gameObject.name == "DeathFloor") {
-            HeroManager.GetInstance().CurrentHealth = 0;
+            HeroManager.Instance.CurrentHealth = 0;
             //BattleUIManager.GetInstance().battleInfo.text = "V E R L O R E N";
-            StartCoroutine(BattleUIManager.GetInstance().SetCountdown());
-            HeroManager.GetInstance().CurrentHealth = HeroManager.GetInstance().Health;
+            StartCoroutine(BattleUIManager.Instance.SetCountdown());
+            HeroManager.Instance.CurrentHealth = HeroManager.Instance.Health;
             transform.position = SpawnPosition;
-            Opponent.transform.position = VillainController.instance.SpawnPosition;
+            Opponent.transform.position = VillainController.Instance.SpawnPosition;
         }
     }
     #endregion

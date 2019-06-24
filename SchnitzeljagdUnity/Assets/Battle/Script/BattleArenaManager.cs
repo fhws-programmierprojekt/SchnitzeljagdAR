@@ -5,10 +5,7 @@ using UnityEngine;
 public class BattleArenaManager : MonoBehaviour {
 
     #region Singleton
-    private static BattleArenaManager instance;
-    public static BattleArenaManager GetInstance() {
-        return instance;
-    }
+    public static BattleArenaManager Instance { get; private set; }
     #endregion
 
     #region Attributes
@@ -40,7 +37,7 @@ public class BattleArenaManager : MonoBehaviour {
     #region Unity Methods
     // Awake is called when the script instance is being loaded
     private void Awake() {
-        instance = this;
+        Instance = this;
     }
     // Start is called before the first frame update
     void Start() {
