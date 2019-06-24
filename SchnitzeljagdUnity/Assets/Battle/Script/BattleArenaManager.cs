@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BattleArenaManager : MonoBehaviour{
+public class BattleArenaManager : MonoBehaviour {
 
     #region Singleton
     private static BattleArenaManager instance;
@@ -38,11 +38,14 @@ public class BattleArenaManager : MonoBehaviour{
     #endregion
 
     #region Unity Methods
-    // Start is called before the first frame update
-    void Start() {
+    // Awake is called when the script instance is being loaded
+    private void Awake() {
         instance = this;
     }
+    // Start is called before the first frame update
+    void Start() {
 
+    }
     // Update is called once per frame
     void Update() {
         
