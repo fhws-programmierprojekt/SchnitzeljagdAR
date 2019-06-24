@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 [RequireComponent(typeof(VillainController))]
 public class VillainManager : MonoBehaviour {
@@ -10,15 +11,12 @@ public class VillainManager : MonoBehaviour {
     #endregion
 
     #region Attributes
-
-
-    public float attackRange;
-    [SerializeField] public float attackCooldown;
-    private float currentAttackCooldown;
-
+    [SerializeField] protected float attackRange;
     [SerializeField] protected float health;
     protected float currentHealth;
 
+    private float AttackCooldown { get; set; } = 5;
+    private float CurrentAttackCooldown { get; set; }
     public GameObject Opponent { get; set; }
     public VillainManager OpponentManager { get; set; }
     public Animator Animator { get; set; }
@@ -26,6 +24,10 @@ public class VillainManager : MonoBehaviour {
     #endregion
 
     #region Getter and Setter
+    public float AttackRange {
+        get { return attackRange; }
+        set { attackRange = value; }
+    }
     public float Health {
         get { return health; }
         set { health = (value < 10) ? 10 : value; }
@@ -54,6 +56,11 @@ public class VillainManager : MonoBehaviour {
     void Update() {
         UpdateStats();
         AttackCheck();
+        IsHealthDepleted();
+    }
+    private void OnDrawGizmos() {
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(transform.position, AttackRange);
     }
     #endregion
 
@@ -62,44 +69,53 @@ public class VillainManager : MonoBehaviour {
         BattleUIManager.Instance.Villainhealth.sizeDelta = new Vector2(100 / Health * CurrentHealth * 10, 20);
     }
 
-    public void AttackCheck() {
-        if(currentAttackCooldown > 0) {
-            currentAttackCooldown -= Time.deltaTime;
-        } else if(Vector3.Distance(transform.position, Opponent.transform.position) < attackRange/2) {
-            AttackSpin(10);
-        } else {
-            AttackDash();
+    public virtual void AttackCheck() {
+        if(CurrentAttackCooldown > 0) {
+            CurrentAttackCooldown -= Time.deltaTime;
+        } else if(Vector3.Distance(transform.position, Opponent.transform.position) < AttackRange) {
+            CurrentAttackCooldown = AttackCooldown;
+            StartCoroutine(AttackSpin("AttackSpin", 20));
+        } else if(Random.Range(0, 1000) <= 8){
+            CurrentAttackCooldown = AttackCooldown;
+            StartCoroutine(AttackThrust("AttackThrust"));
         }
     }
-    public void AttackDash() {
-        currentAttackCooldown = attackCooldown;
-        GetComponent<Rigidbody>().velocity = GetComponent<Rigidbody>().transform.forward * 24;
-    }
-    public void AttackSpin(int damage) {
-        currentAttackCooldown = attackCooldown;
-        StartCoroutine(AttackAnimation("AttackSpin", damage));
-    }
+    protected IEnumerator AttackSpin(string attackName, float damage) {
+        SpriteRenderer attackSprite = GameObject.Find("AttackSpin").GetComponent<SpriteRenderer>();
+        attackSprite.enabled = true;
 
-    IEnumerator AttackAnimation(string attackName, float damage) {
-
-        float attackTime = GetAnimationTime(attackName) - 0.40f;
-
-        string isAttackParameter = "is" + attackName;
-        Animator.SetBool(isAttackParameter, true);
-        GameObject.Find(attackName).GetComponent<SpriteRenderer>().enabled = true;
-
-        yield return new WaitForSeconds(attackTime / 2);
-        float distance = Vector3.Distance(transform.position, Opponent.transform.position);
-        if(distance < attackRange) {
+        VillainController.Instance.RotationSpeed = 0;
+        Animator.SetBool("is" + attackName, true);
+        float attackTime = GetAnimationTime(attackName) - 0.4f;
+        yield return new WaitForSeconds(attackTime * 0.6f);
+        if(Vector3.Distance(transform.position, Opponent.transform.position) < AttackRange) {
             OpponentManager.CurrentHealth = OpponentManager.CurrentHealth - damage;
         }
+        attackSprite.enabled = false;
 
-        yield return new WaitForSeconds(attackTime / 2);
-        Animator.SetBool(isAttackParameter, false);
-        GameObject.Find(attackName).GetComponent<SpriteRenderer>().enabled = false;
+        yield return new WaitForSeconds(attackTime * 0.4f);
+        Animator.SetBool("is" + attackName, false);
+        VillainController.Instance.RotationSpeed = 100;
+    }
+    protected IEnumerator AttackThrust(string attackName) {
+        SpriteRenderer attackSprite = GameObject.Find("AttackThrust").GetComponent<SpriteRenderer>();
+        BoxCollider attackCollider = GameObject.Find("AttackThrust").GetComponent<BoxCollider>();
+        attackSprite.enabled = true;
+
+        VillainController.Instance.RotationSpeed = 0;
+        Animator.SetBool("is" + attackName, true);
+        float attackTime = GetAnimationTime(attackName) - 0.4f;
+        yield return new WaitForSeconds(attackTime * 0.4f);
+        attackCollider.enabled = true;
+        yield return new WaitForSeconds(attackTime * 0.6f);
+
+        attackCollider.enabled = false;
+        attackSprite.enabled = false;
+        Animator.SetBool("is" + attackName, false);
+        VillainController.Instance.RotationSpeed = 100;
     }
 
-    private float GetAnimationTime(string animationName) {
+    protected float GetAnimationTime(string animationName) {
         float animationTime = -1;
         foreach(AnimationClip clip in AnimationClips) {
             if(clip.name == animationName) {
@@ -112,12 +128,30 @@ public class VillainManager : MonoBehaviour {
         }
         return animationTime;
     }
-
-
-
-    private void OnDrawGizmos() {
-        Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(transform.position, attackRange);
+    protected void IsHealthDepleted() {
+        if(CurrentHealth == 0) {
+            Death();
+        }
+    }
+    protected virtual void Death() {
+        if(CurrentHealth == 0) {
+            VillainController.Instance.MovementSpeed = 0;
+            VillainController.Instance.RotationSpeed = 0;
+            Animator.SetBool("isDying", true);
+            AddPoints();
+            StartCoroutine(BattleUIManager.Instance.DisplayBattleInfo("G E W O N N E N", 4));
+            SceneManager.LoadScene(QuestHubController.questHubController.currentQuest);
+        }
+    }
+    private void AddPoints() {
+        int points = 300;
+        int penalty = HeroManager.Instance.Deaths * 25;
+        points = (points - penalty >= 100) ? points - penalty : 100;
+        if(QuestHubController.questHubController != null) {
+            QuestHubController.questHubController.addPoints(points);
+        }
+        PointsGainController pointController = GameObject.Find("PointController").GetComponent<PointsGainController>();
+        pointController.playPointAnimation(points);
     }
     #endregion
 }

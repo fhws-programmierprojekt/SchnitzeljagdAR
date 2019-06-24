@@ -22,7 +22,10 @@ public class VillainController : MonoBehaviour {
     #region Getter and Setter
 
     #endregion
-
+    public float MovementSpeed {
+        get { return movementSpeed; }
+        set { movementSpeed = value; }
+    }
     #region Unity Methods
     // Awake is called when the script instance is being loaded
     private void Awake() {
@@ -46,17 +49,25 @@ public class VillainController : MonoBehaviour {
     #region Methods
     protected virtual void Movement() {
 
-        //Calculate the distance between this and opponent
+        // Calculate the distance between this and opponent
         float distance = Vector3.Distance(transform.position, Opponent.transform.position);
 
-        if(distance > 3 && !Animator.GetBool("isAttackSpin")) {
-            Animator.SetBool("isSwordWalking", true);
+        if(distance > 3 && !Animator.GetBool("isAttackSpin") && !Animator.GetBool("isAttackThrust")) {
+            MovementAnimation();
             Vector3 directionVector = MyGeometry.GetDirectionVector(transform.position, Opponent.transform.position);
             Vector3 movementVector = directionVector * Time.deltaTime * movementSpeed;
             Rigidbody.MovePosition(transform.position + movementVector);
         } else {
-            Animator.SetBool("isSwordWalking", false);
+            SetIsWalkingFalse();
         }
+    }
+    protected void MovementAnimation() {
+        SetIsWalkingFalse();
+        Animator.SetBool("isSwordWalking", true);
+
+    }
+    protected virtual void SetIsWalkingFalse() {
+        Animator.SetBool("isSwordWalking", false);
     }
     protected void Rotation() {
         Quaternion rotationQuaternion = MyGeometry.GetRotationQuaternion(gameObject, Opponent, RotationSpeed);
