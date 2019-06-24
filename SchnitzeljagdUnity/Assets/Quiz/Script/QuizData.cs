@@ -20,11 +20,21 @@ public class QuizData {
         set { stages = value; }
     }
 
-    //methods
+    
+    [System.Obsolete]
     public static QuizData ReadQuizData(string path) {
         QuizData quiz = new QuizData();
         try {
-            string quizDataAsJson = File.ReadAllText(path);
+            string quizDataAsJson = string.Empty;
+            if(Application.platform == RuntimePlatform.WindowsEditor) {
+                quizDataAsJson = File.ReadAllText(path);
+            }
+            if(Application.platform == RuntimePlatform.Android) {
+                WWW reader = new WWW(path);
+                while(!reader.isDone) { }
+
+                quizDataAsJson = reader.text;
+            }
             quiz = JsonUtility.FromJson<QuizData>(quizDataAsJson);
             if(QuizDataChecker(quiz)) {
                 Debug.Log("QuizData is Correct");
