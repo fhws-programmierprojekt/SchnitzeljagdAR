@@ -7,10 +7,7 @@ using TMPro;
 public class BattleUIManager : MonoBehaviour {
 
     #region Singleton
-    protected static BattleUIManager instance;
-    public static BattleUIManager GetInstance() {
-        return instance;
-    }
+    public static BattleUIManager Instance { get; private set; }
     #endregion
 
     #region Attributs
@@ -57,9 +54,12 @@ public class BattleUIManager : MonoBehaviour {
     #endregion
 
     #region Unity Methods
+    // Awake is called when the script instance is being loaded
+    private void Awake() {
+        Instance = this;
+    }
     // Start is called before the first frame update
     void Start() {
-        instance = this;
         Physics.gravity = new Vector3(0, -98.1f, 0);
         StartCoroutine(SetCountdown());
     }
@@ -87,7 +87,7 @@ public class BattleUIManager : MonoBehaviour {
     }
     protected void UpdateButton() {
         Vector3 inputVector = GetInputVector();
-        Vector3 forwardVector = BattleArenaManager.GetInstance().Hero.transform.forward;
+        Vector3 forwardVector = BattleArenaManager.Instance.Hero.transform.forward;
 
         bool isForward = MyGeometry.IsWithinAngle(forwardVector, inputVector, -45, 45);
         if(isForward) {

@@ -6,10 +6,7 @@ using UnityEngine;
 public class HeroManager : VillainManager {
 
     #region Singleton
-    protected static new HeroManager instance;
-    public static new HeroManager GetInstance() {
-        return instance;
-    }
+    public static new HeroManager Instance { get; private set; }
     #endregion
 
     #region Attributes
@@ -29,10 +26,13 @@ public class HeroManager : VillainManager {
     #endregion
 
     #region Unity Methods
+    // Awake is called when the script instance is being loaded
+    private void Awake() {
+        Instance = this;
+    }
     // Start is called before the first frame update
     void Start() {
-        instance = this;
-        Opponent = BattleArenaManager.GetInstance().Villain;
+        Opponent = BattleArenaManager.Instance.Villain;
         OpponentManager = Opponent.GetComponent<VillainManager>();
         Animator = GetComponent<Animator>();
         AnimationClips = Animator.runtimeAnimatorController.animationClips;
@@ -48,8 +48,8 @@ public class HeroManager : VillainManager {
 
     #region Methods
     protected override void UpdateStats() {
-        BattleUIManager.GetInstance().HeroHealth.sizeDelta = new Vector2(100 / health * CurrentHealth * 10, 20);
-        BattleUIManager.GetInstance().HeroStamina.sizeDelta = new Vector2(100 / stamina * CurrentStamina * 10, 20);
+        BattleUIManager.Instance.HeroHealth.sizeDelta = new Vector2(100 / health * CurrentHealth * 10, 20);
+        BattleUIManager.Instance.HeroStamina.sizeDelta = new Vector2(100 / stamina * CurrentStamina * 10, 20);
     }
     #endregion
 }
