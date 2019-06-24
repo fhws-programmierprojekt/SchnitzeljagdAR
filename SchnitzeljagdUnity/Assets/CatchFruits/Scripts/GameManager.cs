@@ -12,8 +12,6 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        //Sets the player screen to landscapemode
-        Screen.orientation = ScreenOrientation.LandscapeLeft;
 
         DialogSystem.dialogSystem.startDialog(1);
         scoreFunction = scoreObject.GetComponent<ScoreFunction>();
