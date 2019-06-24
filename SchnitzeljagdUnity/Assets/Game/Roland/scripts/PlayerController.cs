@@ -97,7 +97,7 @@ public class PlayerController : MonoBehaviour
             float y = joystick.Vertical;
 
             Vector3 movement = new Vector3(x, 0, y);
-            rBody.velocity = movement * 4f;
+            rBody.velocity = movement * moveSpeed;
             if(x != 0 && y != 0)
             {
                 transform.eulerAngles = new Vector3(transform.eulerAngles.x, Mathf.Atan2(x, y) * Mathf.Rad2Deg, transform.eulerAngles.z);
