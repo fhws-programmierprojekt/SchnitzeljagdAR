@@ -21,6 +21,8 @@ public class VillainManager : MonoBehaviour {
     public VillainManager OpponentManager { get; set; }
     public Animator Animator { get; set; }
     public AnimationClip[] AnimationClips { get; set; }
+    public SpriteRenderer AttackSpinSprite { get; set; }
+    public SpriteRenderer AttackThrustSprite { get; set; }
     #endregion
 
     #region Getter and Setter
@@ -49,7 +51,10 @@ public class VillainManager : MonoBehaviour {
         OpponentManager = Opponent.GetComponent<VillainManager>();
         Animator = GetComponent<Animator>();
         AnimationClips = Animator.runtimeAnimatorController.animationClips;
-        currentHealth = health;
+        AttackSpinSprite = GameObject.Find("AttackSpin").GetComponent<SpriteRenderer>();
+        AttackThrustSprite = GameObject.Find("AttackThrust").GetComponent<SpriteRenderer>();
+
+        CurrentHealth = Health;
     }
 
     // Update is called once per frame
@@ -74,8 +79,8 @@ public class VillainManager : MonoBehaviour {
             CurrentAttackCooldown -= Time.deltaTime;
         } else if(Vector3.Distance(transform.position, Opponent.transform.position) < AttackRange) {
             CurrentAttackCooldown = AttackCooldown;
-            StartCoroutine(AttackSpin("AttackSpin", 20));
-        } else if(Random.Range(0, 1000) <= 8){
+            StartCoroutine(AttackSpin("AttackSpin", 16));
+        } else if(Random.Range(0, 1000) <= 4) {
             CurrentAttackCooldown = AttackCooldown;
             StartCoroutine(AttackThrust("AttackThrust"));
         }

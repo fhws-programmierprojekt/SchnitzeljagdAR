@@ -55,7 +55,7 @@ public class BattleUIManager : MonoBehaviour {
     }
     // Start is called before the first frame update
     void Start() {
-        Physics.gravity = new Vector3(0, -98.1f, 0);
+        Physics.gravity = new Vector3(0, -9.81f, 0);
         StartCoroutine(DisplayCountdown());
     }
 
@@ -74,7 +74,14 @@ public class BattleUIManager : MonoBehaviour {
         //horizontal = Input.GetAxis("Horizontal");
         //vertical = Input.GetAxis("Vertical");
 
-        return new Vector3(horizontal, 0, vertical).normalized;
+        Vector3 inputVector = new Vector3(horizontal, 0, vertical);
+
+        Vector3 cameraForward = Camera.main.transform.forward;
+        cameraForward.y = 0f;
+        Quaternion cameraQuaternion = Quaternion.LookRotation(cameraForward);
+        inputVector = cameraQuaternion * inputVector;
+
+        return inputVector.normalized;
     }
     public bool IsInput() {
         Vector3 inputVector = GetInputVector();
