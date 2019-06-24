@@ -837,10 +837,10 @@ PlayerSettings:
   facebookXfbml: 0
   facebookFrictionlessRequests: 1
   apiCompatibilityLevel: 6
-  cloudProjectId: 5a96482d-0fc1-49ae-a3c5-c1baefaf667c
+  cloudProjectId: 1575dc2a-83a4-43d3-bab5-3514dd421083
   framebufferDepthMemorylessMode: 0
   projectName: SchnitzeljagdAR
-  organizationId: unity_zpsadtpqlo8zhw
+  organizationId: hakosch
   cloudEnabled: 0
   enableNativePlatformBackendsForNewInputSystem: 0
   disableOldInputManagerSupport: 0

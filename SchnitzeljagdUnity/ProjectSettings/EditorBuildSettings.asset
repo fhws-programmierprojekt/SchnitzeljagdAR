@@ -60,8 +60,8 @@ EditorBuildSettings:
     path: Assets/Scenes/PuzzelGame.unity
     guid: 17929ac862245414599adcdb4c0547ff
   - enabled: 1
-    path: Assets/Scenes/LastFight.unity
-    guid: f490c757a0dfbe04d82bf2cad08a4783
+    path: Assets/Scenes/Battle.unity
+    guid: 6d4fe86131d91ff44a18508f9ea4e07e
   - enabled: 1
     path: Assets/Scenes/Quiz.unity
     guid: ed074913bbc3d834983c827d07fde183

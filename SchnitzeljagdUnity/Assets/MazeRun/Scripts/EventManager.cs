@@ -20,9 +20,7 @@ public class EventManager : MonoBehaviour
 
     void Start()
     {
-        //Sets the player screen to landscapemode
-        Screen.orientation = ScreenOrientation.LandscapeLeft;
-       
+
         //Only allowes joystick in thirdperson.
         joystick.enabled = false;
         joystickImage[0] = joystick.GetComponent<Image>();
