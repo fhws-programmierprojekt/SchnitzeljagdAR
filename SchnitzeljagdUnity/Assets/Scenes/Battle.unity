@@ -4636,11 +4636,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dcf3b444af7276c4b9f0acf166d1d076, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  healthBar: {fileID: 1994100501}
-  health: 100
   attackRange: 4
   attackCooldown: 4
-  staminaBar: {fileID: 240538759}
+  health: 100
   stamina: 100
 --- !u!1 &5986978725263136060
 GameObject:
@@ -6674,7 +6672,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6903476411564962010}
   serializedVersion: 2
-  m_Mass: 4
+  m_Mass: 1000
   m_Drag: 0
   m_AngularDrag: 0.05
   m_UseGravity: 1
@@ -6707,10 +6705,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 025e8b44c294f46409fa5ec871149865, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  healthBar: {fileID: 1168621198}
-  health: 100
   attackRange: 5.5
   attackCooldown: 3
+  health: 100
 --- !u!1 &6977161436038446221
 GameObject:
   m_ObjectHideFlags: 0
