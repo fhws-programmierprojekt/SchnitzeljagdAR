@@ -7,7 +7,7 @@ public class GameManager : MonoBehaviour
     bool trigger = false;           //Used for trigger the end sequenz once
     int score;                      
     public GameObject scoreObject;
-    public ScoreFunction scoreFunction;
+    ScoreFunction scoreFunction;
 
     // Start is called before the first frame update
     void Start()

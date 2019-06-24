@@ -13,9 +13,8 @@ public class QuestController : MonoBehaviour
     void Start()
     {
         //Only Portrait modus.
-        if(SceneManager.GetActiveScene().buildIndex != 14 || SceneManager.GetActiveScene().buildIndex != 15)
-        Screen.orientation = ScreenOrientation.Portrait;
-
+        
+        
         int currentScene = SceneManager.GetActiveScene().buildIndex;
         int questID = QuestHubController.questHubController.currentQuest;
         int questListLenght = QuestHubController.questHubController.questList.Count;

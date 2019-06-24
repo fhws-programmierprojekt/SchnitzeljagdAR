@@ -5,11 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class MainMenuBehaviour : MonoBehaviour
 {
-    private void Start()
-    {
-        //Only Portrait modus.
-        Screen.orientation = ScreenOrientation.Portrait;
-    }
+    
 
     public void PlayGame()
     {
