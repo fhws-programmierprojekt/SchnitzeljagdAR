@@ -12,6 +12,9 @@ public class QuestHubController : MonoBehaviour
 
     void Awake()
     {
+        //Only Portrait modus.
+        Screen.orientation = ScreenOrientation.Portrait;
+
         //Checks for wrong clones
         if (questHubController == null)
         {

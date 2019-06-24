@@ -51,7 +51,7 @@ EditorBuildSettings:
     path: Assets/Scenes/MazeRun.unity
     guid: f18321696ae8b5849ae75143272f680d
   - enabled: 1
-    path: Assets/Scenes/EssensGamePlaceHolder.unity
+    path: Assets/Scenes/CatchFood.unity
     guid: e9326ebcee2f7c14fb84a99f093e6f0a
   - enabled: 1
     path: Assets/Scenes/TraningGamePlaceholder.unity

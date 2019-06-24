@@ -92,7 +92,7 @@ GameObject:
   - component: {fileID: 9083403941798610344}
   m_Layer: 0
   m_Name: Wine
-  m_TagString: Food
+  m_TagString: Wine
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -165,9 +165,9 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9083403941798610345}
   serializedVersion: 2
-  m_Mass: 6
-  m_Drag: 5
-  m_AngularDrag: 5
+  m_Mass: 0.0000001
+  m_Drag: 0
+  m_AngularDrag: 0
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0

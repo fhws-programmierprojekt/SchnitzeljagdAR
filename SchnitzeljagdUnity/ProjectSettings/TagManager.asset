@@ -6,6 +6,11 @@ TagManager:
   tags:
   - Food
   - Poisen
+  - Bread
+  - Fish
+  - Chees
+  - Wine
+  - Ham
   layers:
   - Default
   - TransparentFX

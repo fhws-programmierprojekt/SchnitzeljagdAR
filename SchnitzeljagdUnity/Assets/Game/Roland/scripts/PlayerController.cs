@@ -92,7 +92,7 @@ public class PlayerController : MonoBehaviour
         //Movement Functions for the chatfruit game, it is third person view.
         if (SceneManager.GetActiveScene().buildIndex == 15)
         {
-
+            anim.SetBool("isBreathingIdelBasket", true);
             float x = joystick.Horizontal;
             float y = joystick.Vertical;
 
@@ -104,12 +104,12 @@ public class PlayerController : MonoBehaviour
             }
             if( x != 0 || y != 0)
             {
-                anim.SetBool("isWalking", true);
+                anim.SetBool("isWalkingBasket", true);
             }
             else
             {
                 transform.eulerAngles = new Vector3(0, 0, 0);
-                anim.SetBool("isWalking", false);
+                anim.SetBool("isWalkingBasket", false);
             }
         }
     }

@@ -39,6 +39,6 @@ public class FoodSpawnScript : MonoBehaviour
 
         Instantiate(food[Random.Range(0, food.Length)], temp, Quaternion.identity);
 
-        StartCoroutine(SpwanFood(5F));
+        StartCoroutine(SpwanFood(3F));
     }
 }
