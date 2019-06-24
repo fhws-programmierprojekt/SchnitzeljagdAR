@@ -14,7 +14,7 @@ public class VillainManager : MonoBehaviour {
     [SerializeField] protected float health;
     protected float currentHealth;
 
-    private float AttackCooldown { get; set; } = 3;
+    private float AttackCooldown { get; set; } = 6;
     private float CurrentAttackCooldown { get; set; }
     public GameObject Opponent { get; set; }
     public VillainManager OpponentManager { get; set; }
@@ -67,44 +67,53 @@ public class VillainManager : MonoBehaviour {
         BattleUIManager.Instance.Villainhealth.sizeDelta = new Vector2(100 / Health * CurrentHealth * 10, 20);
     }
 
-    public void AttackCheck() {
+    public virtual void AttackCheck() {
         if(CurrentAttackCooldown > 0) {
             CurrentAttackCooldown -= Time.deltaTime;
-        } else if(Vector3.Distance(transform.position, Opponent.transform.position) < AttackRange/2) {
-            AttackSpin(10);
-        } else {
-            AttackDash();
+        } else if(Vector3.Distance(transform.position, Opponent.transform.position) < AttackRange) {
+            CurrentAttackCooldown = AttackCooldown;
+            StartCoroutine(AttackSpin("AttackSpin", 20));
+        } else if(Random.Range(0, 1000) <= 4){
+            CurrentAttackCooldown = AttackCooldown;
+            StartCoroutine(AttackThrust("AttackThrust"));
         }
     }
-    public void AttackDash() {
-        CurrentAttackCooldown = AttackCooldown;
-        GetComponent<Rigidbody>().velocity = GetComponent<Rigidbody>().transform.forward * 24;
-    }
-    public void AttackSpin(int damage) {
-        CurrentAttackCooldown = AttackCooldown;
-        StartCoroutine(AttackAnimation("AttackSpin", damage));
-    }
+    protected IEnumerator AttackSpin(string attackName, float damage) {
+        SpriteRenderer attackSprite = GameObject.Find("AttackSpin").GetComponent<SpriteRenderer>();
+        attackSprite.enabled = true;
 
-    IEnumerator AttackAnimation(string attackName, float damage) {
-
+        VillainController.Instance.RotationSpeed = 0;
+        Animator.SetBool("is" + attackName, true);
         float attackTime = GetAnimationTime(attackName) - 0.40f;
-
-        string isAttackParameter = "is" + attackName;
-        Animator.SetBool(isAttackParameter, true);
-        GameObject.Find(attackName).GetComponent<SpriteRenderer>().enabled = true;
-
-        yield return new WaitForSeconds(attackTime / 2);
-        float distance = Vector3.Distance(transform.position, Opponent.transform.position);
-        if(distance < AttackRange) {
+        yield return new WaitForSeconds(attackTime * 0.6f);
+        if(Vector3.Distance(transform.position, Opponent.transform.position) < AttackRange) {
             OpponentManager.CurrentHealth = OpponentManager.CurrentHealth - damage;
         }
+        attackSprite.enabled = false;
 
-        yield return new WaitForSeconds(attackTime / 2);
-        Animator.SetBool(isAttackParameter, false);
-        GameObject.Find(attackName).GetComponent<SpriteRenderer>().enabled = false;
+        yield return new WaitForSeconds(attackTime * 0.4f);
+        Animator.SetBool("is" + attackName, false);
+        VillainController.Instance.RotationSpeed = 100;
+    }
+    protected IEnumerator AttackThrust(string attackName) {
+        SpriteRenderer attackSprite = GameObject.Find("AttackThrust").GetComponent<SpriteRenderer>();
+        BoxCollider attackCollider = GameObject.Find("AttackThrust").GetComponent<BoxCollider>();
+        attackSprite.enabled = true;
+
+        VillainController.Instance.RotationSpeed = 0;
+        Animator.SetBool("is" + attackName, true);
+        float attackTime = GetAnimationTime(attackName) - 0.40f;
+        yield return new WaitForSeconds(attackTime * 0.4f);
+        attackCollider.enabled = true;
+        yield return new WaitForSeconds(attackTime * 0.6f);
+
+        attackCollider.enabled = false;
+        attackSprite.enabled = false;
+        Animator.SetBool("is" + attackName, false);
+        VillainController.Instance.RotationSpeed = 100;
     }
 
-    private float GetAnimationTime(string animationName) {
+    protected float GetAnimationTime(string animationName) {
         float animationTime = -1;
         foreach(AnimationClip clip in AnimationClips) {
             if(clip.name == animationName) {
@@ -117,9 +126,5 @@ public class VillainManager : MonoBehaviour {
         }
         return animationTime;
     }
-
-
-
-
     #endregion
 }

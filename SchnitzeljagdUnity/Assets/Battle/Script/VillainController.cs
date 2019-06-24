@@ -11,9 +11,7 @@ public class VillainController : MonoBehaviour {
 
     #region Attributes
     public float movementSpeed;
-    public bool CanMove { get; set; } = false;
     public float RotationSpeed { get; set; } = 100;
-    public bool CanRotate { get; set; } = false;
 
     public GameObject Opponent { get; set; }
     public Vector3 SpawnPosition { get; set; }
@@ -51,7 +49,7 @@ public class VillainController : MonoBehaviour {
         // Calculate the distance between this and opponent
         float distance = Vector3.Distance(transform.position, Opponent.transform.position);
 
-        if(distance > 3 && !Animator.GetBool("isAttackSpin")) {
+        if(distance > 3 && !Animator.GetBool("isAttackSpin") && !Animator.GetBool("isAttackThrust")) {
             MovementAnimation();
             Vector3 directionVector = MyGeometry.GetDirectionVector(transform.position, Opponent.transform.position);
             Vector3 movementVector = directionVector * Time.deltaTime * movementSpeed;

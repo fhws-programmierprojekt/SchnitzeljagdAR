@@ -58,6 +58,11 @@ public class HeroManager : VillainManager {
             Opponent.transform.position = VillainController.Instance.SpawnPosition;
         }
     }
+    private void OnTriggerEnter(Collider other) {
+        if(other.transform.gameObject.name == "AttackThrust") {
+            CurrentHealth -= 20;
+        }
+    }
     #endregion
 
     #region Methods
@@ -65,8 +70,34 @@ public class HeroManager : VillainManager {
         BattleUIManager.Instance.HeroHealth.sizeDelta = new Vector2(100 / health * CurrentHealth * 10, 20);
         BattleUIManager.Instance.HeroStamina.sizeDelta = new Vector2(100 / stamina * CurrentStamina * 10, 20);
     }
-    protected void ReplenishStamina() {
+    public void ReplenishStamina() {
         CurrentStamina += 4;
     }
+    public override void AttackCheck() {
+        float staminaCost = 20;
+        float distance = Vector3.Distance(transform.position, Opponent.transform.position);
+        if(CurrentStamina > staminaCost && distance < AttackRange) {
+            StartCoroutine(Attack("AttackMeele", 20));
+        } else if(CurrentStamina > staminaCost && distance + 2 < AttackRange) {
+            Vector3 directionVector = BattleUIManager.Instance.GetInputVector();
+            Rigidbody.velocity = directionVector * 16;
+        }
+    }
+
+    protected IEnumerator Attack(string attackName, float damage) {
+
+        Animator.SetBool("is" + attackName, true);
+        float attackTime = GetAnimationTime(attackName) - 0.40f;
+        yield return new WaitForSeconds(attackTime * 0.4f);
+        if(Vector3.Distance(transform.position, Opponent.transform.position) < AttackRange) {
+            OpponentManager.CurrentHealth = OpponentManager.CurrentHealth - damage;
+        }
+        yield return new WaitForSeconds(attackTime * 0.6f);
+
+
+        Animator.SetBool("is" + attackName, false);
+    }
+
+
     #endregion
 }

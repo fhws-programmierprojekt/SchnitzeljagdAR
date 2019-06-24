@@ -43,7 +43,7 @@ public class HeroController : VillainController {
         // Get DirectionVector from Joystick Input
         Vector3 directionVector = BattleUIManager.Instance.GetInputVector();
 
-        if(BattleUIManager.Instance.isInput()) {
+        if(BattleUIManager.Instance.IsInput()) {
             MovementAnimation(directionVector);
             Vector3 movementVector = directionVector * Time.deltaTime * movementSpeed;
             Rigidbody.MovePosition(transform.position + movementVector);
@@ -72,15 +72,13 @@ public class HeroController : VillainController {
     }
 
     public void Evade() {
-        float staminaCost = 10;
+        float staminaCost = 16;
         if(HeroManager.Instance.CurrentStamina > staminaCost) {
             HeroManager.Instance.CurrentStamina -= staminaCost;
             Vector3 directionVector = BattleUIManager.Instance.GetInputVector();
-            Rigidbody.velocity = directionVector * 24;
+            Rigidbody.velocity = directionVector * 16;
             Animator.Play("Roll");
         }
-        //transform.position += GetDirectonVector() * evadeDistance;
-        //body.AddForce(GetDirectonVector() * evadeDistance, ForceMode.Impulse);
     }
     #endregion
 }

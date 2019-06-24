@@ -12,9 +12,7 @@ public class BattleUIManager : MonoBehaviour {
 
     #region Attributs
     [SerializeField] protected Joystick joystick;
-    [SerializeField] protected Button button;
-    [SerializeField] protected Image buttonImage;
-    [SerializeField] protected Sprite[] buttonImageSprites;
+    [SerializeField] protected Button[] buttons;
     [SerializeField] protected TextMeshProUGUI battleInfo;
     [SerializeField] protected RectTransform heroHealth;
     [SerializeField] protected RectTransform heroStamina;
@@ -28,17 +26,9 @@ public class BattleUIManager : MonoBehaviour {
         get { return joystick; }
         set { joystick = value; }
     }
-    public Button Button {
-        get { return button; }
-        set { button = value; }
-    }
-    public Image ButtonImage {
-        get { return buttonImage; }
-        set { buttonImage = value; }
-    }
-    public Sprite[] ButtonImageSprites {
-        get { return buttonImageSprites; }
-        set { buttonImageSprites = value; }
+    public Button[] Button {
+        get { return buttons; }
+        set { buttons = value; }
     }
     public TextMeshProUGUI BattleInfo {
         get { return battleInfo; }
@@ -71,35 +61,24 @@ public class BattleUIManager : MonoBehaviour {
 
     // Update is called once per frame
     void Update() {
-        UpdateButton();
+
     }
     #endregion
 
     #region Methods
     public Vector3 GetInputVector() {
         //Take Input from Joystick
-        float horizontal = joystick.Horizontal;
-        float vertical = joystick.Vertical;
+        float horizontal = Joystick.Horizontal;
+        float vertical = Joystick.Vertical;
 
         //horizontal = Input.GetAxis("Horizontal");
         //vertical = Input.GetAxis("Vertical");
 
         return new Vector3(horizontal, 0, vertical).normalized;
     }
-    public bool isInput() {
+    public bool IsInput() {
         Vector3 inputVector = GetInputVector();
         return (inputVector.x != 0 || inputVector.z != 0) ? true : false;
-    }
-    protected void UpdateButton() {
-        Vector3 inputVector = GetInputVector();
-        Vector3 forwardVector = BattleArenaManager.Instance.Hero.transform.forward;
-
-        bool isForward = MyGeometry.IsWithinAngle(forwardVector, inputVector, -45, 45);
-        if(isForward) {
-            ButtonImage.sprite = ButtonImageSprites[0];
-        } else {
-            ButtonImage.sprite = ButtonImageSprites[1];
-        }
     }
     public IEnumerator FreezeGame(float freezeTime) {
         Time.timeScale = 0;
@@ -109,7 +88,7 @@ public class BattleUIManager : MonoBehaviour {
         }
         Time.timeScale = 1;
     }
-    private IEnumerator DisplayCountdown() {
+    public IEnumerator DisplayCountdown() {
         StartCoroutine(FreezeGame(Countdown));
         for(float countdownInfo = Countdown; countdownInfo > 0 ; countdownInfo--) {
             battleInfo.text = countdownInfo.ToString();
