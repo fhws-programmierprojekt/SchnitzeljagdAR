@@ -16,16 +16,19 @@ public class FoodSpawnScript : MonoBehaviour
         Physics.gravity = new Vector3(0, -1.0F, 0);
 
         spawner = GetComponent<BoxCollider>();
-
+        
+        //Gets the coordinants of the spawning place
         x1 = transform.position.x - spawner.bounds.size.x / 2f;
         x2 = transform.position.x + spawner.bounds.size.x / 2f;
         z1 = transform.position.z - spawner.bounds.size.z / 2f;
         z2 = transform.position.z + spawner.bounds.size.z / 2f;
     }
-    void Start()
+
+    public void StartFoodSpwaning()
     {
-        StartCoroutine(SpwanFood(1f));
+        StartCoroutine(SpwanFood(3f));
     }
+
     IEnumerator SpwanFood(float time)
     {
         yield return new WaitForSecondsRealtime(time);
