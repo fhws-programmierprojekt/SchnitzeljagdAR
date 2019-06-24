@@ -24,11 +24,11 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         //Functios to check for componets 
-        if (GetComponent<CharacterController>())
+        if (GetComponent<CharacterController>() && SceneManager.GetActiveScene().buildIndex == 14) //CharacterController Component only needed in the mazeRun Scene
         {
             controller = GetComponent<CharacterController>();
         }
-        else
+        else if(SceneManager.GetActiveScene().buildIndex == 14)
         {
             Debug.LogError("The character needs a charactercontroller");
         }
@@ -55,7 +55,7 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
 
-        //Movement Functions only for the mazerun minigame
+        //Movement Functions for the mazerun minigame, it is first person view.
         if (SceneManager.GetActiveScene().buildIndex == 14 )
         {
             float moveAxis = 0f;
@@ -89,33 +89,11 @@ public class PlayerController : MonoBehaviour
                 controller.Move(moveDir * Time.deltaTime);
             }
         }
+        //Movement Functions for the chatfruit game, it is third person view.
         if (SceneManager.GetActiveScene().buildIndex == 15)
         {
-            float y = joystick.Vertical * 0.4f;
-            float x = joystick.Horizontal * 0.4f;
 
-            if (controller.isGrounded)
-            {
-                if (x != 0 && y != 0)
-                {
-                    anim.SetBool("isWalking", true);
-                    moveDir = new Vector3(x, 0, y);
-                    moveDir *= moveSpeed;
-                    moveDir = transform.TransformDirection(moveDir);
-                }
-                if (x == 0 || y == 0)
-                {
-                    anim.SetBool("isWalking", false);
-                    moveDir = new Vector3(0, 0, 0);
-                }
-            }
-
-            if (x != 0 || y != 0)
-            {
-                moveDir.y -= gravity * Time.deltaTime;
-                controller.Move(moveDir * Time.deltaTime);
-            }
-           /* float x = joystick.Horizontal;
+            float x = joystick.Horizontal;
             float y = joystick.Vertical;
 
             Vector3 movement = new Vector3(x, 0, y);
@@ -130,8 +108,9 @@ public class PlayerController : MonoBehaviour
             }
             else
             {
+                transform.eulerAngles = new Vector3(0, 0, 0);
                 anim.SetBool("isWalking", false);
-            }*/
+            }
         }
     }
     
