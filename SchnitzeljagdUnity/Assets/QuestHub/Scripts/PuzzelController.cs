@@ -28,6 +28,8 @@ public class PuzzelController : MonoBehaviour
             DialogSystem.dialogSystem.startDialog(1);
         }
         finalTarget.SetActive(false);
+        //Opens help
+        DialogSystem.dialogSystem.startDialog(3);
     }
 
     void Update()

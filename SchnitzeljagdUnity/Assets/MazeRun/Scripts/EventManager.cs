@@ -64,12 +64,6 @@ public class EventManager : MonoBehaviour
         DialogSystem.dialogSystem.endDialog(1);
     }
 
-    public void GameEnd()
-    { 
-        //loads the questhub
-        QuestHubController.questHubController.loadQuestHub();
-    }
-
     public void CamSwitch()
     {
         //Only allowes joystick in thirdperson.
@@ -97,7 +91,7 @@ public class EventManager : MonoBehaviour
         camSwitchButton.interactable = false;
         camSwitchButtonImage.enabled = false;
         TextMeshProUGUI camSwitchButtonText = camSwitchButton.GetComponentInChildren<TextMeshProUGUI>();
-        camSwitchButtonText.text = " ";
+        
 
     }
 

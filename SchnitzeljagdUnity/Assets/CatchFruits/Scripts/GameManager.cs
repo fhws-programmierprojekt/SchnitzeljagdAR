@@ -4,6 +4,11 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
+    bool trigger = false;           //Used for trigger the end sequenz once
+    int score;                      
+    public GameObject scoreObject;
+    public ScoreFunction scoreFunction;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -11,7 +16,18 @@ public class GameManager : MonoBehaviour
         Screen.orientation = ScreenOrientation.LandscapeLeft;
 
         DialogSystem.dialogSystem.startDialog(1);
+        scoreFunction = scoreObject.GetComponent<ScoreFunction>();
+
+    }
+    void Update()
+    {
+        score = scoreFunction.score;
+        if (score >= 250 && trigger == false)
+        {
+            trigger = true;
+            DialogSystem.dialogSystem.startDialog(2);
+        }
     }
 
-    
+
 }

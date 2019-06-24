@@ -693,7 +693,7 @@ PrefabInstance:
     - target: {fileID: 834532453886949581, guid: a08488aac13fdb3439fc50dd75ef8caf,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0.000061035156
+      value: 0.00012207031
       objectReference: {fileID: 0}
     - target: {fileID: 834532453886949581, guid: a08488aac13fdb3439fc50dd75ef8caf,
         type: 3}
@@ -1067,12 +1067,12 @@ MonoBehaviour:
   m_Script: {fileID: 1980459831, guid: f70555f144d8491a825f0804e09c671c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 800, y: 600}
+  m_ReferenceResolution: {x: 1920, y: 1080}
   m_ScreenMatchMode: 0
-  m_MatchWidthOrHeight: 0
+  m_MatchWidthOrHeight: 0.5
   m_PhysicalUnit: 3
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
@@ -1530,34 +1530,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!21 &1263502379
-Material:
-  serializedVersion: 6
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: 'RaederbogenVonRothenbrugMaterial
-
-    25638'
-  m_Shader: {fileID: 10752, guid: 0000000000000000f000000000000000, type: 0}
-  m_ShaderKeywords: 
-  m_LightmapFlags: 5
-  m_EnableInstancingVariants: 0
-  m_DoubleSidedGI: 0
-  m_CustomRenderQueue: -1
-  stringTagMap: {}
-  disabledShaderPasses: []
-  m_SavedProperties:
-    serializedVersion: 3
-    m_TexEnvs:
-    - _MainTex:
-        m_Texture: {fileID: 2800000, guid: 744066085da6430ab1aa058e6be4a835, type: 3}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    m_Floats: []
-    m_Colors:
-    - _Color: {r: 0.82089555, g: 0.82089555, b: 0.82089555, a: 1}
 --- !u!1 &1525406369
 GameObject:
   m_ObjectHideFlags: 0
@@ -1757,6 +1729,34 @@ Mesh:
     offset: 0
     size: 0
     path: 
+--- !u!21 &1611561756
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: 'RaederbogenVonRothenbrugMaterial
+
+    90682'
+  m_Shader: {fileID: 10752, guid: 0000000000000000f000000000000000, type: 0}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 5
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _MainTex:
+        m_Texture: {fileID: 2800000, guid: 744066085da6430ab1aa058e6be4a835, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats: []
+    m_Colors:
+    - _Color: {r: 0.82089555, g: 0.82089555, b: 0.82089555, a: 1}
 --- !u!1 &1800244299
 GameObject:
   m_ObjectHideFlags: 0
@@ -1828,12 +1828,12 @@ MonoBehaviour:
   m_Script: {fileID: 1980459831, guid: f70555f144d8491a825f0804e09c671c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 800, y: 600}
+  m_ReferenceResolution: {x: 1920, y: 1080}
   m_ScreenMatchMode: 0
-  m_MatchWidthOrHeight: 0
+  m_MatchWidthOrHeight: 0.5
   m_PhysicalUnit: 3
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
@@ -1905,7 +1905,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 1263502379}
+  - {fileID: 1611561756}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -2101,6 +2101,17 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 4922818683340795420, guid: 40245bf9a6aa1464b8a171bcddd5b070,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -143
+      objectReference: {fileID: 0}
+    - target: {fileID: 4922818683340795419, guid: 40245bf9a6aa1464b8a171bcddd5b070,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: fcdc88e6407faf549a39fa496a5bb80d,
+        type: 3}
     - target: {fileID: 4201841810063376041, guid: 40245bf9a6aa1464b8a171bcddd5b070,
         type: 3}
       propertyPath: m_textInfo.characterCount
@@ -2130,17 +2141,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_text
       value: "Suche das Bild \nim zweiten Obergeschoss"
-      objectReference: {fileID: 0}
-    - target: {fileID: 4922818683340795419, guid: 40245bf9a6aa1464b8a171bcddd5b070,
-        type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 21300000, guid: fcdc88e6407faf549a39fa496a5bb80d,
-        type: 3}
-    - target: {fileID: 4922818683340795420, guid: 40245bf9a6aa1464b8a171bcddd5b070,
-        type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: -143
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 40245bf9a6aa1464b8a171bcddd5b070, type: 3}
@@ -2283,6 +2283,52 @@ PrefabInstance:
       propertyPath: m_LocalScale.y
       value: 0.4999999
       objectReference: {fileID: 0}
+    - target: {fileID: 7777763906491744841, guid: e06f72de58c9bf7469dd54f0ace39f44,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 1482.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7777763906491744841, guid: e06f72de58c9bf7469dd54f0ace39f44,
+        type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 112.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3241904014418894851, guid: e06f72de58c9bf7469dd54f0ace39f44,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0.1300047
+      objectReference: {fileID: 0}
+    - target: {fileID: 3241904014418894851, guid: e06f72de58c9bf7469dd54f0ace39f44,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -1.5099983
+      objectReference: {fileID: 0}
+    - target: {fileID: 3241904014418894851, guid: e06f72de58c9bf7469dd54f0ace39f44,
+        type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 91.05
+      objectReference: {fileID: 0}
+    - target: {fileID: 3241904014418894851, guid: e06f72de58c9bf7469dd54f0ace39f44,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 187.12
+      objectReference: {fileID: 0}
+    - target: {fileID: 4391469796641344570, guid: e06f72de58c9bf7469dd54f0ace39f44,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -38.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4391469796641344570, guid: e06f72de58c9bf7469dd54f0ace39f44,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 81.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 6373258346786378814, guid: e06f72de58c9bf7469dd54f0ace39f44,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: cf1462bc694c3c249831ad8ac5293aa2,
+        type: 3}
     - target: {fileID: 588544590367216562, guid: e06f72de58c9bf7469dd54f0ace39f44,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
@@ -2332,52 +2378,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_Arguments.m_IntArgument
       value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 6373258346786378814, guid: e06f72de58c9bf7469dd54f0ace39f44,
-        type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 21300000, guid: cf1462bc694c3c249831ad8ac5293aa2,
-        type: 3}
-    - target: {fileID: 7777763906491744841, guid: e06f72de58c9bf7469dd54f0ace39f44,
-        type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 1482.2
-      objectReference: {fileID: 0}
-    - target: {fileID: 7777763906491744841, guid: e06f72de58c9bf7469dd54f0ace39f44,
-        type: 3}
-      propertyPath: m_SizeDelta.y
-      value: 112.3
-      objectReference: {fileID: 0}
-    - target: {fileID: 3241904014418894851, guid: e06f72de58c9bf7469dd54f0ace39f44,
-        type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 0.1300047
-      objectReference: {fileID: 0}
-    - target: {fileID: 3241904014418894851, guid: e06f72de58c9bf7469dd54f0ace39f44,
-        type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: -1.5099983
-      objectReference: {fileID: 0}
-    - target: {fileID: 3241904014418894851, guid: e06f72de58c9bf7469dd54f0ace39f44,
-        type: 3}
-      propertyPath: m_SizeDelta.y
-      value: 91.05
-      objectReference: {fileID: 0}
-    - target: {fileID: 3241904014418894851, guid: e06f72de58c9bf7469dd54f0ace39f44,
-        type: 3}
-      propertyPath: m_SizeDelta.x
-      value: 187.12
-      objectReference: {fileID: 0}
-    - target: {fileID: 4391469796641344570, guid: e06f72de58c9bf7469dd54f0ace39f44,
-        type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: -38.3
-      objectReference: {fileID: 0}
-    - target: {fileID: 4391469796641344570, guid: e06f72de58c9bf7469dd54f0ace39f44,
-        type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 81.6
       objectReference: {fileID: 0}
     - target: {fileID: 8210572201367203887, guid: e06f72de58c9bf7469dd54f0ace39f44,
         type: 3}
