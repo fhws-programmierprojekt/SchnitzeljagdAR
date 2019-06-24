@@ -22,7 +22,10 @@ public class VillainController : MonoBehaviour {
     #region Getter and Setter
 
     #endregion
-
+    public float MovementSpeed {
+        get { return movementSpeed; }
+        set { movementSpeed = value; }
+    }
     #region Unity Methods
     // Awake is called when the script instance is being loaded
     private void Awake() {

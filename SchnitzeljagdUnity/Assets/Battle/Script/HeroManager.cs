@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 [RequireComponent(typeof(HeroController))]
 public class HeroManager : VillainManager {
@@ -12,7 +13,6 @@ public class HeroManager : VillainManager {
     #region Attributes
     [SerializeField] protected float stamina;
     protected float currentStamina;
-
     public int Deaths { get; set; } = 0;
     #endregion
 
@@ -45,22 +45,16 @@ public class HeroManager : VillainManager {
     // Update is called once per frame
     void Update() {
         UpdateStats();
+        IsHealthDepleted();
     }
     private void OnCollisionEnter(Collision collision) {
         if(collision.transform.gameObject.name == "DeathFloor") {
-            Deaths += 1;
-            CurrentHealth = 0;
-            StartCoroutine(BattleUIManager.Instance.DisplayBattleInfo("V E R L O R E N", 2));
-            CurrentHealth = Health;
-            CurrentStamina = Stamina;
-            VillainManager.Instance.CurrentHealth = VillainManager.Instance.Health;
-            transform.position = HeroController.Instance.SpawnPosition;
-            Opponent.transform.position = VillainController.Instance.SpawnPosition;
+            Death();
         }
     }
     private void OnTriggerEnter(Collider other) {
         if(other.transform.gameObject.name == "AttackThrust") {
-            CurrentHealth -= 20;
+            CurrentHealth -= 25;
         }
     }
     #endregion
@@ -76,28 +70,37 @@ public class HeroManager : VillainManager {
     public override void AttackCheck() {
         float staminaCost = 20;
         float distance = Vector3.Distance(transform.position, Opponent.transform.position);
-        if(CurrentStamina > staminaCost && distance < AttackRange) {
-            StartCoroutine(Attack("AttackMeele", 20));
-        } else if(CurrentStamina > staminaCost && distance + 2 < AttackRange) {
-            Vector3 directionVector = BattleUIManager.Instance.GetInputVector();
-            Rigidbody.velocity = directionVector * 16;
+        if(CurrentStamina > staminaCost && distance < AttackRange && !Animator.GetBool("isAttackMeele") && !Animator.GetBool("isAttackThrust")) {
+            CurrentStamina -= staminaCost;
+            StartCoroutine(Attack("AttackMeele", 800));
+        } else if(CurrentStamina > staminaCost && !Animator.GetBool("isAttackMeele") && !Animator.GetBool("isAttackThrust")) {
+            CurrentStamina -= staminaCost;
+            StartCoroutine(Attack("AttackThrust", 10));
+            GetComponent<Rigidbody>().velocity = GetComponent<Rigidbody>().transform.forward * 18;
         }
     }
 
     protected IEnumerator Attack(string attackName, float damage) {
 
         Animator.SetBool("is" + attackName, true);
-        float attackTime = GetAnimationTime(attackName) - 0.40f;
+        float attackTime = GetAnimationTime(attackName) - 1;
         yield return new WaitForSeconds(attackTime * 0.4f);
         if(Vector3.Distance(transform.position, Opponent.transform.position) < AttackRange) {
             OpponentManager.CurrentHealth = OpponentManager.CurrentHealth - damage;
         }
         yield return new WaitForSeconds(attackTime * 0.6f);
 
-
         Animator.SetBool("is" + attackName, false);
     }
-
-
+    protected override void Death() {
+        Deaths += 1;
+        CurrentHealth = 0;
+        StartCoroutine(BattleUIManager.Instance.DisplayBattleInfo("V E R L O R E N", 2));
+        CurrentHealth = Health;
+        CurrentStamina = Stamina;
+        VillainManager.Instance.CurrentHealth = VillainManager.Instance.Health;
+        transform.position = HeroController.Instance.SpawnPosition;
+        Opponent.transform.position = VillainController.Instance.SpawnPosition;
+    }
     #endregion
 }

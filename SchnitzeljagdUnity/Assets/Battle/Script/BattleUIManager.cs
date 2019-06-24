@@ -26,7 +26,7 @@ public class BattleUIManager : MonoBehaviour {
         get { return joystick; }
         set { joystick = value; }
     }
-    public Button[] Button {
+    public Button[] Buttons {
         get { return buttons; }
         set { buttons = value; }
     }
@@ -83,9 +83,15 @@ public class BattleUIManager : MonoBehaviour {
     public IEnumerator FreezeGame(float freezeTime) {
         Time.timeScale = 0;
         float startTime = Time.realtimeSinceStartup;
+
+        Buttons[0].interactable = false;
+        Buttons[1].interactable = false;
         while(Time.realtimeSinceStartup < startTime + freezeTime) {
             yield return null;
         }
+        Buttons[0].interactable = true;
+        Buttons[1].interactable = true;
+
         Time.timeScale = 1;
     }
     public IEnumerator DisplayCountdown() {

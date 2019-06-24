@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 [RequireComponent(typeof(VillainController))]
 public class VillainManager : MonoBehaviour {
@@ -14,7 +15,7 @@ public class VillainManager : MonoBehaviour {
     [SerializeField] protected float health;
     protected float currentHealth;
 
-    private float AttackCooldown { get; set; } = 6;
+    private float AttackCooldown { get; set; } = 5;
     private float CurrentAttackCooldown { get; set; }
     public GameObject Opponent { get; set; }
     public VillainManager OpponentManager { get; set; }
@@ -55,6 +56,7 @@ public class VillainManager : MonoBehaviour {
     void Update() {
         UpdateStats();
         AttackCheck();
+        IsHealthDepleted();
     }
     private void OnDrawGizmos() {
         Gizmos.color = Color.red;
@@ -73,7 +75,7 @@ public class VillainManager : MonoBehaviour {
         } else if(Vector3.Distance(transform.position, Opponent.transform.position) < AttackRange) {
             CurrentAttackCooldown = AttackCooldown;
             StartCoroutine(AttackSpin("AttackSpin", 20));
-        } else if(Random.Range(0, 1000) <= 4){
+        } else if(Random.Range(0, 1000) <= 8){
             CurrentAttackCooldown = AttackCooldown;
             StartCoroutine(AttackThrust("AttackThrust"));
         }
@@ -84,7 +86,7 @@ public class VillainManager : MonoBehaviour {
 
         VillainController.Instance.RotationSpeed = 0;
         Animator.SetBool("is" + attackName, true);
-        float attackTime = GetAnimationTime(attackName) - 0.40f;
+        float attackTime = GetAnimationTime(attackName) - 0.4f;
         yield return new WaitForSeconds(attackTime * 0.6f);
         if(Vector3.Distance(transform.position, Opponent.transform.position) < AttackRange) {
             OpponentManager.CurrentHealth = OpponentManager.CurrentHealth - damage;
@@ -102,7 +104,7 @@ public class VillainManager : MonoBehaviour {
 
         VillainController.Instance.RotationSpeed = 0;
         Animator.SetBool("is" + attackName, true);
-        float attackTime = GetAnimationTime(attackName) - 0.40f;
+        float attackTime = GetAnimationTime(attackName) - 0.4f;
         yield return new WaitForSeconds(attackTime * 0.4f);
         attackCollider.enabled = true;
         yield return new WaitForSeconds(attackTime * 0.6f);
@@ -125,6 +127,30 @@ public class VillainManager : MonoBehaviour {
             Debug.Log("No Animation found with the name: " + animationName);
         }
         return animationTime;
+    }
+    protected void IsHealthDepleted() {
+        if(CurrentHealth == 0) {
+            Death();
+        }
+    }
+    protected virtual void Death() {
+        if(CurrentHealth == 0) {
+            VillainController.Instance.MovementSpeed = 0;
+            VillainController.Instance.RotationSpeed = 0;
+            Animator.SetBool("isDying", true);
+            StartCoroutine(BattleUIManager.Instance.DisplayBattleInfo("G E W O N N E N", 4));
+            SceneManager.LoadScene(QuestHubController.questHubController.currentQuest);
+        }
+    }
+    private void AddPoints() {
+        int points = 300;
+        int penalty = HeroManager.Instance.Deaths * 25;
+        points = (points - penalty >= 100) ? points - penalty : 100;
+        if(QuestHubController.questHubController != null) {
+            QuestHubController.questHubController.addPoints(points);
+        }
+        PointsGainController pointController = GameObject.Find("PointController").GetComponent<PointsGainController>();
+        pointController.playPointAnimation(points);
     }
     #endregion
 }
