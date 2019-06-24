@@ -2,72 +2,90 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(HeroManager))]
 public class HeroController : VillainController {
 
-    public Joystick joystick;
+    #region Singleton
+    protected static new HeroController instance;
+    public static new HeroController GetInstance() {
+        return instance;
+    }
+    #endregion
 
+    #region Attributes
     public float evadeDistance;
-    public float evadeCooldown;
-    private float currentEvadeCooldown;
+    #endregion
 
+    #region Unity Methods
+    // Start is called before the first frame update
+    void Start() {
+        instance = this;
+        Opponent = BattleArenaManager.GetInstance().Villain;
+        SpawnPosition = transform.position;
+        Animator = GetComponent<Animator>();
+        Rigidbody = GetComponent<Rigidbody>();
+    }
     // Update is called once per frame
     void Update() {
+        Animator.SetBool("isPulling", true);
         Movement();
-
-        Rotation(opponent);
+        Rotation();
 
         if(Input.GetKeyDown(KeyCode.Space)) {
             Evade();
         }
     }
+    #endregion
 
-    private Vector3 GetDirectonVector() {
-        //Take Input from Joystick
-        float horizontal = joystick.Horizontal;
-        float vertical = joystick.Vertical;
-
-        //horizontal = Input.GetAxis("Horizontal");
-        //vertical = Input.GetAxis("Vertical");
-
-        return new Vector3(horizontal, 0, vertical).normalized;
-    }
-
+    #region Methods
     protected override void Movement() {
-        Vector3 directionVector = GetDirectonVector();
+        Vector3 directionVector = BattleUIManager.GetInstance().GetInputVector();
 
         if(directionVector.x != 0 || directionVector.z != 0 ) {
             AnimationMovementDirection(directionVector);
-            Vector3 movementVector = GetDirectonVector() * Time.deltaTime * movementSpeed;
-            body.MovePosition(transform.position + movementVector);
+            Vector3 movementVector = directionVector * Time.deltaTime * movementSpeed;
+            Rigidbody.MovePosition(transform.position + movementVector);
         } else {
             SetIsWalkingFalse();
         }
-
     }
+
     private void AnimationMovementDirection(Vector3 directionVector) {
-        float angle = Vector3.SignedAngle(directionVector, transform.forward, Vector3.up);
 
         SetIsWalkingFalse();
-        if(angle > 135 || angle < -135) {
-            animator.SetBool("isSwordWalkingBack", true);
-        } else if(angle >= 45 && angle <= 135) {
-            animator.SetBool("isSwordWalkingLeft", true);
-        } else if(angle > -45 && angle < 45) {
-            animator.SetBool("isSwordWalking", true);
-        }
-        else {
-            animator.SetBool("isSwordWalkingRight", true);
+        if(MyGeometry.IsWithinAngle(directionVector, transform.forward, -45, 45)) {
+            Animator.SetBool("isSwordWalking", true);
+        }else if(MyGeometry.IsWithinAngle(directionVector, transform.forward, 135, -135)) {
+            Animator.SetBool("isSwordWalkingBack", true);
+        }else if(MyGeometry.IsWithinAngle(directionVector, transform.forward, 45, 135)) {
+            Animator.SetBool("isSwordWalkingLeft", true);
+        }else if(MyGeometry.IsWithinAngle(directionVector, transform.forward, -135, -45)) {
+            Animator.SetBool("isSwordWalkingRight", true);
         }
     }
     private void SetIsWalkingFalse() {
-        animator.SetBool("isSwordWalking", false);
-        animator.SetBool("isSwordWalkingBack", false);
-        animator.SetBool("isSwordWalkingLeft", false);
-        animator.SetBool("isSwordWalkingRight", false);
+        Animator.SetBool("isSwordWalking", false);
+        Animator.SetBool("isSwordWalkingBack", false);
+        Animator.SetBool("isSwordWalkingLeft", false);
+        Animator.SetBool("isSwordWalkingRight", false);
     }
 
     public void Evade() {
-        transform.position += GetDirectonVector() * evadeDistance;
+        Rigidbody.velocity = BattleUIManager.GetInstance().GetInputVector() * 24;
+
+        //transform.position += GetDirectonVector() * evadeDistance;
         //body.AddForce(GetDirectonVector() * evadeDistance, ForceMode.Impulse);
     }
+
+    private void OnCollisionEnter(Collision collision) {
+        if(collision.transform.gameObject.name == "DeathFloor") {
+            HeroManager.GetInstance().CurrentHealth = 0;
+            //BattleUIManager.GetInstance().battleInfo.text = "V E R L O R E N";
+            StartCoroutine(BattleUIManager.GetInstance().SetCountdown());
+            HeroManager.GetInstance().CurrentHealth = HeroManager.GetInstance().Health;
+            transform.position = SpawnPosition;
+            Opponent.transform.position = VillainController.instance.SpawnPosition;
+        }
+    }
+    #endregion
 }
