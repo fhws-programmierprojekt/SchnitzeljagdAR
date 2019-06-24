@@ -56,12 +56,13 @@ public class BattleUIManager : MonoBehaviour {
     // Start is called before the first frame update
     void Start() {
         Physics.gravity = new Vector3(0, -9.81f, 0);
+        ImageTargetFound();
         StartCoroutine(DisplayCountdown());
     }
 
     // Update is called once per frame
     void Update() {
-
+        ImageTargetFound();
     }
     #endregion
 
@@ -87,6 +88,14 @@ public class BattleUIManager : MonoBehaviour {
         Vector3 inputVector = GetInputVector();
         return (inputVector.x != 0 || inputVector.z != 0) ? true : false;
     }
+    public void ImageTargetFound() {
+        if(BattleArenaManager.Instance.BattleArena.gameObject.GetComponent<MeshRenderer>().enabled == true) {
+            Time.timeScale = 1;
+        } else {
+            Time.timeScale = 0;
+        }
+    }
+
     public IEnumerator FreezeGame(float freezeTime) {
         Time.timeScale = 0;
         float startTime = Time.realtimeSinceStartup;
