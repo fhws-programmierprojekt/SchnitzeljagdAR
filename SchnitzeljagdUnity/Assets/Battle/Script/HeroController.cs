@@ -80,8 +80,7 @@ public class HeroController : VillainController {
     private void OnCollisionEnter(Collision collision) {
         if(collision.transform.gameObject.name == "DeathFloor") {
             HeroManager.Instance.CurrentHealth = 0;
-            //BattleUIManager.GetInstance().battleInfo.text = "V E R L O R E N";
-            StartCoroutine(BattleUIManager.Instance.SetCountdown());
+            StartCoroutine(BattleUIManager.Instance.DisplayBattleInfo("V E R L O R E N", 2));
             HeroManager.Instance.CurrentHealth = HeroManager.Instance.Health;
             transform.position = SpawnPosition;
             Opponent.transform.position = VillainController.Instance.SpawnPosition;

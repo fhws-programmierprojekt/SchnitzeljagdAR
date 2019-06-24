@@ -61,7 +61,7 @@ public class BattleUIManager : MonoBehaviour {
     // Start is called before the first frame update
     void Start() {
         Physics.gravity = new Vector3(0, -98.1f, 0);
-        StartCoroutine(SetCountdown());
+        StartCoroutine(DisplayCountdown());
     }
 
     // Update is called once per frame
@@ -96,25 +96,24 @@ public class BattleUIManager : MonoBehaviour {
             ButtonInfo.text = "Evade";
         }
     }
-    public IEnumerator SetCountdown() {
-        StartCoroutine(CountdownDisplay());
-
+    public IEnumerator FreezeGame(float freezeTime) {
         Time.timeScale = 0;
         float startTime = Time.realtimeSinceStartup;
-        while(Time.realtimeSinceStartup < startTime + Countdown) {
+        while(Time.realtimeSinceStartup < startTime + freezeTime) {
             yield return null;
         }
-
         Time.timeScale = 1;
     }
-    private IEnumerator CountdownDisplay() {
+    private IEnumerator DisplayCountdown() {
+        StartCoroutine(FreezeGame(Countdown));
         for(float countdownInfo = Countdown; countdownInfo > 0 ; countdownInfo--) {
             battleInfo.text = countdownInfo.ToString();
             yield return new WaitForSecondsRealtime(1);
         }
         battleInfo.text = string.Empty;
     }
-    public IEnumerator SetBattleInfo(string info, float time) {
+    public IEnumerator DisplayBattleInfo(string info, float time) {
+        StartCoroutine(FreezeGame(time));
         battleInfo.text = info.ToString();
         yield return new WaitForSecondsRealtime(time);
 
