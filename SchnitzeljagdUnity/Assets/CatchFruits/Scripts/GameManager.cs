@@ -20,7 +20,7 @@ public class GameManager : MonoBehaviour
     void Update()
     {
         score = scoreFunction.score;
-        if (score >= 250 && trigger == false)
+        if (score >= 150 && trigger == false)
         {
             trigger = true;
             DialogSystem.dialogSystem.startDialog(2);

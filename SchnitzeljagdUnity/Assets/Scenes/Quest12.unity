@@ -2299,7 +2299,7 @@ MonoBehaviour:
     character: {fileID: 1561340897}
     speachBubble: {fileID: 1561340895}
     button: {fileID: 1561340894}
-  - dialogID: 0
+  - dialogID: 4
     dialogObject: {fileID: 715270070}
     dialogStatus: 0
     dialogText: "Ihr seid ein Held! Ihr habt dieses Museum von seinem Rachegeist befreit
