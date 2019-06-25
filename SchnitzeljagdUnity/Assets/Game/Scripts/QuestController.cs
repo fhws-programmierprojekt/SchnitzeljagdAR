@@ -12,9 +12,7 @@ public class QuestController : MonoBehaviour
     //Starting events for each quest
     void Start()
     {
-        //Only Portrait modus.
-        
-        
+
         int currentScene = SceneManager.GetActiveScene().buildIndex;
         int questID = QuestHubController.questHubController.currentQuest;
         int questListLenght = QuestHubController.questHubController.questList.Count;
