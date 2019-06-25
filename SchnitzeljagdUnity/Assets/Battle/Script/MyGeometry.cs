@@ -45,9 +45,18 @@ public static class MyGeometry {
         return rotationQuaternion;
     }
 
-    //public static Vector3 InputRelativeToCamera() {
-    //    //
-    //}
+    // Takes the Vector from your Input and directionVector relative to the Game World
+    public static Vector3 InputRelativeToCamera(Vector3 inputVector) {
+
+            Vector3 cameraForward = Camera.main.transform.forward;
+            cameraForward.y = 0f;
+        if(cameraForward != Vector3.zero) {
+            Quaternion cameraQuaternion = Quaternion.LookRotation(cameraForward);
+
+            inputVector = cameraQuaternion * inputVector;
+        }
+        return inputVector.normalized;
+    }
 
     #endregion
 }
