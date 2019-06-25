@@ -10,7 +10,7 @@ public class VillainController : MonoBehaviour {
     #endregion
 
     #region Attributes
-    public float movementSpeed;
+    [SerializeField] protected float movementSpeed;
     public float RotationSpeed { get; set; } = 100;
 
     public GameObject Opponent { get; set; }
@@ -20,12 +20,12 @@ public class VillainController : MonoBehaviour {
     #endregion
 
     #region Getter and Setter
-
-    #endregion
     public float MovementSpeed {
         get { return movementSpeed; }
         set { movementSpeed = value; }
     }
+    #endregion
+
     #region Unity Methods
     // Awake is called when the script instance is being loaded
     private void Awake() {
@@ -48,11 +48,12 @@ public class VillainController : MonoBehaviour {
 
     #region Methods
     protected virtual void Movement() {
+
         // Calculate the distance between this and opponent
         float distance = Vector3.Distance(transform.position, Opponent.transform.position);
         float minDistance = VillainManager.Instance.AttackRange * 0.4f;
 
-        if(distance > minDistance && !Animator.GetBool("isAttackSpin") && !Animator.GetBool("isAttackThrust")) {
+        if(distance > minDistance && !Animator.GetBool("isAttackSpin")) {
             MovementAnimation();
             Vector3 directionVector = MyGeometry.GetDirectionVector(transform.position, Opponent.transform.position);
             Vector3 movementVector = directionVector * Time.deltaTime * movementSpeed;
@@ -61,7 +62,7 @@ public class VillainController : MonoBehaviour {
             SetIsWalkingFalse();
         }
     }
-    protected void MovementAnimation() {
+    private void MovementAnimation() {
         SetIsWalkingFalse();
         Animator.SetBool("isSwordWalking", true);
 

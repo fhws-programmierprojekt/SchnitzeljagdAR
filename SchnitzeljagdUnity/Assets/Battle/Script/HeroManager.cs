@@ -38,8 +38,9 @@ public class HeroManager : VillainManager {
         OpponentManager = Opponent.GetComponent<VillainManager>();
         Animator = GetComponent<Animator>();
         AnimationClips = Animator.runtimeAnimatorController.animationClips;
-        currentHealth = health;
-        currentStamina = stamina;
+
+        CurrentHealth = Health;
+        CurrentStamina = Stamina;
         InvokeRepeating("ReplenishStamina", 0, 1);
     }
     // Update is called once per frame

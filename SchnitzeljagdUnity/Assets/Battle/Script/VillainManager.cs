@@ -31,7 +31,7 @@ public class VillainManager : MonoBehaviour {
     }
     public float Health {
         get { return health; }
-        set { health = (value < 10) ? 10 : value; }
+        set { health = (value < 1) ? 1 : value; }
     }
     public float CurrentHealth {
         get { return currentHealth; }
@@ -84,7 +84,6 @@ public class VillainManager : MonoBehaviour {
     protected IEnumerator AttackSpin(float damage) {
         AttackSpinSprite.enabled = true;
 
-        VillainController.Instance.RotationSpeed = 0;
         Animator.SetBool("isAttackSpin", true);
         float attackTime = GetAnimationTime("AttackSpin") - 0.4f;
         yield return new WaitForSeconds(attackTime * 0.6f);
@@ -95,7 +94,6 @@ public class VillainManager : MonoBehaviour {
 
         yield return new WaitForSeconds(attackTime * 0.4f);
         Animator.SetBool("isAttackSpin", false);
-        VillainController.Instance.RotationSpeed = 100;
     }
     protected void UpdateAttackSprite() {
         if(Animator.GetBool("isAttackSpin")) {
@@ -128,7 +126,7 @@ public class VillainManager : MonoBehaviour {
         Animator.SetBool("isDying", true);
         AddPoints();
         StartCoroutine(BattleUIManager.Instance.DisplayBattleInfo("G E W O N N E N", 4));
-        yield return new WaitForSecondsRealtime(4);
+        yield return new WaitForSecondsRealtime(2);
         SceneManager.LoadScene(QuestHubController.questHubController.currentQuest);
     }
     private void AddPoints() {

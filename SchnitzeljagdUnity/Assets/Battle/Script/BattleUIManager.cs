@@ -57,7 +57,6 @@ public class BattleUIManager : MonoBehaviour {
     // Start is called before the first frame update
     void Start() {
         Physics.gravity = new Vector3(0, -9.81f, 0);
-        ImageTargetFound();
     }
 
     // Update is called once per frame
@@ -92,22 +91,9 @@ public class BattleUIManager : MonoBehaviour {
         } else {
             IsRunning = false;
             Time.timeScale = 0;
+            Buttons[0].interactable = false;
+            Buttons[1].interactable = false;
         }
-    }
-
-    public IEnumerator FreezeGame(float freezeTime) {
-        Time.timeScale = 0;
-        float startTime = Time.realtimeSinceStartup;
-
-        Buttons[0].interactable = false;
-        Buttons[1].interactable = false;
-        while(Time.realtimeSinceStartup < startTime + freezeTime) {
-            yield return null;
-        }
-        Buttons[0].interactable = true;
-        Buttons[1].interactable = true;
-
-        Time.timeScale = 1;
     }
     public IEnumerator DisplayCountdown() {
         StartCoroutine(FreezeGame(Countdown));
@@ -123,6 +109,20 @@ public class BattleUIManager : MonoBehaviour {
         yield return new WaitForSecondsRealtime(time);
 
         battleInfo.text = string.Empty;
+    }
+    public IEnumerator FreezeGame(float freezeTime) {
+        Time.timeScale = 0;
+        Buttons[0].interactable = false;
+        Buttons[1].interactable = false;
+
+        float startTime = Time.realtimeSinceStartup;
+        while(Time.realtimeSinceStartup < startTime + freezeTime) {
+            yield return null;
+        }
+
+        Time.timeScale = 1;
+        Buttons[0].interactable = true;
+        Buttons[1].interactable = true;
     }
     #endregion
 }

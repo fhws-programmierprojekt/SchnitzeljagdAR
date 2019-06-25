@@ -10,7 +10,7 @@ public class HeroController : VillainController {
     #endregion
 
     #region Attributes
-    public float evadeDistance;
+    public float EvadeForce { get; set; } = 1.5f;
     #endregion
 
     #region Unity Methods
@@ -31,9 +31,9 @@ public class HeroController : VillainController {
         Movement();
         Rotation();
 
-        if(Input.GetKeyDown(KeyCode.Space)) {
-            Evade();
-        }
+        //if(Input.GetKeyDown(KeyCode.Space)) {
+        //    Evade();
+        //}
     }
     #endregion
 
@@ -51,7 +51,7 @@ public class HeroController : VillainController {
             SetIsWalkingFalse();
         }
     }
-    protected void MovementAnimation(Vector3 directionVector) {
+    private void MovementAnimation(Vector3 directionVector) {
 
         SetIsWalkingFalse();
         if(MyGeometry.IsWithinAngle(directionVector, transform.forward, -45, 45)) {
@@ -76,7 +76,7 @@ public class HeroController : VillainController {
         if(HeroManager.Instance.CurrentStamina > staminaCost) {
             HeroManager.Instance.CurrentStamina -= staminaCost;
             Vector3 directionVector = BattleUIManager.Instance.GetInputVector();
-            Rigidbody.velocity = directionVector * 1.5f;
+            Rigidbody.velocity = directionVector * EvadeForce;
             Animator.Play("Roll");
         }
     }
