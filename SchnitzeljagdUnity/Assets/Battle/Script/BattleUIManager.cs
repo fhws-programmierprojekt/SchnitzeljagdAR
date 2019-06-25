@@ -17,6 +17,7 @@ public class BattleUIManager : MonoBehaviour {
     [SerializeField] protected RectTransform heroHealth;
     [SerializeField] protected RectTransform heroStamina;
     [SerializeField] protected RectTransform villainHealth;
+    [SerializeField] protected GameObject searchingImage;
 
     public bool IsRunning { get; set; } = false;
     public float Countdown { get; set; } = 3;
@@ -84,11 +85,15 @@ public class BattleUIManager : MonoBehaviour {
     }
     public void ImageTargetFound() {
         if(BattleArenaManager.Instance.BattleArena.gameObject.GetComponent<MeshRenderer>().enabled == true) {
+            searchingImage.SetActive(false);
+
             if(!IsRunning) {
                 StartCoroutine(DisplayCountdown());
                 IsRunning = true;
             }
         } else {
+            searchingImage.SetActive(true);
+
             IsRunning = false;
             Time.timeScale = 0;
             Buttons[0].interactable = false;

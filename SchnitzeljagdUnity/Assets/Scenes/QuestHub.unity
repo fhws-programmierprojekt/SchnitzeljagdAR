@@ -5395,7 +5395,7 @@ PrefabInstance:
     - target: {fileID: 5484330594354554109, guid: b37336d7e2bd7c44ab27c599ca37819e,
         type: 3}
       propertyPath: questList.Array.data[9].progress
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5484330594354554109, guid: b37336d7e2bd7c44ab27c599ca37819e,
         type: 3}
@@ -5415,7 +5415,7 @@ PrefabInstance:
     - target: {fileID: 5484330594354554109, guid: b37336d7e2bd7c44ab27c599ca37819e,
         type: 3}
       propertyPath: questList.Array.data[10].progress
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5484330594354554109, guid: b37336d7e2bd7c44ab27c599ca37819e,
         type: 3}
@@ -5436,6 +5436,26 @@ PrefabInstance:
         type: 3}
       propertyPath: puzzelStart
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5484330594354554109, guid: b37336d7e2bd7c44ab27c599ca37819e,
+        type: 3}
+      propertyPath: questList.Array.data[11].progress
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5484330594354554109, guid: b37336d7e2bd7c44ab27c599ca37819e,
+        type: 3}
+      propertyPath: questList.Array.data[11].firstDialogID
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5484330594354554109, guid: b37336d7e2bd7c44ab27c599ca37819e,
+        type: 3}
+      propertyPath: questList.Array.data[11].dialogAfterQuizID
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5484330594354554109, guid: b37336d7e2bd7c44ab27c599ca37819e,
+        type: 3}
+      propertyPath: questList.Array.data[11].dialogAfterMinigameID
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b37336d7e2bd7c44ab27c599ca37819e, type: 3}

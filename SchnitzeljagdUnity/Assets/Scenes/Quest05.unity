@@ -333,6 +333,34 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!21 &338227956
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: 'ARGameMaterial
+
+    60080'
+  m_Shader: {fileID: 10752, guid: 0000000000000000f000000000000000, type: 0}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 5
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _MainTex:
+        m_Texture: {fileID: 2800000, guid: 4c7d720510be4805ace802dac4434cbb, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats: []
+    m_Colors:
+    - _Color: {r: 0.82089555, g: 0.82089555, b: 0.82089555, a: 1}
 --- !u!1001 &366707931
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -640,13 +668,13 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 366707931}
   m_PrefabAsset: {fileID: 0}
---- !u!43 &481312833
+--- !u!43 &466024881
 Mesh:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: ImageTargetMesh61702
+  m_Name: ImageTargetMesh60070
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -658,7 +686,7 @@ Mesh:
     vertexCount: 4
     localAABB:
       m_Center: {x: 0, y: 0, z: 0}
-      m_Extent: {x: 0.49906275, y: 0, z: 0.5}
+      m_Extent: {x: 0.5, y: 0, z: 0.49942398}
   m_Shapes:
     vertices: []
     shapes: []
@@ -737,7 +765,7 @@ Mesh:
       format: 0
       dimension: 0
     m_DataSize: 128
-    _typelessdata: 2785ffbe00000000000000bf000000000000803f0000000000000000000000002785ffbe000000000000003f000000000000803f00000000000000000000803f2785ff3e00000000000000bf000000000000803f000000000000803f000000002785ff3e000000000000003f000000000000803f000000000000803f0000803f
+    _typelessdata: 000000bf0000000080b4ffbe000000000000803f000000000000000000000000000000bf0000000080b4ff3e000000000000803f00000000000000000000803f0000003f0000000080b4ffbe000000000000803f000000000000803f000000000000003f0000000080b4ff3e000000000000803f000000000000803f0000803f
   m_CompressedMesh:
     m_Vertices:
       m_NumItems: 0
@@ -792,7 +820,7 @@ Mesh:
     m_UVInfo: 0
   m_LocalAABB:
     m_Center: {x: 0, y: 0, z: 0}
-    m_Extent: {x: 0.49906275, y: 0, z: 0.5}
+    m_Extent: {x: 0.5, y: 0, z: 0.5}
   m_MeshUsageFlags: 0
   m_BakedConvexCollisionMesh: 
   m_BakedTriangleCollisionMesh: 
@@ -1153,7 +1181,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 542911839}
-  m_Mesh: {fileID: 481312833}
+  m_Mesh: {fileID: 466024881}
 --- !u!23 &542911841
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -1171,7 +1199,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 684372151}
+  - {fileID: 338227956}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1227,14 +1255,14 @@ MonoBehaviour:
   m_Script: {fileID: -1631628248, guid: bab6fa851cf5a1a4bba3cec5f191cb8e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mTrackableName: QRJpg
+  mTrackableName: ARGame
   mPreserveChildSize: 0
   mInitializedInEditor: 1
   mDataSetPath: Vuforia/schnitzeljagdAR.xml
-  mAspectRatio: 1.001878
+  mAspectRatio: 0.99884796
   mImageTargetType: 0
-  mWidth: 5
-  mHeight: 5.00939
+  mWidth: 10
+  mHeight: 9.98848
 --- !u!4 &542911845
 Transform:
   m_ObjectHideFlags: 0
@@ -1244,40 +1272,12 @@ Transform:
   m_GameObject: {fileID: 542911839}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 5.00939, y: 5.00939, z: 5.00939}
+  m_LocalScale: {x: 10, y: 10, z: 10}
   m_Children:
   - {fileID: 87851974}
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!21 &684372151
-Material:
-  serializedVersion: 6
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: 'QRJpgMaterial
-
-    61712'
-  m_Shader: {fileID: 10752, guid: 0000000000000000f000000000000000, type: 0}
-  m_ShaderKeywords: 
-  m_LightmapFlags: 5
-  m_EnableInstancingVariants: 0
-  m_DoubleSidedGI: 0
-  m_CustomRenderQueue: -1
-  stringTagMap: {}
-  disabledShaderPasses: []
-  m_SavedProperties:
-    serializedVersion: 3
-    m_TexEnvs:
-    - _MainTex:
-        m_Texture: {fileID: 2800000, guid: 62b0489ffa6d48e08fa5281d51b5b43b, type: 3}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    m_Floats: []
-    m_Colors:
-    - _Color: {r: 0.82089555, g: 0.82089555, b: 0.82089555, a: 1}
 --- !u!1 &857810981
 GameObject:
   m_ObjectHideFlags: 0
@@ -2020,7 +2020,7 @@ PrefabInstance:
     - target: {fileID: 4201841810063376041, guid: 40245bf9a6aa1464b8a171bcddd5b070,
         type: 3}
       propertyPath: m_textInfo.wordCount
-      value: 6
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 4201841810063376041, guid: 40245bf9a6aa1464b8a171bcddd5b070,
         type: 3}
@@ -2035,7 +2035,7 @@ PrefabInstance:
     - target: {fileID: 4201841810063376041, guid: 40245bf9a6aa1464b8a171bcddd5b070,
         type: 3}
       propertyPath: m_text
-      value: "Suche denn QRCode \nin der Klosterk\xFCche"
+      value: "Suche denn AR Icon\nin der Klosterk\xFCche"
       objectReference: {fileID: 0}
     - target: {fileID: 4201841810063376041, guid: 40245bf9a6aa1464b8a171bcddd5b070,
         type: 3}

@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <QCARConfig xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="qcar_config.xsd">
   <Tracking>
+    <ImageTarget name="ARGame" size="10.000000 9.988480" />
     <ImageTarget name="RothenburgerStadtwach" size="10.000000 8.480565" />
     <ImageTarget name="RothenburgerTurm" size="10.000000 12.956794" />
     <ImageTarget name="KecksModele" size="10.000000 16.388657" />

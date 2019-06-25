@@ -13,7 +13,7 @@ public class ScoreFunction : MonoBehaviour
     {
         points = GameObject.Find("Points").GetComponent<PointsGainController>();
         scoreText = GameObject.Find("Score").GetComponent<TextMeshProUGUI>();
-        scoreText.text = "Punkte 0/250";
+        scoreText.text = "Punkte 0/150";
     }
 
     private void OnTriggerEnter(Collider other)
@@ -22,42 +22,42 @@ public class ScoreFunction : MonoBehaviour
         {
             points.playPointAnimation(-25);
             score = score - 25;
-            scoreText.text = "Punkte: " + score.ToString() + "/250";
+            scoreText.text = "Punkte: " + score.ToString() + "/150";
             Destroy(other.gameObject);
         }
         if(other.tag == "Wine")
         {
             points.playPointAnimation(25);
             score = score + 25;
-            scoreText.text = "Punkte: " + score.ToString() + "/250"; 
+            scoreText.text = "Punkte: " + score.ToString() + "/150"; 
             Destroy(other.gameObject);
         }
         if (other.tag == "Ham")
         {
             points.playPointAnimation(20);
             score = score + 20;
-            scoreText.text = "Punkte: " + score.ToString() + "/250";
+            scoreText.text = "Punkte: " + score.ToString() + "/150";
             Destroy(other.gameObject);
         }
         if (other.tag == "Chees")
         {
             points.playPointAnimation(15);
             score = score + 15;
-            scoreText.text = "Punkte: " + score.ToString() + "/250";
+            scoreText.text = "Punkte: " + score.ToString() + "/150";
             Destroy(other.gameObject);
         }
         if (other.tag == "Bread")
         {
             points.playPointAnimation(10);
             score = score + 10;
-            scoreText.text = "Punkte: " + score.ToString() + "/250";
+            scoreText.text = "Punkte: " + score.ToString() + "/150";
             Destroy(other.gameObject);
         }
         if (other.tag == "Fish")
         {
             points.playPointAnimation(5);
             score = score + 5;
-            scoreText.text = "Punkte: " + score.ToString() + "/250";
+            scoreText.text = "Punkte: " + score.ToString() + "/150";
             Destroy(other.gameObject);
         }
     }

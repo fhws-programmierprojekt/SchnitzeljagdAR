@@ -20,6 +20,7 @@ public class QuestController : MonoBehaviour
         //check if it is a quest
         if (currentScene == questID)
         {
+            
             //Quest01
             if (questID == 1)
             {
@@ -29,7 +30,7 @@ public class QuestController : MonoBehaviour
             //Quest02-12
             else
             {
-                for (int i = 2; i < questListLenght; i++)
+                for (int i = 2; i <= questListLenght; i++)
                 {
                     if (questID == i)
                     {

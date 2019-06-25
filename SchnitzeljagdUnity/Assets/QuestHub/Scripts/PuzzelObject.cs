@@ -22,12 +22,12 @@ public class PuzzelObject : MonoBehaviour
     void Update()
     {
           if (Input.touchCount > 0 && !locked)
-          { 
-                
+          {
+            
                 Touch touch = Input.GetTouch(0);
                 Vector3 tch = new Vector3(touch.position.x, touch.position.y, 10);
                 Vector2 touchPos = Camera.main.ScreenToWorldPoint(tch);
-
+                
                 switch (touch.phase)
                 {
                     //Just touched the screen

@@ -7,7 +7,7 @@ public class PlayerController : MonoBehaviour
 {
     //Var for the movement 
 
-    public float moveSpeed = 2;         //movementspeed      
+    public float moveSpeed = 4;         //movementspeed      
     public float rotationRate = 360;    //rotationspeed
     public float gravity = 8;           //gravity 
     Vector3 moveDir = Vector3.zero;     //position
