@@ -49,12 +49,7 @@ public class HeroManager : VillainManager {
     }
     private void OnCollisionEnter(Collision collision) {
         if(collision.transform.gameObject.name == "DeathFloor") {
-            Death();
-        }
-    }
-    private void OnTriggerEnter(Collider other) {
-        if(other.transform.gameObject.name == "AttackThrust") {
-            CurrentHealth -= 20;
+            StartCoroutine(Death());
         }
     }
     #endregion
@@ -76,10 +71,9 @@ public class HeroManager : VillainManager {
         } else if(CurrentStamina > staminaCost && !Animator.GetBool("isAttackMeele") && !Animator.GetBool("isAttackThrust")) {
             CurrentStamina -= staminaCost;
             StartCoroutine(Attack("AttackThrust", 8));
-            GetComponent<Rigidbody>().velocity = GetComponent<Rigidbody>().transform.forward * 2;
+            GetComponent<Rigidbody>().velocity = GetComponent<Rigidbody>().transform.forward * 4;
         }
     }
-
     protected IEnumerator Attack(string attackName, float damage) {
 
         Animator.SetBool("is" + attackName, true);
@@ -92,10 +86,12 @@ public class HeroManager : VillainManager {
 
         Animator.SetBool("is" + attackName, false);
     }
-    protected override void Death() {
+    protected override IEnumerator Death() {
         Deaths += 1;
         CurrentHealth = 0;
-        StartCoroutine(BattleUIManager.Instance.DisplayBattleInfo("V E R L O R E N", 2));
+        CurrentStamina = 0;
+        StartCoroutine(BattleUIManager.Instance.DisplayBattleInfo("V E R L O R E N", 4));
+        yield return new WaitForSecondsRealtime(2);
         CurrentHealth = Health;
         CurrentStamina = Stamina;
         VillainManager.Instance.CurrentHealth = VillainManager.Instance.Health;

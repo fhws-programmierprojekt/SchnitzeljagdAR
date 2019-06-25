@@ -18,6 +18,7 @@ public class BattleUIManager : MonoBehaviour {
     [SerializeField] protected RectTransform heroStamina;
     [SerializeField] protected RectTransform villainHealth;
 
+    public bool IsRunning { get; set; } = false;
     public float Countdown { get; set; } = 3;
     #endregion
 
@@ -57,7 +58,6 @@ public class BattleUIManager : MonoBehaviour {
     void Start() {
         Physics.gravity = new Vector3(0, -9.81f, 0);
         ImageTargetFound();
-        StartCoroutine(DisplayCountdown());
     }
 
     // Update is called once per frame
@@ -76,12 +76,7 @@ public class BattleUIManager : MonoBehaviour {
         //vertical = Input.GetAxis("Vertical");
 
         Vector3 inputVector = new Vector3(horizontal, 0, vertical);
-
-        Vector3 cameraForward = Camera.main.transform.forward;
-        cameraForward.y = 0f;
-        Quaternion cameraQuaternion = Quaternion.LookRotation(cameraForward);
-        inputVector = cameraQuaternion * inputVector;
-
+        inputVector = MyGeometry.InputRelativeToCamera(inputVector);
         return inputVector.normalized;
     }
     public bool IsInput() {
@@ -90,8 +85,12 @@ public class BattleUIManager : MonoBehaviour {
     }
     public void ImageTargetFound() {
         if(BattleArenaManager.Instance.BattleArena.gameObject.GetComponent<MeshRenderer>().enabled == true) {
-            Time.timeScale = 1;
+            if(!IsRunning) {
+                StartCoroutine(DisplayCountdown());
+                IsRunning = true;
+            }
         } else {
+            IsRunning = false;
             Time.timeScale = 0;
         }
     }

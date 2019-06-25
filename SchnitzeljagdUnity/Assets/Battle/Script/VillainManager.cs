@@ -22,7 +22,6 @@ public class VillainManager : MonoBehaviour {
     public Animator Animator { get; set; }
     public AnimationClip[] AnimationClips { get; set; }
     public SpriteRenderer AttackSpinSprite { get; set; }
-    public SpriteRenderer AttackThrustSprite { get; set; }
     #endregion
 
     #region Getter and Setter
@@ -52,7 +51,7 @@ public class VillainManager : MonoBehaviour {
         Animator = GetComponent<Animator>();
         AnimationClips = Animator.runtimeAnimatorController.animationClips;
         AttackSpinSprite = GameObject.Find("AttackSpin").GetComponent<SpriteRenderer>();
-        AttackThrustSprite = GameObject.Find("AttackThrust").GetComponent<SpriteRenderer>();
+        AttackSpinSprite.enabled = false;
 
         CurrentHealth = Health;
     }
@@ -62,6 +61,7 @@ public class VillainManager : MonoBehaviour {
         UpdateStats();
         AttackCheck();
         IsHealthDepleted();
+        UpdateAttackSprite();
     }
     private void OnDrawGizmos() {
         Gizmos.color = Color.red;
@@ -73,53 +73,37 @@ public class VillainManager : MonoBehaviour {
     protected virtual void UpdateStats() {
         BattleUIManager.Instance.Villainhealth.sizeDelta = new Vector2(100 / Health * CurrentHealth * 10, 20);
     }
-
     public virtual void AttackCheck() {
         if(CurrentAttackCooldown > 0) {
             CurrentAttackCooldown -= Time.deltaTime;
         } else if(Vector3.Distance(transform.position, Opponent.transform.position) < AttackRange) {
             CurrentAttackCooldown = AttackCooldown;
-            StartCoroutine(AttackSpin("AttackSpin", 16));
-        } else if(Random.Range(0, 1000) <= 4) {
-            CurrentAttackCooldown = AttackCooldown;
-            StartCoroutine(AttackThrust("AttackThrust"));
+            StartCoroutine(AttackSpin(12));
         }
     }
-    protected IEnumerator AttackSpin(string attackName, float damage) {
-        SpriteRenderer attackSprite = GameObject.Find("AttackSpin").GetComponent<SpriteRenderer>();
-        attackSprite.enabled = true;
+    protected IEnumerator AttackSpin(float damage) {
+        AttackSpinSprite.enabled = true;
 
         VillainController.Instance.RotationSpeed = 0;
-        Animator.SetBool("is" + attackName, true);
-        float attackTime = GetAnimationTime(attackName) - 0.4f;
+        Animator.SetBool("isAttackSpin", true);
+        float attackTime = GetAnimationTime("AttackSpin") - 0.4f;
         yield return new WaitForSeconds(attackTime * 0.6f);
         if(Vector3.Distance(transform.position, Opponent.transform.position) < AttackRange) {
             OpponentManager.CurrentHealth = OpponentManager.CurrentHealth - damage;
         }
-        attackSprite.enabled = false;
+        AttackSpinSprite.enabled = false;
 
         yield return new WaitForSeconds(attackTime * 0.4f);
-        Animator.SetBool("is" + attackName, false);
+        Animator.SetBool("isAttackSpin", false);
         VillainController.Instance.RotationSpeed = 100;
     }
-    protected IEnumerator AttackThrust(string attackName) {
-        SpriteRenderer attackSprite = GameObject.Find("AttackThrust").GetComponent<SpriteRenderer>();
-        BoxCollider attackCollider = GameObject.Find("AttackThrust").GetComponent<BoxCollider>();
-        attackSprite.enabled = true;
-
-        VillainController.Instance.RotationSpeed = 0;
-        Animator.SetBool("is" + attackName, true);
-        float attackTime = GetAnimationTime(attackName) - 0.4f;
-        yield return new WaitForSeconds(attackTime * 0.4f);
-        attackCollider.enabled = true;
-        yield return new WaitForSeconds(attackTime * 0.6f);
-
-        attackCollider.enabled = false;
-        attackSprite.enabled = false;
-        Animator.SetBool("is" + attackName, false);
-        VillainController.Instance.RotationSpeed = 100;
+    protected void UpdateAttackSprite() {
+        if(Animator.GetBool("isAttackSpin")) {
+            AttackSpinSprite.enabled = true;
+        } else {
+            AttackSpinSprite.enabled = false;
+        }
     }
-
     protected float GetAnimationTime(string animationName) {
         float animationTime = -1;
         foreach(AnimationClip clip in AnimationClips) {
@@ -135,18 +119,17 @@ public class VillainManager : MonoBehaviour {
     }
     protected void IsHealthDepleted() {
         if(CurrentHealth == 0) {
-            Death();
+            StartCoroutine(Death());
         }
     }
-    protected virtual void Death() {
-        if(CurrentHealth == 0) {
-            VillainController.Instance.MovementSpeed = 0;
-            VillainController.Instance.RotationSpeed = 0;
-            Animator.SetBool("isDying", true);
-            AddPoints();
-            StartCoroutine(BattleUIManager.Instance.DisplayBattleInfo("G E W O N N E N", 4));
-            SceneManager.LoadScene(QuestHubController.questHubController.currentQuest);
-        }
+    protected virtual IEnumerator Death() {
+        VillainController.Instance.MovementSpeed = 0;
+        VillainController.Instance.RotationSpeed = 0;
+        Animator.SetBool("isDying", true);
+        AddPoints();
+        StartCoroutine(BattleUIManager.Instance.DisplayBattleInfo("G E W O N N E N", 4));
+        yield return new WaitForSecondsRealtime(4);
+        SceneManager.LoadScene(QuestHubController.questHubController.currentQuest);
     }
     private void AddPoints() {
         int points = 300;
