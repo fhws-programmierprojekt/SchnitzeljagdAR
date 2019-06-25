@@ -5,7 +5,7 @@ using UnityEngine;
 public class QuizData {
 
     //attributes
-    public static string Path { get; }  = System.IO.Path.Combine(Application.streamingAssetsPath, "Quiz/QuizData.json");
+    public static string Path { get; } = System.IO.Path.Combine(Application.streamingAssetsPath, "Quiz/QuizData.json");
     [SerializeField] private Stage[] stages;
 
     //constructors
@@ -35,7 +35,11 @@ public class QuizData {
 
                 quizDataAsJson = reader.text;
             }
+            if(Application.platform == RuntimePlatform.IPhonePlayer) {
+                quizDataAsJson = File.ReadAllText(path);
+            }
             quiz = JsonUtility.FromJson<QuizData>(quizDataAsJson);
+
             if(QuizDataChecker(quiz)) {
                 Debug.Log("QuizData is Correct");
             } else {
