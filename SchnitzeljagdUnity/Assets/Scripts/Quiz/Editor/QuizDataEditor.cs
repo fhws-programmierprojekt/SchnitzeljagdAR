@@ -4,13 +4,25 @@ using UnityEngine;
 
 public class QuizDataEditor : EditorWindow {
 
-    public QuizData quiz;
-    private string quizDataPath;
+    #region Attributes
+    // QuizData
+    [SerializeField] private QuizData quizData;
+    // GUI
+    private Vector2 ScrollPosition { get; set; } = Vector2.zero;
+    private SerializedObject SerializedObject { get; set; }
+    private SerializedProperty SerializedProperty { get; set; }
+    // QuizData Path
+    private string QuizDataPath { get; set; }
+    #endregion
 
-    private Vector2 scrollPosition = Vector2.zero;
-    private SerializedObject serializedObject;
-    private SerializedProperty serializedProperty;
+    #region Getter and Setter
+    public QuizData QuizData {
+        get { return quizData; }
+        set { quizData = value; }
+    }
+    #endregion
 
+    #region UnityMethods
     [MenuItem("SchnitzeljagdAR/QuizDataEditor")]
     static void Init() {
         QuizDataEditor window = GetWindow<QuizDataEditor>("QuizDataEditor");
@@ -19,9 +31,8 @@ public class QuizDataEditor : EditorWindow {
     }
 
     private void OnEnable() {
-        quizDataPath = QuizData.Path;
-
-        ReadQuizData(quizDataPath);
+        QuizDataPath = QuizData.Path;
+        ReadQuizData(QuizDataPath);
         RefreshObject();
     }
 
@@ -43,17 +54,17 @@ public class QuizDataEditor : EditorWindow {
         Rect bodyRect = new Rect(8, (headerRect.y + headerRect.height) + 8, this.position.width - 16, this.position.height - (headerRect.y + headerRect.height) - 80);
         GUI.Box(bodyRect, GUIContent.none);
 
-        Rect viewRect = new Rect(bodyRect.x + 8, bodyRect.y + 8, bodyRect.width - 16, EditorGUI.GetPropertyHeight(serializedProperty));
+        Rect viewRect = new Rect(bodyRect.x + 8, bodyRect.y + 8, bodyRect.width - 16, EditorGUI.GetPropertyHeight(SerializedProperty));
         Rect scrollPosRect = new Rect(viewRect) {
             height = bodyRect.height - 20
         };
 
-        scrollPosition = GUI.BeginScrollView(scrollPosRect, scrollPosition, viewRect, false, false, GUIStyle.none, GUI.skin.verticalScrollbar);
+        ScrollPosition = GUI.BeginScrollView(scrollPosRect, ScrollPosition, viewRect, false, false, GUIStyle.none, GUI.skin.verticalScrollbar);
 
         bool drawSlider = viewRect.height > scrollPosRect.height;
         Rect propertyRect = new Rect(bodyRect.x + 8, bodyRect.y + 8, bodyRect.width - (drawSlider ? 40 : 20), 17);
-        EditorGUI.PropertyField(propertyRect, serializedProperty, true);
-        serializedObject.ApplyModifiedProperties();
+        EditorGUI.PropertyField(propertyRect, SerializedProperty, true);
+        SerializedObject.ApplyModifiedProperties();
 
         GUI.EndScrollView();
         #endregion
@@ -63,13 +74,13 @@ public class QuizDataEditor : EditorWindow {
 
         bool pressedSave = GUI.Button(buttonRect, "Save", EditorStyles.miniButtonRight);
         if(pressedSave) {
-            WriteQuizData(quizDataPath);
+            WriteQuizData(QuizDataPath);
         }
 
         buttonRect.x -= buttonRect.width;
         bool pressedLoad = GUI.Button(buttonRect, "Load", EditorStyles.miniButtonLeft);
         if(pressedLoad) {
-            ReadQuizData(quizDataPath);
+            ReadQuizData(QuizDataPath);
 
             RefreshObject();
         }
@@ -77,41 +88,46 @@ public class QuizDataEditor : EditorWindow {
         buttonRect.x = bodyRect.x;
         bool pressedNew = GUI.Button(buttonRect, "New", EditorStyles.miniButton);
         if(pressedNew) {
-            quiz = new QuizData();
-            quiz.Stages = new QuizData.Stage[0];
+            QuizData = new QuizData {
+                Stages = new QuizData.Stage[0]
+            };
 
             RefreshObject();
         }
 
         #endregion
     }
+    #endregion
 
+    #region Methods
     private void RefreshObject() {
-        serializedObject = new SerializedObject(this);
-        serializedProperty = serializedObject.FindProperty("quiz").FindPropertyRelative("stages");
+        SerializedObject = new SerializedObject(this);
+        SerializedProperty = SerializedObject.FindProperty("quizData").FindPropertyRelative("stages");
 
-        serializedObject.ApplyModifiedProperties();
-        serializedObject.Update();
+        SerializedObject.ApplyModifiedProperties();
+        SerializedObject.Update();
     }
 
     private void ReadQuizData(string path) {
         if(File.Exists(path)) {
-            quiz = QuizData.ReadQuizData(path);
-        } else {
-            quiz = new QuizData();
-            quiz.Stages = new QuizData.Stage[0];
+            QuizData = QuizData.ReadQuizData(path);
+        }
+        else {
+            QuizData = new QuizData {
+                Stages = new QuizData.Stage[0]
+            };
         }
     }
 
     private void WriteQuizData(string path) {
-        if(QuizData.QuizDataChecker(quiz)) {
+        if(QuizData.QuizDataChecker(QuizData)) {
             if(File.Exists(path)) {
                 string date = System.DateTime.Now.ToString("yyyyMMdd_HHmmss");
                 string pathBackup = path.Replace("QuizData", "QuizDataBackup" + date);
                 File.Copy(path, pathBackup);
             }
 
-            string quizDataAsJson = JsonUtility.ToJson(quiz, true);
+            string quizDataAsJson = JsonUtility.ToJson(QuizData, true);
             File.WriteAllText(path, quizDataAsJson);
 
             Debug.Log("QuizData is Correct and was saved!");
@@ -140,6 +156,7 @@ public class QuizDataEditor : EditorWindow {
         }
 
         string json = MyJsonUtility.ToJson(stages, true);
-        File.WriteAllText(quizDataPath.Replace(".json", "") + "Test.json", json);
+        File.WriteAllText(QuizDataPath.Replace(".json", "") + "Test.json", json);
     }
+    #endregion
 }

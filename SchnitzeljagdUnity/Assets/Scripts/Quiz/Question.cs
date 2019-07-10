@@ -4,17 +4,18 @@ using UnityEngine;
 [System.Serializable]
 public class Question {
 
-    //attributes
+    #region Question
+    // Attributes
     [SerializeField] private string info;
     [SerializeField] private Answer[] answers;
 
-    //constructors
+    // Constructor
     public Question(string info, Answer[] answers) {
         Info = info;
         Answers = answers;
     }
 
-    //getter and setter
+    // Getter and Setter
     public string Info {
         get { return info; }
         set { info = value; }
@@ -24,7 +25,7 @@ public class Question {
         set { answers = value; }
     }
 
-    //methods
+    // Methods
     public Answer[] AnswersAreCorrect(bool isCorrect) {
         List<Answer> answersAreCorrect = new List<Answer>();
 
@@ -36,21 +37,22 @@ public class Question {
 
         return answersAreCorrect.ToArray();
     }
+    #endregion
 
-    //nested class
+    #region Answer
     [System.Serializable]
     public class Answer {
 
-        //attributes
+        // Attributes
         [SerializeField] private string info;
         [SerializeField] private bool isCorrect = false;
 
-        //constructors
+        // Constructor
         public Answer(string info, bool isCorrect) {
             Info = info;
             IsCorrect = isCorrect;
         }
-        //getter and setter
+        // Getter and Setter
         public string Info {
             get { return info; }
             set { info = value; }
@@ -60,4 +62,5 @@ public class Question {
             set { isCorrect = value; }
         }
     }
+    #endregion
 }

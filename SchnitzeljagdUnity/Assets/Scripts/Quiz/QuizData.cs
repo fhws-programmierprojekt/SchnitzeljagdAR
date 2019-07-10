@@ -4,24 +4,24 @@ using UnityEngine;
 [System.Serializable]
 public class QuizData {
 
-    //attributes
+    #region QuizData
+    // Attributes
     public static string Path { get; } = System.IO.Path.Combine(Application.streamingAssetsPath, "Quiz/QuizData.json");
     [SerializeField] private Stage[] stages;
 
-    //constructors
+    // Constructors
     public QuizData() {}
     public QuizData(Stage[] stages) {
         Stages = stages;
     }
 
-    //getter and setter
+    // Getter and Setter
     public Stage[] Stages {
         get { return stages; }
         set { stages = value; }
     }
 
-    
-    [System.Obsolete]
+    // Methods
     public static QuizData ReadQuizData(string path) {
         QuizData quiz = new QuizData();
         try {
@@ -30,10 +30,12 @@ public class QuizData {
                 quizDataAsJson = File.ReadAllText(path);
             }
             if(Application.platform == RuntimePlatform.Android) {
+                #pragma warning disable 0618
                 WWW reader = new WWW(path);
                 while(!reader.isDone) { }
 
                 quizDataAsJson = reader.text;
+                #pragma warning restore 0618
             }
             if(Application.platform == RuntimePlatform.IPhonePlayer) {
                 quizDataAsJson = File.ReadAllText(path);
@@ -66,29 +68,25 @@ public class QuizData {
 
         return quizDataIsCorrect;
     }
+    #endregion
 
-    //public void Reload() {
-    //    if(CurrentStage == null || CurrentStage.Length == 0) {
-    //        CurrentStage = Stages[0].Questions;
-    //    }
-    //}
-
-    //nested class
+    #region Stage
     [System.Serializable]
     public class Stage {
 
-        //attributes
+        // Attributes
         [SerializeField] private Question[] questions;
 
-        //constructors
+        // Constructors
         public Stage(Question[] questions) {
             Questions = questions;
         }
 
-        //getter and setter
+        // Getter and Setter
         public Question[] Questions {
             get { return questions; }
             set { questions = value; }
         }
     }
+    #endregion
 }
