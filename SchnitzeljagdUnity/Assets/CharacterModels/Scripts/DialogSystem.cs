@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using TMPro;
 
 public class DialogSystem : MonoBehaviour
@@ -12,7 +10,7 @@ public class DialogSystem : MonoBehaviour
     void Awake()
     {
         //Checks for wrong clones
-        if(dialogSystem == null)
+        if (dialogSystem == null)
         {
             dialogSystem = this;
         }
@@ -21,17 +19,16 @@ public class DialogSystem : MonoBehaviour
             Destroy(gameObject);
         }
         //Sets every dialog and the beginn of the scene to false
-        for(int i = 0; i < dialogs.Length; i++)
+        for (int i = 0; i < dialogs.Length; i++)
         {
             dialogs[i].dialogObject.SetActive(false);
         }
-       
+
     }
-    
 
     //START DIALOG
 
-    public void startDialog(int dialogID)
+    public void StartDialog(int dialogID)
     {
         for(int i = 0; i < dialogs.Length; i++)
         {
@@ -47,7 +44,7 @@ public class DialogSystem : MonoBehaviour
     
     //END DIALOG
     
-    public void endDialog(int dialogID)
+    public void EndDialog(int dialogID)
     {
         for (int i = 0; i < dialogs.Length; i++)
         {

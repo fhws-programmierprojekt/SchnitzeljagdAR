@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class QuestController : MonoBehaviour
@@ -24,10 +22,10 @@ public class QuestController : MonoBehaviour
             //Quest01
             if (questID == 1)
             {
-                DialogSystem.dialogSystem.startDialog(1);
-                searchingImageStatus(false);
+                DialogSystem.dialogSystem.StartDialog(1);
+                SearchingImageStatus(false);
             }
-            //Quest02-12
+            //Quest02-12 for a more detailed explation -> documation 3.3.1 picture 7
             else
             {
                 for (int i = 2; i <= questListLenght; i++)
@@ -36,16 +34,16 @@ public class QuestController : MonoBehaviour
                     {
                         if (QuestHubController.questHubController.QuestTargetAllreadyFound() == false)
                         {
-                            DialogSystem.dialogSystem.startDialog(QuestHubController.questHubController.questList[i - 1].firstDialogID);
+                            DialogSystem.dialogSystem.StartDialog(QuestHubController.questHubController.questList[i - 1].firstDialogID);
                         }
                         else if (QuestHubController.questHubController.QuestTargetAllreadyFound() && QuestHubController.questHubController.QuestMinigameAllreadyDone() == false)
                         {
-                            DialogSystem.dialogSystem.startDialog(QuestHubController.questHubController.questList[i - 1].dialogAfterQuizID);
+                            DialogSystem.dialogSystem.StartDialog(QuestHubController.questHubController.questList[i - 1].dialogAfterQuizID);
                             QuestHubController.questHubController.questList[1].imageProgress = Quests.ImagetargetProgress.NOT_FOUND;
                         }
                         else if (QuestHubController.questHubController.QuestTargetAllreadyFound() && QuestHubController.questHubController.QuestMinigameAllreadyDone())
                         {
-                            DialogSystem.dialogSystem.startDialog(QuestHubController.questHubController.questList[i - 1].dialogAfterMinigameID);
+                            DialogSystem.dialogSystem.StartDialog(QuestHubController.questHubController.questList[i - 1].dialogAfterMinigameID);
                             QuestHubController.questHubController.questList[1].imageProgress = Quests.ImagetargetProgress.NOT_FOUND;
                         }
                     }
@@ -53,7 +51,7 @@ public class QuestController : MonoBehaviour
             }
         }
     }
-
+    
     void Update()
     {
         //The imagetarget helping text will pop up when the canvas in the imagetarget gameobject gets inactiv,
@@ -61,83 +59,84 @@ public class QuestController : MonoBehaviour
         //so they are not incluaded in this function
         if(canvas.enabled == false && SceneManager.GetActiveScene().buildIndex != 9 && SceneManager.GetActiveScene().buildIndex != 10)
         {
-            searchingImageStatus(true);
+            SearchingImageStatus(true);
         }
         if(canvas.enabled == true && SceneManager.GetActiveScene().buildIndex != 9 && SceneManager.GetActiveScene().buildIndex != 10)
         {
-            searchingImageStatus(false);
+            SearchingImageStatus(false);
         }
+        
     }
 
     //LOAD
-    public void loadPuzzelGame()
+    public void LoadPuzzelGame()
     {
         SceneManager.LoadScene(17);
     }
 
-    public void loadTraning()
+    public void LoadTraning()
     {
         SceneManager.LoadScene(16);
     }
 
-    public void loadQuestHub()
+    public void LoadQuestHub()
     {
-        QuestHubController.questHubController.loadQuestHub();
+        QuestHubController.questHubController.LoadQuestHub();
     }
 
-    public void loadQuiz()
+    public void LoadQuiz()
     {
         SceneManager.LoadScene(19);
     }
 
-    public void loadChestGame()
+    public void LoadChestGame()
     {
         SceneManager.LoadScene(13);
     }
 
-    public void loadMazeRun()
+    public void LoadMazeRun()
     {
         SceneManager.LoadScene(14);
     }
 
-    public void loadCurrentquest()
+    public void LoadCurrentquest()
     {
         SceneManager.LoadScene(QuestHubController.questHubController.currentQuest);
     }
 
-    public void loadLastFight()
+    public void LoadLastFight()
     {
         SceneManager.LoadScene(18);
 
     }
 
-    public void loadEatingGame()
+    public void LoadEatingGame()
     {
         SceneManager.LoadScene(15);
     }
 
     //ADD
 
-    public void addPoints(int points)
+    public void AddPoints(int points)
     {
-        QuestHubController.questHubController.addPoints(points);
+        QuestHubController.questHubController.AddPoints(points);
     }
 
     //CHANGE
 
-    public void searchingImageStatus(bool status)
+    public void SearchingImageStatus(bool status)
     {
         searchingImage.SetActive(status);
     }
 
-    public void imageTargertFound()
+    public void ImageTargertFound()
     {
-        QuestHubController.questHubController.imageTargetFound(QuestHubController.questHubController.currentQuest);
+        QuestHubController.questHubController.ImageTargetFound(QuestHubController.questHubController.currentQuest);
     }
 
-    public void minigameDone()
+    public void MinigameDone()
     {
-        QuestHubController.questHubController.minigameDone(QuestHubController.questHubController.currentQuest);
+        QuestHubController.questHubController.MinigameDone(QuestHubController.questHubController.currentQuest);
     }
   
 }

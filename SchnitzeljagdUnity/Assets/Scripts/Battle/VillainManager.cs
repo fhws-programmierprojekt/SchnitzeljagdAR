@@ -134,7 +134,7 @@ public class VillainManager : MonoBehaviour {
         int penalty = HeroManager.Instance.Deaths * 25;
         points = (points - penalty >= 100) ? points - penalty : 100;
         if(QuestHubController.questHubController != null) {
-            QuestHubController.questHubController.addPoints(points);
+            QuestHubController.questHubController.AddPoints(points);
         }
         PointsGainController pointController = GameObject.Find("PointController").GetComponent<PointsGainController>();
         pointController.playPointAnimation(points);

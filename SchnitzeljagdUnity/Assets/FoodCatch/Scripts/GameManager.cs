@@ -13,7 +13,7 @@ public class GameManager : MonoBehaviour
     void Start()
     {
 
-        DialogSystem.dialogSystem.startDialog(1);
+        DialogSystem.dialogSystem.StartDialog(1);
         scoreFunction = scoreObject.GetComponent<ScoreFunction>();
 
     }
@@ -23,7 +23,7 @@ public class GameManager : MonoBehaviour
         if (score >= 150 && trigger == false)
         {
             trigger = true;
-            DialogSystem.dialogSystem.startDialog(2);
+            DialogSystem.dialogSystem.StartDialog(2);
         }
     }
 

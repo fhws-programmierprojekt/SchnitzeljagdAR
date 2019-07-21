@@ -109,8 +109,8 @@ public class QuizManager : MonoBehaviour {
     }
     public void AddPoints() {
         int points = Attempts * 5;
-        if(QuestHubController.questHubController != null) {
-            QuestHubController.questHubController.addPoints(points);
+        if(QuestHubController.questHubController != null) {          
+            QuestHubController.questHubController.AddPoints(points);
         }
         PointsGainController pointController = GameObject.Find("PointController").GetComponent<PointsGainController>();
         pointController.playPointAnimation(points);

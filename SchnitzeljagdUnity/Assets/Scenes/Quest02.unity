@@ -586,12 +586,6 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 834532452991325612, guid: a08488aac13fdb3439fc50dd75ef8caf,
-        type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 21300000, guid: cf1462bc694c3c249831ad8ac5293aa2,
-        type: 3}
     - target: {fileID: 834532453886949581, guid: a08488aac13fdb3439fc50dd75ef8caf,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -757,6 +751,37 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.x
       value: -84.400024
       objectReference: {fileID: 0}
+    - target: {fileID: 834532452991325612, guid: a08488aac13fdb3439fc50dd75ef8caf,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: cf1462bc694c3c249831ad8ac5293aa2,
+        type: 3}
+    - target: {fileID: 834532453823103701, guid: a08488aac13fdb3439fc50dd75ef8caf,
+        type: 3}
+      propertyPath: m_textInfo.characterCount
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 834532453823103701, guid: a08488aac13fdb3439fc50dd75ef8caf,
+        type: 3}
+      propertyPath: m_textInfo.spaceCount
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 834532453823103701, guid: a08488aac13fdb3439fc50dd75ef8caf,
+        type: 3}
+      propertyPath: m_textInfo.wordCount
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 834532453823103701, guid: a08488aac13fdb3439fc50dd75ef8caf,
+        type: 3}
+      propertyPath: m_textInfo.lineCount
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 834532453823103701, guid: a08488aac13fdb3439fc50dd75ef8caf,
+        type: 3}
+      propertyPath: m_textInfo.pageCount
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 834532453664181247, guid: a08488aac13fdb3439fc50dd75ef8caf,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
@@ -765,7 +790,7 @@ PrefabInstance:
     - target: {fileID: 834532453664181247, guid: a08488aac13fdb3439fc50dd75ef8caf,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: endDialog
+      value: EndDialog
       objectReference: {fileID: 0}
     - target: {fileID: 834532453664181247, guid: a08488aac13fdb3439fc50dd75ef8caf,
         type: 3}
@@ -780,7 +805,7 @@ PrefabInstance:
     - target: {fileID: 834532453664181247, guid: a08488aac13fdb3439fc50dd75ef8caf,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
-      value: loadQuestHub
+      value: LoadQuestHub
       objectReference: {fileID: 0}
     - target: {fileID: 834532453664181247, guid: a08488aac13fdb3439fc50dd75ef8caf,
         type: 3}
@@ -822,31 +847,6 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
       objectReference: {fileID: 290713109}
-    - target: {fileID: 834532453823103701, guid: a08488aac13fdb3439fc50dd75ef8caf,
-        type: 3}
-      propertyPath: m_textInfo.characterCount
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 834532453823103701, guid: a08488aac13fdb3439fc50dd75ef8caf,
-        type: 3}
-      propertyPath: m_textInfo.spaceCount
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 834532453823103701, guid: a08488aac13fdb3439fc50dd75ef8caf,
-        type: 3}
-      propertyPath: m_textInfo.wordCount
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 834532453823103701, guid: a08488aac13fdb3439fc50dd75ef8caf,
-        type: 3}
-      propertyPath: m_textInfo.lineCount
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 834532453823103701, guid: a08488aac13fdb3439fc50dd75ef8caf,
-        type: 3}
-      propertyPath: m_textInfo.pageCount
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a08488aac13fdb3439fc50dd75ef8caf, type: 3}
 --- !u!224 &1103858685 stripped
@@ -1188,12 +1188,6 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 834532452991325612, guid: a08488aac13fdb3439fc50dd75ef8caf,
-        type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 21300000, guid: cf1462bc694c3c249831ad8ac5293aa2,
-        type: 3}
     - target: {fileID: 834532453886949581, guid: a08488aac13fdb3439fc50dd75ef8caf,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1359,6 +1353,12 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.x
       value: -84.4
       objectReference: {fileID: 0}
+    - target: {fileID: 834532452991325612, guid: a08488aac13fdb3439fc50dd75ef8caf,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: cf1462bc694c3c249831ad8ac5293aa2,
+        type: 3}
     - target: {fileID: 834532453664181247, guid: a08488aac13fdb3439fc50dd75ef8caf,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
@@ -1367,7 +1367,7 @@ PrefabInstance:
     - target: {fileID: 834532453664181247, guid: a08488aac13fdb3439fc50dd75ef8caf,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: endDialog
+      value: EndDialog
       objectReference: {fileID: 0}
     - target: {fileID: 834532453664181247, guid: a08488aac13fdb3439fc50dd75ef8caf,
         type: 3}
@@ -1382,7 +1382,7 @@ PrefabInstance:
     - target: {fileID: 834532453664181247, guid: a08488aac13fdb3439fc50dd75ef8caf,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
-      value: loadQuiz
+      value: LoadQuiz
       objectReference: {fileID: 0}
     - target: {fileID: 834532453664181247, guid: a08488aac13fdb3439fc50dd75ef8caf,
         type: 3}
@@ -1600,6 +1600,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 232821405}
     m_Modifications:
+    - target: {fileID: 6008378532023332857, guid: 40245bf9a6aa1464b8a171bcddd5b070,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4922818683340795419, guid: 40245bf9a6aa1464b8a171bcddd5b070,
         type: 3}
       propertyPath: m_Sprite
@@ -1855,12 +1860,6 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 834532452991325612, guid: a08488aac13fdb3439fc50dd75ef8caf,
-        type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 21300000, guid: cf1462bc694c3c249831ad8ac5293aa2,
-        type: 3}
     - target: {fileID: 834532453886949581, guid: a08488aac13fdb3439fc50dd75ef8caf,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2011,6 +2010,12 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.x
       value: -84.400024
       objectReference: {fileID: 0}
+    - target: {fileID: 834532452991325612, guid: a08488aac13fdb3439fc50dd75ef8caf,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: cf1462bc694c3c249831ad8ac5293aa2,
+        type: 3}
     - target: {fileID: 834532453664181247, guid: a08488aac13fdb3439fc50dd75ef8caf,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
@@ -2019,7 +2024,7 @@ PrefabInstance:
     - target: {fileID: 834532453664181247, guid: a08488aac13fdb3439fc50dd75ef8caf,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: endDialog
+      value: EndDialog
       objectReference: {fileID: 0}
     - target: {fileID: 834532453664181247, guid: a08488aac13fdb3439fc50dd75ef8caf,
         type: 3}
@@ -2034,7 +2039,7 @@ PrefabInstance:
     - target: {fileID: 834532453664181247, guid: a08488aac13fdb3439fc50dd75ef8caf,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
-      value: startDialog
+      value: StartDialog
       objectReference: {fileID: 0}
     - target: {fileID: 834532453664181247, guid: a08488aac13fdb3439fc50dd75ef8caf,
         type: 3}
@@ -2044,7 +2049,7 @@ PrefabInstance:
     - target: {fileID: 834532453664181247, guid: a08488aac13fdb3439fc50dd75ef8caf,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_MethodName
-      value: searchingImageStatus
+      value: SearchingImageStatus
       objectReference: {fileID: 0}
     - target: {fileID: 834532453664181247, guid: a08488aac13fdb3439fc50dd75ef8caf,
         type: 3}
@@ -2099,7 +2104,7 @@ PrefabInstance:
     - target: {fileID: 834532453664181247, guid: a08488aac13fdb3439fc50dd75ef8caf,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[3].m_MethodName
-      value: imageTargertFound
+      value: ImageTargertFound
       objectReference: {fileID: 0}
     - target: {fileID: 834532453664181247, guid: a08488aac13fdb3439fc50dd75ef8caf,
         type: 3}
@@ -2204,7 +2209,7 @@ PrefabInstance:
     - target: {fileID: 588544590367216562, guid: e06f72de58c9bf7469dd54f0ace39f44,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: endDialog
+      value: EndDialog
       objectReference: {fileID: 0}
     - target: {fileID: 588544590367216562, guid: e06f72de58c9bf7469dd54f0ace39f44,
         type: 3}
@@ -2219,7 +2224,7 @@ PrefabInstance:
     - target: {fileID: 588544590367216562, guid: e06f72de58c9bf7469dd54f0ace39f44,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
-      value: startDialog
+      value: StartDialog
       objectReference: {fileID: 0}
     - target: {fileID: 588544590367216562, guid: e06f72de58c9bf7469dd54f0ace39f44,
         type: 3}

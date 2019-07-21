@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
 {
-    //Var for the movement 
+    //Variables for the movement 
 
     public float moveSpeed = 4;         //movementspeed      
     public float rotationRate = 360;    //rotationspeed
@@ -55,7 +55,7 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
 
-        //Movement Functions for the mazerun minigame, it is first person view.
+        //Movement Functions for the mazerun minigame, it is in "first-person-view".
         if (SceneManager.GetActiveScene().buildIndex == 14 )
         {
             float moveAxis = 0f;
@@ -89,7 +89,7 @@ public class PlayerController : MonoBehaviour
                 controller.Move(moveDir * Time.deltaTime);
             }
         }
-        //Movement Functions for the chatfruit game, it is third person view.
+        //Movement Functions for the catchfood game, it is third person view.
         if (SceneManager.GetActiveScene().buildIndex == 15)
         {
             anim.SetBool("isBreathingIdelBasket", true);

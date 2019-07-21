@@ -57,7 +57,7 @@ EditorBuildSettings:
     path: Assets/Scenes/Trainer.unity
     guid: ef4a1d9610c90f14d9d4cad90efe4b7a
   - enabled: 1
-    path: Assets/Scenes/PuzzelGame.unity
+    path: Assets/Scenes/PuzzleGame.unity
     guid: 17929ac862245414599adcdb4c0547ff
   - enabled: 1
     path: Assets/Scenes/Battle.unity

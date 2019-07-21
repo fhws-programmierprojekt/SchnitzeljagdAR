@@ -1,11 +1,9 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class GateController : MonoBehaviour
 {
-    public static int keyCount = 0;     //Var to check if player has the key
-    public static int exitCount = 0;    //Var to check if player has allready enterd the exit event
+    public static int keyCount = 0;     //Variable to check if player has the key
+    public static int exitCount = 0;    //Variable to check if player has allready enterd the exit event
 
     //Method to opend the gates and allowing the player to exit
 
