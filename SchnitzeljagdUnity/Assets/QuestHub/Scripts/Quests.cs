@@ -1,7 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.UI;
+﻿using UnityEngine.UI;
 
 [System.Serializable]
 public class Quests 
@@ -19,7 +16,7 @@ public class Quests
     public int nextQuest;                       //ID for the next quest, if there is any
     public int previousQuest;                   //ID for the previous quest, if there is any
     public int pointReward;                     //points given for success
-    public int firstDialogID;                     //ID of the first dialog in a scene
+    public int firstDialogID;                   //ID of the first dialog in a scene
     public int dialogAfterQuizID;               //ID of the dialog that playes after the quiz
     public int dialogAfterMinigameID;           //ID of the dialog that playes afte the minigame
     public Button button;                       //corresponding button

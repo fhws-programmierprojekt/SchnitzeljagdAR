@@ -1,15 +1,13 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.UI;
+﻿using UnityEngine;
 
 public class ExitController : MonoBehaviour
 {
-    //class used only for playing the exit event
+    //Invisble wall so player can move into the exit floor but cant get in again 
     public GameObject Fourthwall;
 
     void Start()
     {
+        //The collider gets disabled so the player can move into the exit floor
         Fourthwall.SetActive(false);
     }
 

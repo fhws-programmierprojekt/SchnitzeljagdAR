@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   vuforia:
     vuforiaLicenseKey: Ac5GHoz/////AAABmWCA6GmFskLXjlxU7vaz/v9U/frpf2k+RUd38advtcRGdYCTA2Dpgwb7ZYtO0i8arA9R8yaO6uour4CC6rc1nx3nHJFrpwXfC2EP4uRPVUYbw2QUVfn2XTczlwyrFBvfMCV5Hv43QDdBbOCKIEaYkQhnXRlILV1ImHBYyOj5oTzGwMTGKxvdDbzCZKRWjK8IMlq7YOdlKqT9tFKuiZgiLNwvLuF0zrsWgfHvDsE0KcOq3QefQ5cjDUpltd0ZTsDprmZNok7vBY95WOBhkxmise1lIROJaT+hPtiTk3f16d3Q1On5E1Eglg3D2CbENsL/nbMfCpBkf5fHBbzaGIq9eWbzun+vrSt/bP7rqX+5EYn/
-    ufoLicenseKey: QWVJK3Foai8vLy8vQUFBQUtHenNHRTQ5dGsrSnFyRkROaFNlUEJwK1ljcXJyTUVmMS9RSTZoOEM5blQwQzFYYzdERis1Wm51K3JMUmNYMFVHQkh4OHN2ckQzWDliRDZKMnlnU3FyWWdRTU8wdFR1UzFIQ3I0M05DaFBvQnh3cGdBQnZ0VXBpSXpNeEh0bThsSzcrckVIemp0aEZNOVc3YTI0Wkc0elFnR1JlMjJqTGZVVDUxcVV1bEo0bjc0RWVrcHNLZ2ZrOGRWT2Uza2ljOHpmb0F4TG5mYlZkcDM1YVd4WEg1dW5PLzMxMlNjakNKYXB1bFF4Y0dEUVF5TGphUUh0d3lFNEdWMlc5QTd5VlN0S2VTYmpWK0trUlo1L1pyZXk3T2RsYWtCTFJ6RjMwNmpTelh4aUwxN1hmKzBvaGt3Sm1MTWhldU52dUNTbnYwdlo2K05ZdnQ5TmFSRWxMOGQydjIvMmlRbjBKVWF3b1NkaTMyNVlGMFo0WVA=
+    ufoLicenseKey: QVFBT3Yzai8vLy8vQUFBQUtCQ09jWUp3SGt3THZjTVllVFpRTURWM1M5R2ttQUNHaWVWSmdLVmdieFN1RUREY3JtUHljME5RT0dsZFBoS0JxNERCcElvMUxUVlI5MW1ML0xYWmRrT2NSQTZRWmJqSzhHRTIzUWNibDlFdzNrQ0pwU3dEMzVhNzBHRWkrenlrSVl2MTZpUGEzeWd3TDlEK1BwMUZCQWNsTFFBV2gva0tzL1ZZN1NURUxMUld3RkFyZHBBQTV5M09LTG1uZExueXlhSFFtRjM5N21wUHp5MExGc1FSTGM0TkRBNFBReE9UTFZkUFphUEZIdFV6UHltYUVldGJlWVhsaWhkK1J6ZXNNT0FyRndueWNXUlhabXlxUXJXVEZvV3NGSCt2YUpHOHNBVGg0OHJDbmYwUWhoUWVYUFBwbGlscHl0QlRWRG1ZU1MxOE9ZTmY3dEZNMFcvSGtEckdScHpoRlMwcG9rdHQvT2FYQmx1d0MzRUs=
     delayedInitialization: 0
     cameraDeviceModeSetting: -1
     maxSimultaneousImageTargets: 1
@@ -56,14 +56,14 @@ MonoBehaviour:
     autoInitTracker: 0
     autoStartTracker: 0
     trackingMode: 1
-    posePrediction: 1
-    modelCorrectionMode: 2
+    posePrediction: 0
+    modelCorrectionMode: 0
     modelTransformEnabled: 0
     modelTransform: {x: 0, y: 0.1, z: -0.1}
   smartTerrain:
     autoInitTracker: 0
     autoStartTracker: 0
   webcam:
-    deviceNameSetInEditor: Microsoft Camera Rear
+    deviceNameSetInEditor: 
     turnOffWebCam: 0
     renderTextureLayer: 30

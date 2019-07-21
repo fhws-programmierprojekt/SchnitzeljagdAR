@@ -1,25 +1,26 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
-using UnityEngine.SceneManagement;
 
-public class EventManager : MonoBehaviour
+public class LabyrinthController : MonoBehaviour
 {
-    //Game vars 
-    public Camera[] cams;                       //array for the cameras in the scene
+    //Game variables
+    public Camera[] cams;                       //Array for the cameras in the scene
     public Button camSwitchButton;              //Gameobject for the button to switch between views
     public Joystick joystick;                   //Joystick objects
     public GameObject joystickHandle;           // "
     Image[] joystickImage = new Image[2];       // "     
-    public Image keyImage;                      //image for the key in the upper right coner
+    public Image keyImage;                      //Image object for the key in the upper right coner
     public GameObject player;                   //Player gameobjects
     Animator animPlayer;                        // "
     Animator animCamera;                        //Cameraobject
 
     void Start()
     {
+        //Starts the game in AR mode.
+        cams[0].enabled = true;
+        cams[1].enabled = false;
 
         //Only allowes joystick in thirdperson.
         joystick.enabled = false;
@@ -31,12 +32,8 @@ public class EventManager : MonoBehaviour
         //Deactivets the key image at the beginn of the game
         keyImage.enabled = false;
 
-        //Starts the game in AR mode.
-        cams[0].enabled = true; 
-        cams[1].enabled = false;
-
         //Starts the dialogs
-        DialogSystem.dialogSystem.startDialog(1);
+        DialogSystem.dialogSystem.StartDialog(1);
         
     }
 
@@ -59,7 +56,7 @@ public class EventManager : MonoBehaviour
     void GameStart()
     {
         //ends the first dialog
-        DialogSystem.dialogSystem.endDialog(1);
+        DialogSystem.dialogSystem.EndDialog(1);
     }
 
     public void CamSwitch()
@@ -76,7 +73,7 @@ public class EventManager : MonoBehaviour
 
     void JoystickSwitch()
     {
-        //only allows the joystick in the thridperson view
+        //Switches the Joystick for activ to incactive when changeing the view of the player 
         joystick.enabled = !joystick.enabled; 
         joystickImage[0].enabled = !joystickImage[0].enabled;
         joystickImage[1].enabled = !joystickImage[1].enabled;
@@ -98,20 +95,20 @@ public class EventManager : MonoBehaviour
     void ExitEvent()
     {
 
-        JoystickSwitch();
-        DisableCamButton();
+        JoystickSwitch();                               //Diable the joystick so player cant move in ending scene 
+        DisableCamButton();                             //Diable the camswitchbutton when ending scene is playing so player cant switch view 
 
         keyImage.enabled = false;
 
-        animPlayer = player.GetComponent<Animator>();
-        animPlayer.Play("ChickenDance");
-        animPlayer.SetBool("isChickenDance", true);
-        animCamera = cams[1].GetComponent<Animator>();
-        animCamera.SetBool("isExit", true);
-        GateController.exitCount--;
-        StartCoroutine(Wait());
-        DialogSystem.dialogSystem.startDialog(2);
-        QuestHubController.questHubController.addPoints(100);
+        animPlayer = player.GetComponent<Animator>();   //Plays the right animation for our character
+        animPlayer.Play("ChickenDance");                // "
+        animPlayer.SetBool("isChickenDance", true);     // " 
+        animCamera = cams[1].GetComponent<Animator>();  //Moves the camerea at the ending scene around the character
+        animCamera.SetBool("isExit", true);             // "
+        GateController.exitCount--;                     //Removes trigger so exit event only play once
+        StartCoroutine(Wait());                         //Starts dialog after 3 secondes so player can see the character dancing
+        DialogSystem.dialogSystem.StartDialog(2);       
+        QuestHubController.questHubController.AddPoints(100);
     }
   
     //SLEEP

@@ -25,11 +25,11 @@ public class PuzzelController : MonoBehaviour
             chest = GameObject.Find("Old_chest");
             anim = chest.GetComponent<Animator>();
             animMap = finalTarget.GetComponent<Animator>();
-            DialogSystem.dialogSystem.startDialog(1);
+            DialogSystem.dialogSystem.StartDialog(1);
         }
         finalTarget.SetActive(false);
         //Opens help
-        DialogSystem.dialogSystem.startDialog(3);
+        DialogSystem.dialogSystem.StartDialog(3);
     }
 
     void Update()
@@ -40,7 +40,7 @@ public class PuzzelController : MonoBehaviour
             if(counter == 12)
             {
                 puzzelPlace.SetActive(false);
-                DialogSystem.dialogSystem.startDialog(1);
+                DialogSystem.dialogSystem.StartDialog(1);
             }
         }
         //If the ucrrent scene is the ChestGameScene
@@ -59,15 +59,15 @@ public class PuzzelController : MonoBehaviour
         puzzelPlace.SetActive(false);
         anim.Play("Open");
         StartCoroutine(Example());
-        DialogSystem.dialogSystem.startDialog(2);
+        DialogSystem.dialogSystem.StartDialog(2);
     }
     IEnumerator Example()
     {
         yield return new WaitForSeconds(1);
         points.playPointAnimation(100);
-        QuestHubController.questHubController.addPoints(100);
+        QuestHubController.questHubController.AddPoints(100);
         finalTarget.SetActive(true);
         animMap.Play("KartenAnim");
-        DialogSystem.dialogSystem.startDialog(2);
+        DialogSystem.dialogSystem.StartDialog(2);
     }
 }
