@@ -51,7 +51,7 @@ public class QuestController : MonoBehaviour
             }
         }
     }
-
+    
     void Update()
     {
         //The imagetarget helping text will pop up when the canvas in the imagetarget gameobject gets inactiv,
@@ -65,6 +65,7 @@ public class QuestController : MonoBehaviour
         {
             SearchingImageStatus(false);
         }
+        
     }
 
     //LOAD

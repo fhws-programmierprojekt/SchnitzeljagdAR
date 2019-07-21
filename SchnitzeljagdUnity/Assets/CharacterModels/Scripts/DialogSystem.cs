@@ -26,7 +26,6 @@ public class DialogSystem : MonoBehaviour
 
     }
 
-
     //START DIALOG
 
     public void StartDialog(int dialogID)
