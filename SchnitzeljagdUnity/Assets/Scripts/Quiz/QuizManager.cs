@@ -9,7 +9,7 @@ public class QuizManager : MonoBehaviour {
 
     [SerializeField] private QuizData quiz;
 
-    //AutoImplementedProperties
+    // Auto-Properties
     public Question[] CurrentStage { get; set; }
     public Question CurrentQuestion { get; set; }
     public Question.Answer[] CurrentAnswers { get; set; }
@@ -19,15 +19,34 @@ public class QuizManager : MonoBehaviour {
 
     #endregion
 
-    //getter and setter
+    #region Getter and Setter
     public QuizData Quiz {
         get { return quiz; }
         set { quiz = value; }
     }
+    #endregion
 
-    //methods
-    #region SetInfo
+    #region UnityMethods
+    // Start is called before the first frame update
+    void Start() {
+        QuizUIManager = new QuizUIManager();
+        quiz = QuizData.ReadQuizData(QuizData.Path);
 
+        if(QuestHubController.questHubController != null) {
+            SetCurrentStage(QuestHubController.questHubController.currentQuest - 1);
+        }
+        else {
+            SetCurrentStage(0);
+        }
+        RandomQuestion();
+    }
+    #endregion UnityMethods
+
+    #region PreUserInput
+    public void RandomQuestion() {
+        int index = Random.Range(0, CurrentStage.Length);
+        SetCurrentQuestion(index);
+    }
     private void SetCurrentStage(int index) {
         CurrentStage = Quiz.Stages[index].Questions;
     }
@@ -60,17 +79,15 @@ public class QuizManager : MonoBehaviour {
         }
         QuizUIManager.UpdateInfo(CurrentQuestion.Info, currentAnswersInfo);
     }
-
     #endregion
 
-    #region CompareInfo
-
+    #region PostUserInput
     public void CompareIndex(int indexOfButton) {
         int indexOfCorrectAnswer = IndexOfCorrectAnswer();
         if(indexOfButton == indexOfCorrectAnswer) {
             AddPoints();
             if(CurrentStage.Length > 0) {
-                NextQuestion();
+                RandomQuestion();
             } else {
                 EndGame();
             }
@@ -90,26 +107,6 @@ public class QuizManager : MonoBehaviour {
         int indexOfCorrectAnswer = System.Array.IndexOf(CurrentAnswers, correctAnswer);
         return indexOfCorrectAnswer;
     }
-
-    #endregion
-
-    // Start is called before the first frame update
-    void Start() {
-        QuizUIManager = new QuizUIManager();
-        quiz = QuizData.ReadQuizData(QuizData.Path);
-
-        if(QuestHubController.questHubController != null) {
-            SetCurrentStage(QuestHubController.questHubController.currentQuest - 1);
-        }
-        else {
-            SetCurrentStage(0);
-        }
-        NextQuestion();
-    }
-    public void NextQuestion() {
-        int index = Random.Range(0, CurrentStage.Length);
-        SetCurrentQuestion(index);
-    }
     public void AddPoints() {
         int points = Attempts * 5;
         if(QuestHubController.questHubController != null) {          
@@ -121,9 +118,11 @@ public class QuizManager : MonoBehaviour {
     public void EndGame() {
         if(QuestHubController.questHubController != null) {
             SceneManager.LoadScene(QuestHubController.questHubController.currentQuest);
-        } else {
+        }
+        else {
             CurrentStage = Quiz.Stages[1].Questions;
-            NextQuestion();
+            RandomQuestion();
         }
     }
+    #endregion
 }

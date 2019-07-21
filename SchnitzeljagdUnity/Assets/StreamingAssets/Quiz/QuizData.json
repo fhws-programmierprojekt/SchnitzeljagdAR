@@ -6,19 +6,19 @@
                     "info": "Question[0.0]",
                     "answers": [
                         {
-                            "info": "Right001",
+                            "info": "Right",
                             "isCorrect": true
                         },
                         {
-                            "info": "Wrong001",
+                            "info": "Wrong",
                             "isCorrect": false
                         },
                         {
-                            "info": "Wrong002",
+                            "info": "Wrong",
                             "isCorrect": false
                         },
                         {
-                            "info": "Wrong003",
+                            "info": "Wrong",
                             "isCorrect": false
                         }
                     ]
@@ -27,19 +27,19 @@
                     "info": "Question[0.1]",
                     "answers": [
                         {
-                            "info": "Right011",
+                            "info": "Right",
                             "isCorrect": true
                         },
                         {
-                            "info": "Wrong012",
+                            "info": "Wrong",
                             "isCorrect": false
                         },
                         {
-                            "info": "Wrong012",
+                            "info": "Wrong",
                             "isCorrect": false
                         },
                         {
-                            "info": "Wrong013",
+                            "info": "Wrong",
                             "isCorrect": false
                         }
                     ]
@@ -48,19 +48,19 @@
                     "info": "Question[0.2]",
                     "answers": [
                         {
-                            "info": "Right021",
+                            "info": "Right",
                             "isCorrect": true
                         },
                         {
-                            "info": "Wrong021",
+                            "info": "Wrong",
                             "isCorrect": false
                         },
                         {
-                            "info": "Wrong022",
+                            "info": "Wrong",
                             "isCorrect": false
                         },
                         {
-                            "info": "Wrong023",
+                            "info": "Wrong",
                             "isCorrect": false
                         }
                     ]
@@ -69,19 +69,19 @@
                     "info": "Question[0.3]",
                     "answers": [
                         {
-                            "info": "Right031",
+                            "info": "Right",
                             "isCorrect": true
                         },
                         {
-                            "info": "Wrong031",
+                            "info": "Wrong",
                             "isCorrect": false
                         },
                         {
-                            "info": "Wrong032",
+                            "info": "Wrong",
                             "isCorrect": false
                         },
                         {
-                            "info": "Wrong033",
+                            "info": "Wrong",
                             "isCorrect": false
                         }
                     ]

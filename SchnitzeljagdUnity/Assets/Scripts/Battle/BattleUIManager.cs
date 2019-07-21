@@ -67,22 +67,7 @@ public class BattleUIManager : MonoBehaviour {
     #endregion
 
     #region Methods
-    public Vector3 GetInputVector() {
-        //Take Input from Joystick
-        float horizontal = Joystick.Horizontal;
-        float vertical = Joystick.Vertical;
-
-        //horizontal = Input.GetAxis("Horizontal");
-        //vertical = Input.GetAxis("Vertical");
-
-        Vector3 inputVector = new Vector3(horizontal, 0, vertical);
-        inputVector = MyGeometry.InputRelativeToCamera(inputVector);
-        return inputVector.normalized;
-    }
-    public bool IsInput() {
-        Vector3 inputVector = GetInputVector();
-        return (inputVector.x != 0 || inputVector.z != 0) ? true : false;
-    }
+    // Time Freeze Methods
     public void ImageTargetFound() {
         if(BattleArenaManager.Instance.BattleArena.gameObject.GetComponent<MeshRenderer>().enabled == true) {
             searchingImage.SetActive(false);
@@ -128,6 +113,23 @@ public class BattleUIManager : MonoBehaviour {
         Time.timeScale = 1;
         Buttons[0].interactable = true;
         Buttons[1].interactable = true;
+    }
+    // Controller Input Methods
+    public Vector3 GetInputVector() {
+        //Take Input from Joystick
+        float horizontal = Joystick.Horizontal;
+        float vertical = Joystick.Vertical;
+
+        //horizontal = Input.GetAxis("Horizontal");
+        //vertical = Input.GetAxis("Vertical");
+
+        Vector3 inputVector = new Vector3(horizontal, 0, vertical);
+        inputVector = MyGeometry.InputRelativeToCamera(inputVector);
+        return inputVector.normalized;
+    }
+    public bool IsInput() {
+        Vector3 inputVector = GetInputVector();
+        return (inputVector.x != 0 || inputVector.z != 0) ? true : false;
     }
     #endregion
 }
