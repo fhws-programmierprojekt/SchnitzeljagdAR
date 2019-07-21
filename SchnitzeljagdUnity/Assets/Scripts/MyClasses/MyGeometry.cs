@@ -5,28 +5,30 @@ using UnityEngine;
 public static class MyGeometry {
 
     #region Methods
-
     // Takes two Vectors and calculates their angle from -180 to 180.
     // Takes two Numbers and calculates the Range in which the privous angle should be
     // Calculation happens Clockwise angleStart to angleEnd
     public static bool IsWithinAngle(Vector3 from, Vector3 to, float angleStart, float angleEnd) {
         bool isWithinAngle = false;
-        float signedangle = Vector3.SignedAngle(from, to, Vector3.up);
+        if( angleStart >= -180 && angleStart <= 180 && angleEnd >= -180 && angleEnd <= 180) {
+            float signedangle = Vector3.SignedAngle(from, to, Vector3.up);
 
-        if(angleStart < angleEnd) {
-            if(signedangle >= angleStart && signedangle <= angleEnd) {
-                isWithinAngle = true;
+            if(angleStart < angleEnd) {
+                if(signedangle >= angleStart && signedangle <= angleEnd) {
+                    isWithinAngle = true;
+                }
             }
-        }else if(angleStart > angleEnd) {
-            if(signedangle >= angleStart || signedangle <= angleEnd) {
-                isWithinAngle = true;
+            else if(angleStart > angleEnd) {
+                if(signedangle >= angleStart || signedangle <= angleEnd) {
+                    isWithinAngle = true;
+                }
             }
-        }else if(angleStart == angleEnd) {
-            if(signedangle == angleStart) {
-                isWithinAngle = true;
+            else if(angleStart == angleEnd) {
+                if(signedangle == angleStart) {
+                    isWithinAngle = true;
+                }
             }
         }
-
         return isWithinAngle;
     }
 
@@ -47,16 +49,13 @@ public static class MyGeometry {
 
     // Takes the Vector from your Input and directionVector relative to the Game World
     public static Vector3 InputRelativeToCamera(Vector3 inputVector) {
-
             Vector3 cameraForward = Camera.main.transform.forward;
             cameraForward.y = 0f;
         if(cameraForward != Vector3.zero) {
             Quaternion cameraQuaternion = Quaternion.LookRotation(cameraForward);
-
             inputVector = cameraQuaternion * inputVector;
         }
         return inputVector.normalized;
     }
-
     #endregion
 }
