@@ -2,7 +2,7 @@
 
 public static class MyArray {
 
-    // Methods
+    #region Methods
     public static T RandomElement<T>(this T[] array) {
         return array[Random.Range(0, array.Length)];
     }
@@ -31,4 +31,5 @@ public static class MyArray {
         }
         return array;
     }
+    #endregion
 }

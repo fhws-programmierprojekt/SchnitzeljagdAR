@@ -15,7 +15,7 @@ public class QuizManager : MonoBehaviour {
     public Question.Answer[] CurrentAnswers { get; set; }
     public int Attempts { get; set; }
 
-    private QuizUIManager QuizUIManager { get; set; }
+    public QuizUIManager QuizUIManager { get; set; }
 
     #endregion
 
@@ -43,12 +43,12 @@ public class QuizManager : MonoBehaviour {
     #endregion UnityMethods
 
     #region PreUserInput
+    public void SetCurrentStage(int index) {
+        CurrentStage = Quiz.Stages[index].Questions;
+    }
     public void RandomQuestion() {
         int index = Random.Range(0, CurrentStage.Length);
         SetCurrentQuestion(index);
-    }
-    private void SetCurrentStage(int index) {
-        CurrentStage = Quiz.Stages[index].Questions;
     }
     private void SetCurrentQuestion(int index) {
         CurrentQuestion = CurrentStage[index];
