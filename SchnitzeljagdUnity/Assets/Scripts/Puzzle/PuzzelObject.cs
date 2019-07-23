@@ -24,7 +24,7 @@ public class PuzzelObject : MonoBehaviour
           if (Input.touchCount > 0 && !locked)
           {
             
-                Touch touch = Input.GetTouch(0);
+                Touch touch = Input.touches[0];
                 Vector3 tch = new Vector3(touch.position.x, touch.position.y, 10);
                 Vector2 touchPos = Camera.main.ScreenToWorldPoint(tch);
                 

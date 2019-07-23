@@ -40,7 +40,7 @@ public class PuzzelController : MonoBehaviour
             if(counter == 12)
             {
                 puzzelPlace.SetActive(false);
-                DialogSystem.dialogSystem.StartDialog(1);
+                DialogSystem.dialogSystem.StartDialog(2);
             }
         }
         //If the ucrrent scene is the ChestGameScene
