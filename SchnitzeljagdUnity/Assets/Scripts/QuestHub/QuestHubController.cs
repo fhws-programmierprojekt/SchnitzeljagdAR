@@ -107,6 +107,7 @@ public class QuestHubController : MonoBehaviour
         {
             if (questList[i].id == questID)
             {
+                
                 questList[i].minigameProgress = Quests.MinigameProgress.DONE;
                 questList[i].imageProgress = Quests.ImagetargetProgress.NOT_FOUND;
             }

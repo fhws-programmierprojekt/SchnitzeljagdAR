@@ -34,9 +34,19 @@ public class DialogSystem : MonoBehaviour
         {
             if(dialogs[i].dialogID == dialogID && dialogs[i].dialogStatus == Dialog.DialogStatus.UNREAD)
             {
-                dialogs[i].dialogObject.SetActive(true);
+                
                 dialogs[i].dialogStatus = Dialog.DialogStatus.READING;
-                dialogs[i].speachBubble.GetComponentInChildren<TextMeshProUGUI>().text = dialogs[i].dialogText;
+                try
+                {
+                    dialogs[i].speachBubble.GetComponentInChildren<TextMeshProUGUI>().text = dialogs[i].dialogText;
+                    dialogs[i].dialogObject.SetActive(true);
+                }
+                catch
+                {
+                    Debug.Log("Speech Bubble oder Dialogobject fehlt");
+                }
+                
+                
 
             }
         }
@@ -51,7 +61,14 @@ public class DialogSystem : MonoBehaviour
             if (dialogs[i].dialogID == dialogID && dialogs[i].dialogStatus == Dialog.DialogStatus.READING)
             {
                 dialogs[i].dialogStatus = Dialog.DialogStatus.READ;
-                dialogs[i].dialogObject.SetActive(false);
+                try
+                {
+                    dialogs[i].dialogObject.SetActive(false);
+                }
+                catch
+                {
+                    Debug.Log("Dialogobject fehlt");
+                }
             }
         }
     }
