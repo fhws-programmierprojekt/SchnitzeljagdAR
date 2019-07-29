@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 
 public class PuzzelObject : MonoBehaviour
@@ -11,6 +9,7 @@ public class PuzzelObject : MonoBehaviour
     private float deltaX, deltaY;       //Used the for the movement of the puzzel piece
     public bool locked;                 //Used for locking the puzzel piece in place if its in the right place
     public bool touched;                //Used to check if the puzzel piece is allready touched         
+    Text text;
 
     // Start is called before the first frame update
     void Start()
@@ -24,12 +23,11 @@ public class PuzzelObject : MonoBehaviour
     {
           if (Input.touchCount > 0 && !locked)
           {
-            
                 Touch touch = Input.touches[0];
                 Vector3 tch = new Vector3(touch.position.x, touch.position.y, 10);
                 Vector2 touchPos = Camera.main.ScreenToWorldPoint(tch);
                 Collider2D puzzel = new Collider2D();
-                
+
                 switch (touch.phase)
                 {
                     //Just touched the screen

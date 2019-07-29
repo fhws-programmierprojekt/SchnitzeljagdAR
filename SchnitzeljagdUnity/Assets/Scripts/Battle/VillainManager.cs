@@ -133,6 +133,7 @@ public class VillainManager : MonoBehaviour {
         AddPoints();
         StartCoroutine(BattleUIManager.Instance.DisplayBattleInfo("G E W O N N E N", 4));
         yield return new WaitForSecondsRealtime(2);
+        Screen.orientation = ScreenOrientation.Portrait;
         SceneManager.LoadScene(QuestHubController.questHubController.currentQuest);
     }
     private void AddPoints() {

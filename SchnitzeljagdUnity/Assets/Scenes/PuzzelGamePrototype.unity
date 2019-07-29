@@ -239,8 +239,8 @@ GameObject:
   m_Component:
   - component: {fileID: 99773123}
   - component: {fileID: 99773122}
-  - component: {fileID: 99773124}
   - component: {fileID: 99773125}
+  - component: {fileID: 99773124}
   m_Layer: 0
   m_Name: Key10
   m_TagString: Untagged
@@ -319,11 +319,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 99773121}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ba213429a6dc77c458d0c0ba601b4984, type: 3}
+  m_Script: {fileID: 11500000, guid: 236cff59812909242a03b81eab8f7681, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   puzzelPlace: {fileID: 1904498859}
   locked: 0
+  touched: 0
 --- !u!61 &99773125
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -540,6 +541,85 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &208370878
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 208370879}
+  - component: {fileID: 208370881}
+  - component: {fileID: 208370880}
+  m_Layer: 5
+  m_Name: Text
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &208370879
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 208370878}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 453218893}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 89, y: -665.3}
+  m_SizeDelta: {x: 683.4, y: 113.3}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &208370880
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 208370878}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 708705254, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  m_FontData:
+    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_FontSize: 100
+    m_FontStyle: 0
+    m_BestFit: 0
+    m_MinSize: 1
+    m_MaxSize: 100
+    m_Alignment: 0
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
+    m_LineSpacing: 1
+  m_Text: New Text
+--- !u!222 &208370881
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 208370878}
+  m_CullTransparentMesh: 0
 --- !u!1 &236808068
 GameObject:
   m_ObjectHideFlags: 0
@@ -550,8 +630,8 @@ GameObject:
   m_Component:
   - component: {fileID: 236808070}
   - component: {fileID: 236808069}
-  - component: {fileID: 236808071}
   - component: {fileID: 236808072}
+  - component: {fileID: 236808071}
   m_Layer: 0
   m_Name: Key2
   m_TagString: Untagged
@@ -630,11 +710,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 236808068}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ba213429a6dc77c458d0c0ba601b4984, type: 3}
+  m_Script: {fileID: 11500000, guid: 236cff59812909242a03b81eab8f7681, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   puzzelPlace: {fileID: 630573197}
   locked: 0
+  touched: 0
 --- !u!61 &236808072
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -671,8 +752,8 @@ GameObject:
   m_Component:
   - component: {fileID: 251667452}
   - component: {fileID: 251667451}
-  - component: {fileID: 251667453}
   - component: {fileID: 251667454}
+  - component: {fileID: 251667453}
   m_Layer: 0
   m_Name: Key8
   m_TagString: Untagged
@@ -751,11 +832,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 251667450}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ba213429a6dc77c458d0c0ba601b4984, type: 3}
+  m_Script: {fileID: 11500000, guid: 236cff59812909242a03b81eab8f7681, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   puzzelPlace: {fileID: 1731220789}
   locked: 0
+  touched: 0
 --- !u!61 &251667454
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1030,6 +1112,7 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_Children:
+  - {fileID: 208370879}
   - {fileID: 2122691820}
   - {fileID: 1802791893}
   - {fileID: 1692676815}
@@ -1053,8 +1136,8 @@ GameObject:
   m_Component:
   - component: {fileID: 471851897}
   - component: {fileID: 471851896}
-  - component: {fileID: 471851898}
   - component: {fileID: 471851899}
+  - component: {fileID: 471851898}
   m_Layer: 0
   m_Name: Key7
   m_TagString: Untagged
@@ -1133,11 +1216,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 471851895}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ba213429a6dc77c458d0c0ba601b4984, type: 3}
+  m_Script: {fileID: 11500000, guid: 236cff59812909242a03b81eab8f7681, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   puzzelPlace: {fileID: 1532510025}
   locked: 0
+  touched: 0
 --- !u!61 &471851899
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1540,8 +1624,8 @@ GameObject:
   m_Component:
   - component: {fileID: 876831944}
   - component: {fileID: 876831943}
-  - component: {fileID: 876831945}
   - component: {fileID: 876831946}
+  - component: {fileID: 876831945}
   m_Layer: 0
   m_Name: Key9
   m_TagString: Untagged
@@ -1620,11 +1704,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 876831942}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ba213429a6dc77c458d0c0ba601b4984, type: 3}
+  m_Script: {fileID: 11500000, guid: 236cff59812909242a03b81eab8f7681, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   puzzelPlace: {fileID: 1086394509}
   locked: 0
+  touched: 0
 --- !u!61 &876831946
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1661,8 +1746,8 @@ GameObject:
   m_Component:
   - component: {fileID: 968820177}
   - component: {fileID: 968820176}
-  - component: {fileID: 968820178}
   - component: {fileID: 968820179}
+  - component: {fileID: 968820178}
   m_Layer: 0
   m_Name: Key5
   m_TagString: Untagged
@@ -1741,11 +1826,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 968820175}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ba213429a6dc77c458d0c0ba601b4984, type: 3}
+  m_Script: {fileID: 11500000, guid: 236cff59812909242a03b81eab8f7681, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   puzzelPlace: {fileID: 324971552}
   locked: 0
+  touched: 0
 --- !u!61 &968820179
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1782,8 +1868,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1018433824}
   - component: {fileID: 1018433823}
-  - component: {fileID: 1018433825}
   - component: {fileID: 1018433826}
+  - component: {fileID: 1018433825}
   m_Layer: 0
   m_Name: Key6
   m_TagString: Untagged
@@ -1862,11 +1948,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 1018433822}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ba213429a6dc77c458d0c0ba601b4984, type: 3}
+  m_Script: {fileID: 11500000, guid: 236cff59812909242a03b81eab8f7681, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   puzzelPlace: {fileID: 111283792}
   locked: 0
+  touched: 0
 --- !u!61 &1018433826
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1903,8 +1990,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1051264961}
   - component: {fileID: 1051264960}
-  - component: {fileID: 1051264962}
   - component: {fileID: 1051264963}
+  - component: {fileID: 1051264962}
   m_Layer: 0
   m_Name: Key3
   m_TagString: Untagged
@@ -1983,11 +2070,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 1051264959}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ba213429a6dc77c458d0c0ba601b4984, type: 3}
+  m_Script: {fileID: 11500000, guid: 236cff59812909242a03b81eab8f7681, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   puzzelPlace: {fileID: 7094433}
   locked: 0
+  touched: 0
 --- !u!61 &1051264963
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -2380,7 +2468,7 @@ RectTransform:
   m_Children:
   - {fileID: 1335283192}
   m_Father: {fileID: 453218893}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -2491,9 +2579,9 @@ GameObject:
   - component: {fileID: 1446662302}
   - component: {fileID: 1446662301}
   - component: {fileID: 1446662300}
-  - component: {fileID: 1446662303}
   - component: {fileID: 1446662305}
   - component: {fileID: 1446662304}
+  - component: {fileID: 1446662303}
   m_Layer: 0
   m_Name: EventSystem
   m_TagString: Untagged
@@ -2558,10 +2646,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1446662299}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0aa319057b1456047bd31206b4689ba5, type: 3}
+  m_Script: {fileID: 11500000, guid: 0a028d46424b43d47949b2ab3ef3bf8d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  puzzelPlace: {fileID: 1333640420}
+  puzzelPlace: {fileID: 1528580323}
   finalTarget: {fileID: 480778946}
 --- !u!114 &1446662304
 MonoBehaviour:
@@ -2831,7 +2919,7 @@ PrefabInstance:
     - target: {fileID: 2595121582396805289, guid: db1a101d262d33c45a09ccbc1ff70f4e,
         type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 2595121582396805289, guid: db1a101d262d33c45a09ccbc1ff70f4e,
         type: 3}
@@ -2930,8 +3018,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1644718035}
   - component: {fileID: 1644718034}
-  - component: {fileID: 1644718036}
   - component: {fileID: 1644718037}
+  - component: {fileID: 1644718036}
   m_Layer: 0
   m_Name: Key11
   m_TagString: Untagged
@@ -3010,11 +3098,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 1644718033}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ba213429a6dc77c458d0c0ba601b4984, type: 3}
+  m_Script: {fileID: 11500000, guid: 236cff59812909242a03b81eab8f7681, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   puzzelPlace: {fileID: 528598915}
   locked: 0
+  touched: 0
 --- !u!61 &1644718037
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -3136,8 +3225,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1731476543}
   - component: {fileID: 1731476542}
-  - component: {fileID: 1731476544}
   - component: {fileID: 1731476545}
+  - component: {fileID: 1731476544}
   m_Layer: 0
   m_Name: Key4
   m_TagString: Untagged
@@ -3216,11 +3305,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 1731476541}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ba213429a6dc77c458d0c0ba601b4984, type: 3}
+  m_Script: {fileID: 11500000, guid: 236cff59812909242a03b81eab8f7681, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   puzzelPlace: {fileID: 552165249}
   locked: 0
+  touched: 0
 --- !u!61 &1731476545
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -3302,7 +3392,7 @@ PrefabInstance:
     - target: {fileID: 4854233131213357691, guid: e06f72de58c9bf7469dd54f0ace39f44,
         type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4854233131213357691, guid: e06f72de58c9bf7469dd54f0ace39f44,
         type: 3}
@@ -3524,8 +3614,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1804810736}
   - component: {fileID: 1804810735}
-  - component: {fileID: 1804810737}
   - component: {fileID: 1804810738}
+  - component: {fileID: 1804810737}
   m_Layer: 0
   m_Name: Key1
   m_TagString: Untagged
@@ -3604,11 +3694,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 1804810734}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ba213429a6dc77c458d0c0ba601b4984, type: 3}
+  m_Script: {fileID: 11500000, guid: 236cff59812909242a03b81eab8f7681, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   puzzelPlace: {fileID: 1333640422}
   locked: 0
+  touched: 0
 --- !u!61 &1804810738
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -3645,8 +3736,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1871830334}
   - component: {fileID: 1871830333}
-  - component: {fileID: 1871830335}
   - component: {fileID: 1871830336}
+  - component: {fileID: 1871830335}
   m_Layer: 0
   m_Name: Key12
   m_TagString: Untagged
@@ -3725,11 +3816,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 1871830332}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ba213429a6dc77c458d0c0ba601b4984, type: 3}
+  m_Script: {fileID: 11500000, guid: 236cff59812909242a03b81eab8f7681, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   puzzelPlace: {fileID: 415394747}
   locked: 0
+  touched: 0
 --- !u!61 &1871830336
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -3902,7 +3994,7 @@ PrefabInstance:
     - target: {fileID: 834532453886949581, guid: a08488aac13fdb3439fc50dd75ef8caf,
         type: 3}
       propertyPath: m_RootOrder
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 834532453886949581, guid: a08488aac13fdb3439fc50dd75ef8caf,
         type: 3}
@@ -4273,7 +4365,7 @@ RectTransform:
   - {fileID: 7565528863907987500}
   - {fileID: 1022729480530943853}
   m_Father: {fileID: 453218893}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
