@@ -18,6 +18,7 @@ public class LabyrinthController : MonoBehaviour
 
     void Start()
     {
+        Screen.orientation = ScreenOrientation.LandscapeLeft;
         //Starts the game in AR mode.
         cams[0].enabled = true;
         cams[1].enabled = false;
@@ -94,7 +95,7 @@ public class LabyrinthController : MonoBehaviour
 
     void ExitEvent()
     {
-
+        Screen.orientation = ScreenOrientation.Portrait;
         JoystickSwitch();                               //Diable the joystick so player cant move in ending scene 
         DisableCamButton();                             //Diable the camswitchbutton when ending scene is playing so player cant switch view 
 

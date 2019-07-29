@@ -58,6 +58,7 @@ public class BattleUIManager : MonoBehaviour {
     // Start is called before the first frame update
     void Start() {
         Physics.gravity = new Vector3(0, -9.81f, 0);
+        Screen.orientation = ScreenOrientation.LandscapeLeft;
     }
 
     // Update is called once per frame

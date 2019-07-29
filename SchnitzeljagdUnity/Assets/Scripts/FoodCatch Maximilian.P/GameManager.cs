@@ -12,7 +12,7 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
+        Screen.orientation = ScreenOrientation.LandscapeLeft;
         DialogSystem.dialogSystem.StartDialog(1);
         scoreFunction = scoreObject.GetComponent<ScoreFunction>();
 
@@ -25,6 +25,10 @@ public class GameManager : MonoBehaviour
             trigger = true;
             DialogSystem.dialogSystem.StartDialog(2);
         }
+    }
+    public void SetScreen()
+    {
+        Screen.orientation = ScreenOrientation.Portrait;
     }
 
 
