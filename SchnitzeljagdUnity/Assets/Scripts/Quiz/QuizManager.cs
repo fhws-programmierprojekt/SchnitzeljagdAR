@@ -29,8 +29,6 @@ public class QuizManager : MonoBehaviour {
     #region UnityMethods
     // Start is called before the first frame update
     void Start() {
-
-        Screen.orientation = ScreenOrientation.Portrait;
         QuizUIManager = new QuizUIManager();
         quiz = QuizData.ReadQuizData(QuizData.Path);
 
