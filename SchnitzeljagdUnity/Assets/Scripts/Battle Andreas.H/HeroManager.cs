@@ -61,17 +61,17 @@ public class HeroManager : VillainManager {
         BattleUIManager.Instance.HeroStamina.sizeDelta = new Vector2(100 / stamina * CurrentStamina * 10, 20);
     }
     public void ReplenishStamina() {
-        CurrentStamina += 4;
+        CurrentStamina += 6;
     }
     public override void AttackCheck() {
         float staminaCost = 16;
         float distance = Vector3.Distance(transform.position, Opponent.transform.position);
         if(CurrentStamina > staminaCost && distance < AttackRange && !Animator.GetBool("isAttackMeele") && !Animator.GetBool("isAttackThrust")) {
             CurrentStamina -= staminaCost;
-            StartCoroutine(Attack("AttackMeele", 6));
+            StartCoroutine(Attack("AttackMeele", AttackDamage * 0.6f));
         } else if(CurrentStamina > staminaCost && !Animator.GetBool("isAttackMeele") && !Animator.GetBool("isAttackThrust")) {
             CurrentStamina -= staminaCost;
-            StartCoroutine(Attack("AttackThrust", 8));
+            StartCoroutine(Attack("AttackThrust", AttackDamage));
             GetComponent<Rigidbody>().velocity = GetComponent<Rigidbody>().transform.forward * 4;
         }
     }
