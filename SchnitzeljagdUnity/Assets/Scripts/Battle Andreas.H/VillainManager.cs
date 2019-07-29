@@ -12,6 +12,7 @@ public class VillainManager : MonoBehaviour {
 
     #region Attributes
     [SerializeField] protected float attackRange;
+    [SerializeField] protected float attackDamage;
     [SerializeField] protected float health;
     protected float currentHealth;
 
@@ -28,6 +29,10 @@ public class VillainManager : MonoBehaviour {
     public float AttackRange {
         get { return attackRange; }
         set { attackRange = value; }
+    }
+    public float AttackDamage {
+        get { return attackDamage; }
+        set { attackDamage = value; }
     }
     public float Health {
         get { return health; }
@@ -78,7 +83,7 @@ public class VillainManager : MonoBehaviour {
             CurrentAttackCooldown -= Time.deltaTime;
         } else if(Vector3.Distance(transform.position, Opponent.transform.position) < AttackRange) {
             CurrentAttackCooldown = AttackCooldown;
-            StartCoroutine(AttackSpin(12));
+            StartCoroutine(AttackSpin(AttackDamage));
         }
     }
     protected IEnumerator AttackSpin(float damage) {
