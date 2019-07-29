@@ -23,6 +23,7 @@ public class VillainManager : MonoBehaviour {
     public Animator Animator { get; set; }
     public AnimationClip[] AnimationClips { get; set; }
     public SpriteRenderer AttackSpinSprite { get; set; }
+    public int Deaths { get; set; } = 0;
     #endregion
 
     #region Getter and Setter
@@ -121,8 +122,7 @@ public class VillainManager : MonoBehaviour {
         return animationTime;
     }
     protected void IsHealthDepleted() {
-        if(CurrentHealth == 0) {
-            Time.timeScale = 0;
+        if(CurrentHealth == 0 && Deaths == 0) {
             StartCoroutine(Death());
         }
     }

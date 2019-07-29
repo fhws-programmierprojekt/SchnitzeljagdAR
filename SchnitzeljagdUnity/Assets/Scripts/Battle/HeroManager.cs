@@ -13,7 +13,6 @@ public class HeroManager : VillainManager {
     #region Attributes
     [SerializeField] protected float stamina;
     protected float currentStamina;
-    public int Deaths { get; set; } = 0;
     #endregion
 
     #region Getter and Setter
