@@ -122,6 +122,7 @@ public class VillainManager : MonoBehaviour {
     }
     protected void IsHealthDepleted() {
         if(CurrentHealth == 0) {
+            Time.timeScale = 0;
             StartCoroutine(Death());
         }
     }
