@@ -27,6 +27,15 @@ public class PuzzelObject : MonoBehaviour
                 Vector3 tch = new Vector3(touch.position.x, touch.position.y, 10);
                 Vector2 touchPos = Camera.main.ScreenToWorldPoint(tch);
                 Collider2D puzzel = new Collider2D();
+            try
+            {
+                text = GameObject.Find("Text").GetComponent<Text>();
+                text.text = tch.ToString("G4");
+            }
+            catch
+            {
+
+            }
 
                 switch (touch.phase)
                 {

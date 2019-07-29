@@ -92,10 +92,13 @@ public class LabyrinthController : MonoBehaviour
     }
 
     //EXIT EVENT
+    public void SetScreen()
+    {
+        Screen.orientation = ScreenOrientation.Portrait;
+    }
 
     void ExitEvent()
     {
-        Screen.orientation = ScreenOrientation.Portrait;
         JoystickSwitch();                               //Diable the joystick so player cant move in ending scene 
         DisableCamButton();                             //Diable the camswitchbutton when ending scene is playing so player cant switch view 
 
