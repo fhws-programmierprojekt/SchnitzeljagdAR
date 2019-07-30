@@ -313,41 +313,7 @@
             "questions": []
         },
         {
-            "questions": [
-                {
-                    "info": "Wie lautet das Zauberwort?",
-                    "answers": [
-                        {
-                            "info": "Harfe",
-                            "isCorrect": true
-                        },
-                        {
-                            "info": "Oboe",
-                            "isCorrect": true
-                        },
-                        {
-                            "info": "Flöte",
-                            "isCorrect": true
-                        },
-                        {
-                            "info": "Klavier",
-                            "isCorrect": false
-                        },
-                        {
-                            "info": "Gitarre",
-                            "isCorrect": false
-                        },
-                        {
-                            "info": "Schlagzeug",
-                            "isCorrect": false
-                        },
-                        {
-                            "info": "Kontrabass",
-                            "isCorrect": false
-                        }
-                    ]
-                }
-            ]
+            "questions": []
         },
         {
             "questions": []

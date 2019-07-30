@@ -714,7 +714,7 @@ PrefabInstance:
     - target: {fileID: 588544590367216562, guid: e06f72de58c9bf7469dd54f0ace39f44,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
-      value: LoadQuestHub
+      value: AddPoints
       objectReference: {fileID: 0}
     - target: {fileID: 588544590367216562, guid: e06f72de58c9bf7469dd54f0ace39f44,
         type: 3}
@@ -724,17 +724,17 @@ PrefabInstance:
     - target: {fileID: 588544590367216562, guid: e06f72de58c9bf7469dd54f0ace39f44,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
-      value: 1
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 588544590367216562, guid: e06f72de58c9bf7469dd54f0ace39f44,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_MethodName
-      value: AddPoints
+      value: LoadQuestHub
       objectReference: {fileID: 0}
     - target: {fileID: 588544590367216562, guid: e06f72de58c9bf7469dd54f0ace39f44,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_Mode
-      value: 3
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 588544590367216562, guid: e06f72de58c9bf7469dd54f0ace39f44,
         type: 3}
@@ -754,6 +754,11 @@ PrefabInstance:
     - target: {fileID: 588544590367216562, guid: e06f72de58c9bf7469dd54f0ace39f44,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_Arguments.m_IntArgument
+      value: 300
+      objectReference: {fileID: 0}
+    - target: {fileID: 588544590367216562, guid: e06f72de58c9bf7469dd54f0ace39f44,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_IntArgument
       value: 300
       objectReference: {fileID: 0}
     - target: {fileID: 8210572201367203887, guid: e06f72de58c9bf7469dd54f0ace39f44,
