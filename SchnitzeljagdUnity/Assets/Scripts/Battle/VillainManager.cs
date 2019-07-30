@@ -122,7 +122,7 @@ public class VillainManager : MonoBehaviour {
         return animationTime;
     }
     protected void IsHealthDepleted() {
-        if(CurrentHealth == 0 && Deaths == 0) {
+        if(CurrentHealth == 0) {
             StartCoroutine(Death());
         }
     }
@@ -130,21 +130,21 @@ public class VillainManager : MonoBehaviour {
         VillainController.Instance.MovementSpeed = 0;
         VillainController.Instance.RotationSpeed = 0;
         Animator.SetBool("isDying", true);
-        AddPoints();
+        //AddPoints();
         StartCoroutine(BattleUIManager.Instance.DisplayBattleInfo("G E W O N N E N", 4));
         yield return new WaitForSecondsRealtime(2);
         Screen.orientation = ScreenOrientation.Portrait;
         SceneManager.LoadScene(QuestHubController.questHubController.currentQuest);
     }
-    private void AddPoints() {
-        int points = 300;
-        int penalty = HeroManager.Instance.Deaths * 25;
-        points = (points - penalty >= 100) ? points - penalty : 100;
-        if(QuestHubController.questHubController != null) {
-            QuestHubController.questHubController.AddPoints(points);
-        }
-        PointsGainController pointController = GameObject.Find("PointController").GetComponent<PointsGainController>();
-        pointController.playPointAnimation(points);
-    }
+    //private void AddPoints() {
+    //    int points = 300;
+    //    int penalty = HeroManager.Instance.Deaths * 25;
+    //    points = (points - penalty >= 100) ? points - penalty : 100;
+    //    if(QuestHubController.questHubController != null) {
+    //        QuestHubController.questHubController.AddPoints(points);
+    //    }
+    //    PointsGainController pointController = GameObject.Find("PointController").GetComponent<PointsGainController>();
+    //    pointController.playPointAnimation(points);
+    //}
     #endregion
 }

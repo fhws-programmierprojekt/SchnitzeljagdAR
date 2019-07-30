@@ -1,87 +1,76 @@
 {
     "stages": [
         {
+            "questions": []
+        },
+        {
             "questions": [
                 {
-                    "info": "Question[0.0]",
+                    "info": "Wofür werden Sporen verwendet?",
                     "answers": [
                         {
-                            "info": "Right",
+                            "info": "Reiten",
                             "isCorrect": true
                         },
                         {
-                            "info": "Wrong",
+                            "info": "Kochen",
                             "isCorrect": false
                         },
                         {
-                            "info": "Wrong",
+                            "info": "Schwimmen ",
                             "isCorrect": false
                         },
                         {
-                            "info": "Wrong",
+                            "info": "Bauen",
                             "isCorrect": false
                         }
                     ]
                 },
                 {
-                    "info": "Question[0.1]",
+                    "info": "Aus was werden Sporen gefertigt?",
                     "answers": [
                         {
-                            "info": "Right",
+                            "info": "Metall",
                             "isCorrect": true
                         },
                         {
-                            "info": "Wrong",
+                            "info": "Holz",
                             "isCorrect": false
                         },
                         {
-                            "info": "Wrong",
+                            "info": "Stein ",
                             "isCorrect": false
                         },
                         {
-                            "info": "Wrong",
+                            "info": "Erde",
                             "isCorrect": false
                         }
                     ]
-                },
+                }
+            ]
+        },
+        {
+            "questions": []
+        },
+        {
+            "questions": [
                 {
-                    "info": "Question[0.2]",
+                    "info": "Mit was befasst sich die Judaica?",
                     "answers": [
                         {
-                            "info": "Right",
+                            "info": "Jüdische Kultur",
                             "isCorrect": true
                         },
                         {
-                            "info": "Wrong",
+                            "info": "Deutsche Kultur",
                             "isCorrect": false
                         },
                         {
-                            "info": "Wrong",
+                            "info": "Französische Kultur",
                             "isCorrect": false
                         },
                         {
-                            "info": "Wrong",
-                            "isCorrect": false
-                        }
-                    ]
-                },
-                {
-                    "info": "Question[0.3]",
-                    "answers": [
-                        {
-                            "info": "Right",
-                            "isCorrect": true
-                        },
-                        {
-                            "info": "Wrong",
-                            "isCorrect": false
-                        },
-                        {
-                            "info": "Wrong",
-                            "isCorrect": false
-                        },
-                        {
-                            "info": "Wrong",
+                            "info": "Englische Kultur",
                             "isCorrect": false
                         }
                     ]
@@ -91,85 +80,109 @@
         {
             "questions": [
                 {
-                    "info": "Question[1.0]",
+                    "info": "Aus welchem Jahrhundert stammt die Klosterküche?",
                     "answers": [
                         {
-                            "info": "Right",
+                            "info": "13. Jahrhundert",
                             "isCorrect": true
                         },
                         {
-                            "info": "Wrong",
+                            "info": "11. Jahrhundert",
                             "isCorrect": false
                         },
                         {
-                            "info": "Wrong",
+                            "info": "12. Jahrhundert",
                             "isCorrect": false
                         },
                         {
-                            "info": "Wrong",
+                            "info": "14. Jahrhundert",
                             "isCorrect": false
                         }
                     ]
                 },
                 {
-                    "info": "Question[1.1]",
+                    "info": "Wie viele Mahlzeiten wurden täglich zubereitet?",
                     "answers": [
                         {
-                            "info": "Right",
+                            "info": "50-60",
                             "isCorrect": true
                         },
                         {
-                            "info": "Wrong",
+                            "info": "40-50",
                             "isCorrect": false
                         },
                         {
-                            "info": "Wrong",
+                            "info": "60-70",
                             "isCorrect": false
                         },
                         {
-                            "info": "Wrong",
+                            "info": "70-80",
                             "isCorrect": false
                         }
                     ]
                 },
                 {
-                    "info": "Question[1.2]",
+                    "info": "Was wurde hauptsächlich gegessen?",
                     "answers": [
                         {
-                            "info": "Right",
+                            "info": "Brot",
                             "isCorrect": true
                         },
                         {
-                            "info": "Wrong",
+                            "info": "Bohnen",
+                            "isCorrect": true
+                        },
+                        {
+                            "info": "Obst",
+                            "isCorrect": true
+                        },
+                        {
+                            "info": "Fleisch",
                             "isCorrect": false
                         },
                         {
-                            "info": "Wrong",
+                            "info": "Pizza",
                             "isCorrect": false
                         },
                         {
-                            "info": "Wrong",
+                            "info": "Kuchen",
+                            "isCorrect": false
+                        },
+                        {
+                            "info": "Nüsse",
+                            "isCorrect": false
+                        },
+                        {
+                            "info": "Kartoffeln",
+                            "isCorrect": false
+                        },
+                        {
+                            "info": "Tomaten",
+                            "isCorrect": false
+                        },
+                        {
+                            "info": "Fastfood",
                             "isCorrect": false
                         }
                     ]
                 },
                 {
-                    "info": "Question[1.3]",
+                    "info": "Was wurde hauptsächlich getrunken?",
                     "answers": [
                         {
-                            "info": "Right",
+                            "info": "Wein",
                             "isCorrect": true
                         },
                         {
-                            "info": "Wrong",
+                            "info": "Wasser",
                             "isCorrect": false
                         },
                         {
-                            "info": "Wrong",
+                            "info": "Apfelsaft",
                             "isCorrect": false
                         },
                         {
-                            "info": "Wrong",
+                            "info": "Cola",
                             "isCorrect": false
                         }
                     ]
@@ -179,85 +192,22 @@
         {
             "questions": [
                 {
-                    "info": "Question[2.0]",
+                    "info": "Worin unterscheiden sich Schwert und Messer?",
                     "answers": [
                         {
-                            "info": "Right",
+                            "info": "Form des Griffes",
                             "isCorrect": true
                         },
                         {
-                            "info": "Wrong",
+                            "info": "Länge der Klinge",
                             "isCorrect": false
                         },
                         {
-                            "info": "Wrong",
+                            "info": "Krümmung der Klinge",
                             "isCorrect": false
                         },
                         {
-                            "info": "Wrong",
-                            "isCorrect": false
-                        }
-                    ]
-                },
-                {
-                    "info": "Question[2.1]",
-                    "answers": [
-                        {
-                            "info": "Right",
-                            "isCorrect": true
-                        },
-                        {
-                            "info": "Wrong",
-                            "isCorrect": false
-                        },
-                        {
-                            "info": "Wrong",
-                            "isCorrect": false
-                        },
-                        {
-                            "info": "Wrong",
-                            "isCorrect": false
-                        }
-                    ]
-                },
-                {
-                    "info": "Question[2.2]",
-                    "answers": [
-                        {
-                            "info": "Right",
-                            "isCorrect": true
-                        },
-                        {
-                            "info": "Wrong",
-                            "isCorrect": false
-                        },
-                        {
-                            "info": "Wrong",
-                            "isCorrect": false
-                        },
-                        {
-                            "info": "Wrong",
-                            "isCorrect": false
-                        }
-                    ]
-                },
-                {
-                    "info": "Question[2.3]",
-                    "answers": [
-                        {
-                            "info": "Right",
-                            "isCorrect": true
-                        },
-                        {
-                            "info": "Wrong",
-                            "isCorrect": false
-                        },
-                        {
-                            "info": "Wrong",
-                            "isCorrect": false
-                        },
-                        {
-                            "info": "Wrong",
+                            "info": "Schärfe der Klinge",
                             "isCorrect": false
                         }
                     ]
@@ -267,85 +217,43 @@
         {
             "questions": [
                 {
-                    "info": "Question[3.0]",
+                    "info": "Um wie viel Uhr wurde das Suchbild gemalt?",
                     "answers": [
                         {
-                            "info": "Right",
+                            "info": "13:35",
                             "isCorrect": true
                         },
                         {
-                            "info": "Wrong",
+                            "info": "11:25",
                             "isCorrect": false
                         },
                         {
-                            "info": "Wrong",
+                            "info": "10:00",
                             "isCorrect": false
                         },
                         {
-                            "info": "Wrong",
+                            "info": "15:45",
                             "isCorrect": false
                         }
                     ]
                 },
                 {
-                    "info": "Question[3.1]",
+                    "info": "Welche Stadt ist in dem Suchbild?",
                     "answers": [
                         {
-                            "info": "Right",
+                            "info": "Rothenburg",
                             "isCorrect": true
                         },
                         {
-                            "info": "Wrong",
+                            "info": "Rotterdam",
                             "isCorrect": false
                         },
                         {
-                            "info": "Wrong",
+                            "info": "Salzburg",
                             "isCorrect": false
                         },
                         {
-                            "info": "Wrong",
-                            "isCorrect": false
-                        }
-                    ]
-                },
-                {
-                    "info": "Question[3.2]",
-                    "answers": [
-                        {
-                            "info": "Right",
-                            "isCorrect": true
-                        },
-                        {
-                            "info": "Wrong",
-                            "isCorrect": false
-                        },
-                        {
-                            "info": "Wrong",
-                            "isCorrect": false
-                        },
-                        {
-                            "info": "Wrong",
-                            "isCorrect": false
-                        }
-                    ]
-                },
-                {
-                    "info": "Question[3.3]",
-                    "answers": [
-                        {
-                            "info": "Right",
-                            "isCorrect": true
-                        },
-                        {
-                            "info": "Wrong",
-                            "isCorrect": false
-                        },
-                        {
-                            "info": "Wrong",
-                            "isCorrect": false
-                        },
-                        {
-                            "info": "Wrong",
+                            "info": "Würzburg",
                             "isCorrect": false
                         }
                     ]
@@ -355,85 +263,43 @@
         {
             "questions": [
                 {
-                    "info": "Question[4.0]",
+                    "info": "Wer war Jérôme Bonaparte's berühmter Bruder?",
                     "answers": [
                         {
-                            "info": "Right",
+                            "info": "Napoleon Bonaparte",
                             "isCorrect": true
                         },
                         {
-                            "info": "Wrong",
+                            "info": "Jérôme Boateng",
                             "isCorrect": false
                         },
                         {
-                            "info": "Wrong",
+                            "info": "Walther von der Vogelweide",
                             "isCorrect": false
                         },
                         {
-                            "info": "Wrong",
+                            "info": "Ritter Roland aus Rothenburg",
                             "isCorrect": false
                         }
                     ]
                 },
                 {
-                    "info": "Question[4.1]",
+                    "info": "Von welchem Land war Jérôme Bonaparte König?",
                     "answers": [
                         {
-                            "info": "Right",
+                            "info": "Westphalen",
                             "isCorrect": true
                         },
                         {
-                            "info": "Wrong",
+                            "info": "Frankreich",
                             "isCorrect": false
                         },
                         {
-                            "info": "Wrong",
+                            "info": "Spanien",
                             "isCorrect": false
                         },
                         {
-                            "info": "Wrong",
-                            "isCorrect": false
-                        }
-                    ]
-                },
-                {
-                    "info": "Question[4.2]",
-                    "answers": [
-                        {
-                            "info": "Right",
-                            "isCorrect": true
-                        },
-                        {
-                            "info": "Wrong",
-                            "isCorrect": false
-                        },
-                        {
-                            "info": "Wrong",
-                            "isCorrect": false
-                        },
-                        {
-                            "info": "Wrong",
-                            "isCorrect": false
-                        }
-                    ]
-                },
-                {
-                    "info": "Question[4.3]",
-                    "answers": [
-                        {
-                            "info": "Right",
-                            "isCorrect": true
-                        },
-                        {
-                            "info": "Wrong",
-                            "isCorrect": false
-                        },
-                        {
-                            "info": "Wrong",
-                            "isCorrect": false
-                        },
-                        {
-                            "info": "Wrong",
+                            "info": "Deutschland",
                             "isCorrect": false
                         }
                     ]
@@ -441,620 +307,16 @@
             ]
         },
         {
-            "questions": [
-                {
-                    "info": "Question[5.0]",
-                    "answers": [
-                        {
-                            "info": "Right",
-                            "isCorrect": true
-                        },
-                        {
-                            "info": "Wrong",
-                            "isCorrect": false
-                        },
-                        {
-                            "info": "Wrong",
-                            "isCorrect": false
-                        },
-                        {
-                            "info": "Wrong",
-                            "isCorrect": false
-                        }
-                    ]
-                },
-                {
-                    "info": "Question[5.1]",
-                    "answers": [
-                        {
-                            "info": "Right",
-                            "isCorrect": true
-                        },
-                        {
-                            "info": "Wrong",
-                            "isCorrect": false
-                        },
-                        {
-                            "info": "Wrong",
-                            "isCorrect": false
-                        },
-                        {
-                            "info": "Wrong",
-                            "isCorrect": false
-                        }
-                    ]
-                },
-                {
-                    "info": "Question[5.2]",
-                    "answers": [
-                        {
-                            "info": "Right",
-                            "isCorrect": true
-                        },
-                        {
-                            "info": "Wrong",
-                            "isCorrect": false
-                        },
-                        {
-                            "info": "Wrong",
-                            "isCorrect": false
-                        },
-                        {
-                            "info": "Wrong",
-                            "isCorrect": false
-                        }
-                    ]
-                },
-                {
-                    "info": "Question[5.3]",
-                    "answers": [
-                        {
-                            "info": "Right",
-                            "isCorrect": true
-                        },
-                        {
-                            "info": "Wrong",
-                            "isCorrect": false
-                        },
-                        {
-                            "info": "Wrong",
-                            "isCorrect": false
-                        },
-                        {
-                            "info": "Wrong",
-                            "isCorrect": false
-                        }
-                    ]
-                }
-            ]
+            "questions": []
         },
         {
-            "questions": [
-                {
-                    "info": "Question[6.0]",
-                    "answers": [
-                        {
-                            "info": "Right",
-                            "isCorrect": true
-                        },
-                        {
-                            "info": "Wrong",
-                            "isCorrect": false
-                        },
-                        {
-                            "info": "Wrong",
-                            "isCorrect": false
-                        },
-                        {
-                            "info": "Wrong",
-                            "isCorrect": false
-                        }
-                    ]
-                },
-                {
-                    "info": "Question[6.1]",
-                    "answers": [
-                        {
-                            "info": "Right",
-                            "isCorrect": true
-                        },
-                        {
-                            "info": "Wrong",
-                            "isCorrect": false
-                        },
-                        {
-                            "info": "Wrong",
-                            "isCorrect": false
-                        },
-                        {
-                            "info": "Wrong",
-                            "isCorrect": false
-                        }
-                    ]
-                },
-                {
-                    "info": "Question[6.2]",
-                    "answers": [
-                        {
-                            "info": "Right",
-                            "isCorrect": true
-                        },
-                        {
-                            "info": "Wrong",
-                            "isCorrect": false
-                        },
-                        {
-                            "info": "Wrong",
-                            "isCorrect": false
-                        },
-                        {
-                            "info": "Wrong",
-                            "isCorrect": false
-                        }
-                    ]
-                },
-                {
-                    "info": "Question[6.3]",
-                    "answers": [
-                        {
-                            "info": "Right",
-                            "isCorrect": true
-                        },
-                        {
-                            "info": "Wrong",
-                            "isCorrect": false
-                        },
-                        {
-                            "info": "Wrong",
-                            "isCorrect": false
-                        },
-                        {
-                            "info": "Wrong",
-                            "isCorrect": false
-                        }
-                    ]
-                }
-            ]
+            "questions": []
         },
         {
-            "questions": [
-                {
-                    "info": "Question[7.0]",
-                    "answers": [
-                        {
-                            "info": "Right",
-                            "isCorrect": true
-                        },
-                        {
-                            "info": "Wrong",
-                            "isCorrect": false
-                        },
-                        {
-                            "info": "Wrong",
-                            "isCorrect": false
-                        },
-                        {
-                            "info": "Wrong",
-                            "isCorrect": false
-                        }
-                    ]
-                },
-                {
-                    "info": "Question[7.1]",
-                    "answers": [
-                        {
-                            "info": "Right",
-                            "isCorrect": true
-                        },
-                        {
-                            "info": "Wrong",
-                            "isCorrect": false
-                        },
-                        {
-                            "info": "Wrong",
-                            "isCorrect": false
-                        },
-                        {
-                            "info": "Wrong",
-                            "isCorrect": false
-                        }
-                    ]
-                },
-                {
-                    "info": "Question[7.2]",
-                    "answers": [
-                        {
-                            "info": "Right",
-                            "isCorrect": true
-                        },
-                        {
-                            "info": "Wrong",
-                            "isCorrect": false
-                        },
-                        {
-                            "info": "Wrong",
-                            "isCorrect": false
-                        },
-                        {
-                            "info": "Wrong",
-                            "isCorrect": false
-                        }
-                    ]
-                },
-                {
-                    "info": "Question[7.3]",
-                    "answers": [
-                        {
-                            "info": "Right",
-                            "isCorrect": true
-                        },
-                        {
-                            "info": "Wrong",
-                            "isCorrect": false
-                        },
-                        {
-                            "info": "Wrong",
-                            "isCorrect": false
-                        },
-                        {
-                            "info": "Wrong",
-                            "isCorrect": false
-                        }
-                    ]
-                }
-            ]
+            "questions": []
         },
         {
-            "questions": [
-                {
-                    "info": "Question[8.0]",
-                    "answers": [
-                        {
-                            "info": "Right",
-                            "isCorrect": true
-                        },
-                        {
-                            "info": "Wrong",
-                            "isCorrect": false
-                        },
-                        {
-                            "info": "Wrong",
-                            "isCorrect": false
-                        },
-                        {
-                            "info": "Wrong",
-                            "isCorrect": false
-                        }
-                    ]
-                },
-                {
-                    "info": "Question[8.1]",
-                    "answers": [
-                        {
-                            "info": "Right",
-                            "isCorrect": true
-                        },
-                        {
-                            "info": "Wrong",
-                            "isCorrect": false
-                        },
-                        {
-                            "info": "Wrong",
-                            "isCorrect": false
-                        },
-                        {
-                            "info": "Wrong",
-                            "isCorrect": false
-                        }
-                    ]
-                },
-                {
-                    "info": "Question[8.2]",
-                    "answers": [
-                        {
-                            "info": "Right",
-                            "isCorrect": true
-                        },
-                        {
-                            "info": "Wrong",
-                            "isCorrect": false
-                        },
-                        {
-                            "info": "Wrong",
-                            "isCorrect": false
-                        },
-                        {
-                            "info": "Wrong",
-                            "isCorrect": false
-                        }
-                    ]
-                },
-                {
-                    "info": "Question[8.3]",
-                    "answers": [
-                        {
-                            "info": "Right",
-                            "isCorrect": true
-                        },
-                        {
-                            "info": "Wrong",
-                            "isCorrect": false
-                        },
-                        {
-                            "info": "Wrong",
-                            "isCorrect": false
-                        },
-                        {
-                            "info": "Wrong",
-                            "isCorrect": false
-                        }
-                    ]
-                }
-            ]
-        },
-        {
-            "questions": [
-                {
-                    "info": "Question[9.0]",
-                    "answers": [
-                        {
-                            "info": "Right",
-                            "isCorrect": true
-                        },
-                        {
-                            "info": "Wrong",
-                            "isCorrect": false
-                        },
-                        {
-                            "info": "Wrong",
-                            "isCorrect": false
-                        },
-                        {
-                            "info": "Wrong",
-                            "isCorrect": false
-                        }
-                    ]
-                },
-                {
-                    "info": "Question[9.1]",
-                    "answers": [
-                        {
-                            "info": "Right",
-                            "isCorrect": true
-                        },
-                        {
-                            "info": "Wrong",
-                            "isCorrect": false
-                        },
-                        {
-                            "info": "Wrong",
-                            "isCorrect": false
-                        },
-                        {
-                            "info": "Wrong",
-                            "isCorrect": false
-                        }
-                    ]
-                },
-                {
-                    "info": "Question[9.2]",
-                    "answers": [
-                        {
-                            "info": "Right",
-                            "isCorrect": true
-                        },
-                        {
-                            "info": "Wrong",
-                            "isCorrect": false
-                        },
-                        {
-                            "info": "Wrong",
-                            "isCorrect": false
-                        },
-                        {
-                            "info": "Wrong",
-                            "isCorrect": false
-                        }
-                    ]
-                },
-                {
-                    "info": "Question[9.3]",
-                    "answers": [
-                        {
-                            "info": "Right",
-                            "isCorrect": true
-                        },
-                        {
-                            "info": "Wrong",
-                            "isCorrect": false
-                        },
-                        {
-                            "info": "Wrong",
-                            "isCorrect": false
-                        },
-                        {
-                            "info": "Wrong",
-                            "isCorrect": false
-                        }
-                    ]
-                }
-            ]
-        },
-        {
-            "questions": [
-                {
-                    "info": "Question[10.0]",
-                    "answers": [
-                        {
-                            "info": "Right",
-                            "isCorrect": true
-                        },
-                        {
-                            "info": "Wrong",
-                            "isCorrect": false
-                        },
-                        {
-                            "info": "Wrong",
-                            "isCorrect": false
-                        },
-                        {
-                            "info": "Wrong",
-                            "isCorrect": false
-                        }
-                    ]
-                },
-                {
-                    "info": "Question[10.1]",
-                    "answers": [
-                        {
-                            "info": "Right",
-                            "isCorrect": true
-                        },
-                        {
-                            "info": "Wrong",
-                            "isCorrect": false
-                        },
-                        {
-                            "info": "Wrong",
-                            "isCorrect": false
-                        },
-                        {
-                            "info": "Wrong",
-                            "isCorrect": false
-                        }
-                    ]
-                },
-                {
-                    "info": "Question[10.2]",
-                    "answers": [
-                        {
-                            "info": "Right",
-                            "isCorrect": true
-                        },
-                        {
-                            "info": "Wrong",
-                            "isCorrect": false
-                        },
-                        {
-                            "info": "Wrong",
-                            "isCorrect": false
-                        },
-                        {
-                            "info": "Wrong",
-                            "isCorrect": false
-                        }
-                    ]
-                },
-                {
-                    "info": "Question[10.3]",
-                    "answers": [
-                        {
-                            "info": "Right",
-                            "isCorrect": true
-                        },
-                        {
-                            "info": "Wrong",
-                            "isCorrect": false
-                        },
-                        {
-                            "info": "Wrong",
-                            "isCorrect": false
-                        },
-                        {
-                            "info": "Wrong",
-                            "isCorrect": false
-                        }
-                    ]
-                }
-            ]
-        },
-        {
-            "questions": [
-                {
-                    "info": "Question[11.0]",
-                    "answers": [
-                        {
-                            "info": "Right",
-                            "isCorrect": true
-                        },
-                        {
-                            "info": "Wrong",
-                            "isCorrect": false
-                        },
-                        {
-                            "info": "Wrong",
-                            "isCorrect": false
-                        },
-                        {
-                            "info": "Wrong",
-                            "isCorrect": false
-                        }
-                    ]
-                },
-                {
-                    "info": "Question[11.1]",
-                    "answers": [
-                        {
-                            "info": "Right",
-                            "isCorrect": true
-                        },
-                        {
-                            "info": "Wrong",
-                            "isCorrect": false
-                        },
-                        {
-                            "info": "Wrong",
-                            "isCorrect": false
-                        },
-                        {
-                            "info": "Wrong",
-                            "isCorrect": false
-                        }
-                    ]
-                },
-                {
-                    "info": "Question[11.2]",
-                    "answers": [
-                        {
-                            "info": "Right",
-                            "isCorrect": true
-                        },
-                        {
-                            "info": "Wrong",
-                            "isCorrect": false
-                        },
-                        {
-                            "info": "Wrong",
-                            "isCorrect": false
-                        },
-                        {
-                            "info": "Wrong",
-                            "isCorrect": false
-                        }
-                    ]
-                },
-                {
-                    "info": "Question[11.3]",
-                    "answers": [
-                        {
-                            "info": "Right",
-                            "isCorrect": true
-                        },
-                        {
-                            "info": "Wrong",
-                            "isCorrect": false
-                        },
-                        {
-                            "info": "Wrong",
-                            "isCorrect": false
-                        },
-                        {
-                            "info": "Wrong",
-                            "isCorrect": false
-                        }
-                    ]
-                }
-            ]
+            "questions": []
         }
     ]
 }
