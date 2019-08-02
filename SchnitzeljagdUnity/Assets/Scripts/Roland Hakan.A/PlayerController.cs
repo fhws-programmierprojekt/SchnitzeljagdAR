@@ -95,6 +95,8 @@ public class PlayerController : MonoBehaviour
             anim.SetBool("isBreathingIdelBasket", true);
             float x = joystick.Horizontal;
             float y = joystick.Vertical;
+            float r = 0;
+            r = Mathf.Atan2(x, y) * Mathf.Rad2Deg;
 
             Vector3 movement = new Vector3(x, 0, y);
             rBody.velocity = movement * moveSpeed;
@@ -108,7 +110,7 @@ public class PlayerController : MonoBehaviour
             }
             else
             {
-                transform.eulerAngles = new Vector3(0, 0, 0);
+
                 anim.SetBool("isWalkingBasket", false);
             }
         }
@@ -120,6 +122,19 @@ public class PlayerController : MonoBehaviour
     {
         //Animation list: StandingGreeting, Talking, Talking02, Talking03, Talking04, Talking05, Pointing, Defeated, LookingAround, ChickenDance.
         anim.Play(animationName);
+    }
+    public void PlayRandomAnimation()
+    {
+        string[] anims = new string[4];
+        anims[0] = "StandingGreeting";
+        anims[1] = "ChickenDance";
+        anims[2] = "LookingAround";
+        anims[3] = "ChickenDance";
+
+        int zahl = Random.Range(0, 1);
+        Debug.Log(zahl);
+
+        anim.Play(anims[zahl]);
     }
     //CHARACTER FUNCTIONS
 

@@ -182,7 +182,7 @@ public class QuestHubController : MonoBehaviour
 
     public void LoadQuest(int questID)
     {
-        if (RequestAvailbleQuest(questID) || RequestQuestDone(questID))
+        if (RequestAvailbleQuest(questID))
         {          
             gameObject.SetActive(false);
             SceneManager.LoadScene(questID);
